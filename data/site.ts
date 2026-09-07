@@ -27,7 +27,8 @@ export const site = {
   // scripts/signup-apps-script.gs for the exact code + deploy steps.
   // SignupForm renders a "temporarily closed" state while this is empty
   // instead of silently posting to nowhere.
-  signupFormUrl: '',
+  signupFormUrl:
+    'https://script.google.com/macros/s/AKfycbygTiqKLRBrFnv34I4yjSZU18nD9pxrTAIQkA5NdaE5L2c2r9m3ciONEWRxTIKIGP4jCg/exec',
 };
 
 // Kept minimal per the visual design system — Guides and Community are
