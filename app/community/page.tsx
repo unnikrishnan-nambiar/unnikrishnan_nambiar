@@ -7,7 +7,7 @@ import Newsletter from '@/components/sections/Newsletter';
 
 export const metadata: Metadata = {
   title: 'Community - RYX AI',
-  description: 'People building with AI, and the beginning of a place to find them.',
+  description: 'Real people building with AI, and a community that filters the hype together.',
 };
 
 export default function CommunityPage() {

@@ -40,12 +40,12 @@ export default function Newsletter() {
       <div className="container-content">
         <Reveal>
           <h2 className="mx-auto max-w-[750px] font-display text-[36px] font-bold leading-[1.05] tracking-tight sm:text-[52px]">
-            Get the interesting stuff.
+            Skip the noise. Get what&apos;s real.
           </h2>
           <p className="mx-auto mt-4 max-w-[650px] text-lg leading-[1.5] text-ink-secondary">
-            AI is moving too fast to follow everything. Get the useful stuff
-            without the noise: new tools, interesting developments, practical
-            ideas, RYX AI experiments.
+            AI moves too fast to follow all of it, and most of what&apos;s
+            loud isn&apos;t worth following anyway. Get the useful stuff: real
+            tools, real workflows, real experiments. No hype, no spam.
           </p>
         </Reveal>
 

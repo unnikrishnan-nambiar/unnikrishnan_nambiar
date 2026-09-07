@@ -24,22 +24,23 @@ export default function Founder() {
 
         <div className="mx-auto mt-6 max-w-reading space-y-3 text-lg leading-[1.5] text-ink-secondary">
           <p>
-            Hi, I&apos;m {site.founder.name}. I work in AI and product.
+            Hi, I&apos;m {site.founder.name}. I work on AI and data products
+            day to day, and I build with AI on the side.
           </p>
           <p>
-            I&apos;ve spent a lot of time building with AI, but wasn&apos;t
-            sharing much of what I was learning. So I started RYX AI.
-          </p>
-          <p>
-            Not to tell you AI will change everything, or to sell you another
-            AI product. Just to explore it.
+            I kept seeing the same pattern everywhere: AI content built to
+            sell something, not to teach anything. So I started writing down
+            what I was actually learning: what worked, what didn&apos;t, and
+            what nobody&apos;s incentivized to tell you honestly.
           </p>
         </div>
 
         <p className="mx-auto mt-6 max-w-[750px] font-display text-3xl font-bold tracking-tight sm:text-4xl">
-          What can we actually do with AI?
+          RYX AI isn&apos;t a funnel.
           <br />
-          <span className="text-gradient-pa">That&apos;s what I&apos;m here to find out.</span>
+          <span className="text-gradient-pa">
+            It&apos;s the notebook I wish existed when I started.
+          </span>
         </p>
 
         <div className="mt-8 flex justify-center">

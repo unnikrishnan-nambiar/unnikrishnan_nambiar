@@ -4,7 +4,7 @@ import Button from '@/components/ui/Button';
 import Reveal from '@/components/ui/Reveal';
 import { experiments } from '@/data/experiments';
 
-const questions = ['What worked?', "What didn't?", "What's actually useful?", "What's just hype?"];
+const questions = ['Did it save time?', 'Did it hold up under real use?', 'Would we actually recommend it?'];
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString('en-US', {
@@ -26,12 +26,12 @@ export default function Experiments() {
       <div className="container-content">
         <Reveal>
           <SectionIntro
-            heading="We tried it."
-            description="AI looks different when you actually use it. Every week, we experiment with AI: a new model, a new tool, a new workflow, a crazy idea, and show you what happened."
+            heading="We test it so the noise doesn't have to."
+            description="Every week: a new tool, a new workflow, a real business use case. We run it, break it, and tell you honestly what worked and what was a waste of time."
           />
         </Reveal>
 
-        <ul className="mx-auto mt-8 grid max-w-content gap-4 text-left sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mx-auto mt-8 grid max-w-content gap-4 text-left sm:grid-cols-3">
           {questions.map((question, i) => (
             <Reveal
               key={question}

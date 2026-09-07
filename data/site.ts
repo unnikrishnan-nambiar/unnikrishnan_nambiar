@@ -4,7 +4,7 @@
 export const site = {
   name: 'RYX AI',
   domain: 'ryxai.in',
-  tags: ['AI', 'Tools', 'Experiments', 'Ideas', 'Community'],
+  tags: ['AI', 'Business', 'Workflows', 'Signal, not sales.'],
   instagramUrl: 'https://www.instagram.com/ryxai.in/',
   youtubeUrl: 'https://youtube.com/@ryx.ai',
   linkedinUrl: 'https://linkedin.com/company/ryxai',

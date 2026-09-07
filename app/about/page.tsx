@@ -6,7 +6,7 @@ import Newsletter from '@/components/sections/Newsletter';
 
 export const metadata: Metadata = {
   title: 'About - RYX AI',
-  description: 'Built by someone who works with AI.',
+  description: "The person behind RYX AI, and why it isn't a funnel.",
 };
 
 export default function AboutPage() {

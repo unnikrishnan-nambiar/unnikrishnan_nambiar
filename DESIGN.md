@@ -10,6 +10,54 @@ Where a choice below cites "the request," it's not a casual judgment call —
 treat it as intentional, not something to quietly walk back toward the old
 minimal look.
 
+## Content pivot — "signal, not sales"
+
+A full copy rewrite landed after the maximalist visual rebuild above —
+visual system unchanged, every section's words replaced with a sharper
+"cutting through AI noise, business-workflow tilt" story, delivered as a
+complete section-by-section rewrite and applied close to verbatim. Key
+points if you touch copy again:
+
+- Hero split into three tiers instead of one headline: `h1` states the
+  problem ("Everyone's posting about AI. Most of it is noise."), a bold
+  gradient line states the response ("RYX AI cuts through it."), then the
+  muted paragraph gives specifics. Don't collapse these back into one
+  block — the three-beat structure is what the rewrite asked for.
+- Category renames are intentional and business-first:
+  `PracticalAi` went Work/Create/Build/Learn → **Operate/Create/Build/Decide**
+  (with new item lists per category); `Experiments`' four questions
+  became three ("Did it save time? / Did it hold up under real use? /
+  Would we actually recommend it?"), so its grid is `sm:grid-cols-3`, not
+  4. `AiTools`' pick badge reads "Actually worth it", not "RYX AI Pick".
+- Hero's tag line and the footer tagline are **deliberately different
+  sentences** now (previously both read `site.tags.join(' · ')`): Hero
+  still uses `site.tags` (now `['AI', 'Business', 'Workflows', 'Signal,
+  not sales.']`), but `Footer.tsx` has its own hardcoded sentence
+  ("Cutting through AI noise, for people actually doing the work.") —
+  don't re-couple them without checking both copies still make sense.
+- `data/news.ts`'s seed headline is now "Why we're done with AI hype"
+  (was "Welcome to RYX AI") — same honest, self-referential entry, just
+  retitled to match the new voice.
+- **Not done, flagged rather than faked**: the rewrite's own notes asked
+  for real names on the People section's three cards (even just the
+  founder + collaborators) instead of the "PM / SD / ST" + "Example"
+  placeholders. No real names/roles were supplied, so `data/builds.ts`
+  is untouched — content-integrity rules mean this needs real
+  information from the user, not invented ones, before it changes.
+  Swap it in as soon as real profiles exist.
+- **Not done, flagged rather than silently ignored**: the rewrite flagged
+  the newsletter's disabled-on-GitHub-Pages signup as something to "fix
+  before anything else." The static export already avoids overpromising
+  — `IS_STATIC_SITE` swaps the form for an honest "DM us on Instagram"
+  message instead of a broken submit — but there's still no real email
+  capture backend (Mailchimp/ConvertKit/Buttondown/etc.) wired up
+  anywhere. That's an infrastructure task needing a real service and
+  credentials, not a copy fix; raise it explicitly rather than assuming
+  it's handled.
+- A first real blog post ("draft the actual first blog post under this
+  new angle") was offered but not written — ask before drafting one, it's
+  new content, not a copy fix to the existing placeholder.
+
 ## The big pivot — what changed and why
 
 Every earlier pass in this file's history was deliberately restrained:

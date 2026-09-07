@@ -36,7 +36,9 @@ export default function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <Logo className="h-5 w-auto brightness-0 invert" />
-            <p className="mt-3 text-sm text-white/50">{site.tags.join(' · ')}</p>
+            <p className="mt-3 text-sm text-white/50">
+              Cutting through AI noise, for people actually doing the work.
+            </p>
           </div>
 
           {columns.map((column) => (

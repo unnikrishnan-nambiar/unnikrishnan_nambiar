@@ -5,23 +5,23 @@ import Reveal from '@/components/ui/Reveal';
 
 const categories = [
   {
-    name: 'Work',
-    items: ['Research', 'Writing', 'Analysis', 'Productivity', 'Automation'],
+    name: 'Operate',
+    items: ['Research', 'Reporting', 'Analysis', 'Decision support'],
     color: 'violet' as const,
   },
   {
     name: 'Create',
-    items: ['Images', 'Video', 'Audio', 'Design', 'Content'],
+    items: ['Content', 'Design', 'Marketing assets', 'Video'],
     color: 'pink' as const,
   },
   {
     name: 'Build',
-    items: ['Apps', 'Agents', 'Automations', 'AI products', 'APIs'],
+    items: ['Internal tools', 'Agents', 'Automations', 'Integrations'],
     color: 'cyan' as const,
   },
   {
-    name: 'Learn',
-    items: ['Research', 'Study', 'Understand', 'Experiment'],
+    name: 'Decide',
+    items: ['Data', 'Forecasting', 'Strategy', 'Planning'],
     color: 'amber' as const,
   },
 ];
@@ -34,13 +34,8 @@ export default function PracticalAi() {
           <SectionIntro
             label="Use Cases"
             labelColor="amber"
-            heading="What can you actually do with AI?"
-            description={
-              <div className="space-y-1">
-                <p>Don&apos;t just learn about AI. Use it.</p>
-                <p>Practical workflows, experiments and ideas you can try yourself.</p>
-              </div>
-            }
+            heading="Stop reading about AI. Start using it."
+            description="Practical, business-first workflows, not toy demos. Things you can put to work this week."
           />
         </Reveal>
 

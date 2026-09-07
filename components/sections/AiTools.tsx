@@ -23,7 +23,7 @@ function ToolCard({ tool }: { tool: Tool }) {
         >
           {tool.name.charAt(0)}
         </span>
-        {tool.pick && <Badge variant="pink">RYX AI Pick</Badge>}
+        {tool.pick && <Badge variant="pink">Actually worth it</Badge>}
       </div>
 
       <h3 className="mt-4 font-display text-lg font-bold">{tool.name}</h3>
@@ -59,13 +59,8 @@ export default function AiTools() {
         <SectionIntro
           label="Tools"
           labelColor="cyan"
-          heading="Find AI worth trying."
-          description={
-            <div className="space-y-1">
-              <p>There are thousands of AI tools.</p>
-              <p>You don&apos;t need thousands. You need the right ones.</p>
-            </div>
-          }
+          heading="AI tools worth your time."
+          description="There are thousands of AI tools, and most of them are noise too. We only list what we've actually used and would recommend to someone running a real business."
         />
       </Reveal>
 

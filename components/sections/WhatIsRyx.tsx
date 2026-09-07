@@ -8,14 +8,24 @@ export default function WhatIsRyx() {
         <SectionIntro
           label="Discover"
           labelColor="violet"
-          heading="What is RYX AI?"
+          heading="Why we started this"
           description={
             <div className="space-y-3">
-              <p>There is a lot happening in AI. And a lot of content about it.</p>
-              <p>We don&apos;t want to add more noise.</p>
               <p>
-                RYX AI is about figuring out what is actually worth knowing and
-                using: new tools, new ideas, what&apos;s changing and why.
+                AI content right now comes in two flavors: noise, or a sales
+                pitch dressed up as noise.
+              </p>
+              <p>
+                Everyone&apos;s an AI expert this week. Most of it is
+                reach-farming: recycled takes, recycled screenshots, zero
+                actual use. We got tired of scrolling past it looking for the
+                1% that&apos;s real.
+              </p>
+              <p>
+                So we asked a simpler question: what does AI actually change
+                for someone running a business, a team, or a project? Not the
+                demo. The workflow. The decision it improved. The hour it
+                saved.
               </p>
             </div>
           }
@@ -24,9 +34,9 @@ export default function WhatIsRyx() {
 
       <Reveal delay={0.1}>
         <p className="mx-auto mt-8 max-w-[750px] text-center font-display text-3xl font-bold tracking-tight sm:text-5xl">
-          <span className="text-gradient-vp">Learn. Experiment. Build.</span>
+          <span className="text-gradient-vp">Learn what&apos;s real. Test it yourself.</span>
           <br />
-          That&apos;s RYX AI.
+          Build with what works. That&apos;s RYX AI.
         </p>
       </Reveal>
     </section>

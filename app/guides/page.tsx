@@ -6,7 +6,7 @@ import Newsletter from '@/components/sections/Newsletter';
 
 export const metadata: Metadata = {
   title: 'Guides - RYX AI',
-  description: "Practical workflows, experiments and ideas you can try yourself.",
+  description: 'Practical, business-first AI workflows, not toy demos.',
 };
 
 export default function GuidesPage() {

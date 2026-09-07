@@ -16,19 +16,24 @@ export default function Hero() {
         RYX AI
       </span>
 
-      <h1 className="mx-auto mt-6 max-w-[950px] font-display text-[52px] font-bold leading-[0.95] tracking-tight sm:text-[80px] lg:text-[104px]">
-        Explore what&apos;s <span className="text-gradient-vp">next</span> in AI.
+      <h1 className="mx-auto mt-6 max-w-[950px] font-display text-[44px] font-bold leading-[1.05] tracking-tight sm:text-[64px] lg:text-[80px]">
+        Everyone&apos;s posting about AI. Most of it is noise.
       </h1>
 
-      <div className="mx-auto mt-6 max-w-[650px] space-y-4 text-lg leading-[1.5] text-ink-secondary sm:text-xl">
+      <p className="mx-auto mt-6 max-w-[750px] font-display text-2xl font-bold tracking-tight sm:text-3xl">
+        <span className="text-gradient-vp">RYX AI cuts through it.</span>
+      </p>
+
+      <div className="mx-auto mt-4 max-w-[650px] space-y-4 text-lg leading-[1.5] text-ink-secondary sm:text-xl">
         <p>
-          We explore what&apos;s happening in AI, test what actually works,
-          and share what we learn.
+          No hype threads, no &ldquo;AI will change everything,&rdquo; no one
+          selling you a course disguised as advice. Just what&apos;s real,
+          what works, and what actually moves your work forward.
         </p>
       </div>
 
       <p className="mt-6 text-xs font-bold uppercase tracking-[0.15em] text-ink-muted">
-        AI · Tools · Experiments · Ideas · Community
+        {site.tags.join(' · ')}
       </p>
 
       <div className="mt-8 flex flex-wrap justify-center gap-4">

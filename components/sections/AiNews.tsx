@@ -24,8 +24,8 @@ export default function AiNews() {
           <SectionIntro
             label="Discover"
             labelColor="violet"
-            heading="What's worth paying attention to?"
-            description="Not everything happening in AI deserves your attention. We follow what matters and break it down."
+            heading="What's actually worth your attention"
+            description="Not every AI headline deserves five minutes of your day. We read the noise so you don't have to, and call out what's genuinely worth knowing, and what's just marketing."
           />
         </Reveal>
 
