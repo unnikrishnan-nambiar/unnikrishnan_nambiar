@@ -15,6 +15,9 @@ export const site = {
   },
   founder: {
     name: 'Unnikrishnan',
+    // Personal account — distinct from site.instagramUrl (the brand
+    // account). Founder.tsx's "Follow me" button links here.
+    instagramUrl: 'https://www.instagram.com/unnikrishnan._nambiar/',
     // Drop the real photo in /public and point this at it, e.g. '/photo.jpg'.
     photoSrc: null as string | null,
   },
