@@ -3,17 +3,17 @@ import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
 type Variant = 'primary' | 'secondary' | 'accent' | 'dark' | 'light';
 
 const base =
-  'inline-flex items-center justify-center gap-1.5 rounded-full px-6 py-3 text-[15px] font-semibold transition-all duration-200';
+  'inline-flex items-center justify-center gap-1.5 rounded-full px-6 py-3 text-[15px] font-semibold transition-all duration-300 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-95 active:duration-100';
 
 const variants: Record<Variant, string> = {
   primary:
-    'bg-gradient-to-r from-violet to-pink text-paper shadow-glow-violet hover:-translate-y-0.5 hover:shadow-glow-pink',
+    'bg-gradient-to-r from-violet to-pink text-paper shadow-glow-violet hover:shadow-glow-pink',
   accent:
-    'bg-gradient-to-r from-cyan to-violet text-paper shadow-glow-cyan hover:-translate-y-0.5 hover:shadow-glow-violet',
+    'bg-gradient-to-r from-cyan to-violet text-paper shadow-glow-cyan hover:shadow-glow-violet',
   secondary:
     'rounded-2xl border-[2.5px] border-ink bg-paper text-ink hover:bg-ink hover:text-paper',
   dark: 'bg-ink text-paper hover:bg-ink/85',
-  light: 'bg-paper text-ink shadow-hard hover:-translate-y-0.5',
+  light: 'bg-paper text-ink shadow-hard hover:shadow-lg',
 };
 
 type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {

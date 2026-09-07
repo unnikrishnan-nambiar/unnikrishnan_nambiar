@@ -21,7 +21,7 @@ export default function People() {
           <Reveal
             key={build.initials}
             delay={i * 0.06}
-            className="rounded-card border-2 border-ink bg-paper p-6 text-left transition-transform hover:-translate-y-1"
+            className="rounded-card border-2 border-ink bg-paper p-6 text-left transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-lg"
           >
             <div className="flex items-start justify-between">
               <span

@@ -193,13 +193,64 @@ old thin `border-border` — consistent with the bolder overall register.
 Hover states lean into it: cards lift (`-translate-y-1`), tool cards pick
 up `shadow-glow-cyan`, buttons lift and swap shadow color.
 
-`components/ui/Reveal.tsx` is unchanged — same IntersectionObserver-based
-fade+rise, 550ms, `cubic-bezier(0.22,1,0.36,1)`, `prefers-reduced-motion`
-respected. The hero's blob decoration uses a CSS `animate-blob` keyframe
-(`tailwind.config.js`) that's covered by the same global
-`prefers-reduced-motion` override in `globals.css` (all animation
-durations forced to 0.01ms), so it freezes correctly under reduced
-motion without extra handling.
+## Motion pass — "add smooth animations, fix responsiveness"
+
+A dedicated motion/responsiveness pass, on direct request. The
+responsiveness half turned up no actual bugs: an automated audit (Playwright,
+320/375/390/768/1024/1440px, every route) found zero horizontal overflow
+anywhere, so nothing needed fixing there — if a specific device/browser is
+still showing a problem, get a screenshot + viewport width, since the audit
+didn't reproduce one blind. The animation half did turn up one real bug,
+now fixed, plus several deliberate additions:
+
+- **Bug fixed**: `Reveal.tsx` used to apply its fade+rise transition as a
+  permanent Tailwind class (`transition-[opacity,transform]
+  duration-[550ms]...`) on the wrapped element. Because cards wrapped in
+  `Reveal` also carry their own hover transition (a snappier ~300ms lift),
+  and both transitions targeted the same element, every hover after the
+  initial reveal was inheriting the slow 550ms reveal timing instead of
+  its own fast one. Fixed by moving the reveal's transition to an inline
+  style applied only while it plays, cleared via `transitionend` (with a
+  timeout fallback) once the reveal finishes — so the element's own
+  Tailwind transition classes take over cleanly afterward. Reveal itself
+  is now visually the same (fade + 12px rise, 600ms, same expo-out curve)
+  but no longer leaks its timing into anything else.
+- **Hero now animates in on load** (`animate-fade-up` in
+  `tailwind.config.js`, ~700ms expo-out, `both` fill mode): badge → h1 →
+  gradient line → body → tags → buttons, staggered ~80-100ms apart via
+  inline `animationDelay`. This was previously deliberately *not*
+  animated ("first paint, no scroll needed" — still true, but the
+  explicit ask for more motion overrides that restraint now); don't
+  revert it back to static without checking whether the request still
+  stands.
+- **Scroll-progress bar**: the nav's static 3px gradient line
+  (`Nav.tsx`) is now a live progress indicator — a `bg-border` track
+  with a `violet→pink→amber` gradient fill whose `scaleX` tracks
+  `scrollY / (scrollHeight - innerHeight)`, updated via a rAF-throttled
+  scroll listener writing directly to the DOM (no React state, no
+  re-render per scroll frame). Verified 0 at top, 1 at bottom, resets on
+  scroll-to-top.
+- **Nav link hover** now has an animated underline (`scaleX(0)→1` on a
+  child `span`, `group`/`group-hover`), not just a color swap. **Mobile
+  menu** drops in with `animate-dropdown` (fade + 8px slide, 250ms)
+  instead of appearing instantly.
+- **Buttons** (`Button.tsx`): base transition bumped to 300ms ease-out
+  (was 200ms with no explicit easing) and every variant now lifts on
+  hover, not just `primary`/`accent`/`light`; added `active:scale-95`
+  (100ms, snappier than the hover transition) for tactile press feedback.
+- **Cards** (`PracticalAi`, `People`, `AiTools`'s `ToolCard`): hover lift
+  bumped from `-translate-y-1` to `-translate-y-1.5` with an explicit
+  `duration-300 ease-out` (was relying on Tailwind's unstated default),
+  plus a shadow on lift.
+- `prefers-reduced-motion` handling in `globals.css` now also zeroes
+  `animation-delay`, not just duration/iteration-count — otherwise the
+  Hero's staggered entrance would still visibly wait out its 0-380ms
+  delays under reduced motion before snapping to its (now-instant)
+  final state.
+- The hero's blob decoration still uses the pre-existing CSS
+  `animate-blob` keyframe (`tailwind.config.js`), covered by the same
+  global `prefers-reduced-motion` override, so it freezes correctly
+  without extra handling.
 
 ## Content integrity — unchanged, read before adding "placeholder" content
 

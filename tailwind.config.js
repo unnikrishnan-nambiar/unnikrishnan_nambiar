@@ -65,9 +65,19 @@ module.exports = {
           '33%': { transform: 'translate(3%, -4%) scale(1.06)' },
           '66%': { transform: 'translate(-3%, 3%) scale(0.96)' },
         },
+        dropdown: {
+          from: { opacity: '0', transform: 'translateY(-8px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
+        'fade-up': {
+          from: { opacity: '0', transform: 'translateY(16px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
       },
       animation: {
         blob: 'blob 14s ease-in-out infinite',
+        dropdown: 'dropdown 250ms cubic-bezier(0.22,1,0.36,1)',
+        'fade-up': 'fade-up 700ms cubic-bezier(0.22,1,0.36,1) both',
       },
     },
   },

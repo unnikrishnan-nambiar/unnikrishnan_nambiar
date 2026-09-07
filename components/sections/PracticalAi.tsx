@@ -44,7 +44,7 @@ export default function PracticalAi() {
             <Reveal
               key={category.name}
               delay={i * 0.06}
-              className="rounded-card border-2 border-ink bg-paper p-6 text-left transition-transform hover:-translate-y-1"
+              className="rounded-card border-2 border-ink bg-paper p-6 text-left transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-lg"
             >
               <Badge variant={category.color}>{category.name}</Badge>
               <ul className="mt-4 space-y-2 font-medium text-ink-secondary">

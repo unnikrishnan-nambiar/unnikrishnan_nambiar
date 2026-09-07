@@ -14,7 +14,7 @@ function ToolCard({ tool }: { tool: Tool }) {
       href={tool.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block h-full rounded-card border-2 border-ink bg-paper p-6 text-left transition-all hover:-translate-y-1 hover:shadow-glow-cyan"
+      className="group block h-full rounded-card border-2 border-ink bg-paper p-6 text-left transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-glow-cyan"
     >
       <div className="flex items-start justify-between gap-3">
         <span
