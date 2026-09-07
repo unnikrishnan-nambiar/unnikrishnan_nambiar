@@ -356,14 +356,34 @@ description, then a `data/currentTests.ts`-driven 3-card grid (`01`/`02`/
 `secondary`-variant "See Our Experiments" (was `dark` before — softened
 since it's no longer the only/primary button in that row).
 
-The sign-up button links directly to a Google Sheet the team tracks
-sign-ups in (`SIGNUP_SHEET_URL` in `Experiments.tsx`), not a form that
-submits into it — there's no backend/Apps Script wiring available to
-actually write form submissions into that specific sheet, so this is an
-honest "add yourself to the sheet" link rather than a form that would
-silently fail. If real form-backed sign-up infrastructure gets built
-later (Apps Script Web App, a proper backend, etc.), swap the link for
-an actual `<form>` then — don't build a fake-looking form now.
+**Update — now a real embedded form, not a link-out.** The original
+version of this linked straight to the Google Sheet (no backend
+available at the time). Per a follow-up "I want a real embedded
+approach" request, `components/sections/SignupForm.tsx` is now a real
+form (name/email/optional "what do you want to test") that actually
+writes a row into the Sheet:
+
+- It POSTs a plain HTML form into a hidden `<iframe>` targeting
+  `site.signupFormUrl` (`data/site.ts`) — a Google Apps Script Web App
+  URL, not a fetch/XHR call. Apps Script Web Apps are unreliable to read
+  cross-origin via fetch, so the classic hidden-iframe-target trick is
+  used instead; the response can't be read, so "success" just means the
+  browser finished the request, not a confirmed server response.
+- `scripts/signup-apps-script.gs` is the actual backend — Apps Script
+  code bound to the "RYX AI Community Signups" Sheet. It's **not**
+  run by this repo's build in any way; it has to be pasted into the
+  Sheet's Script Editor by hand (Claude has no Apps Script deploy
+  capability) — full one-time deploy steps are in that file's header
+  comment. Once deployed, its Web App URL goes into
+  `site.signupFormUrl`.
+- Until `site.signupFormUrl` is set, `SignupForm` renders an honest
+  "Sign-ups open soon, DM us on Instagram" fallback instead of a form
+  that would POST to nowhere — check that constant is actually filled
+  in before assuming sign-ups are live.
+- The old public link straight to the Sheet's edit URL is gone — that
+  URL granted edit access to the whole sheet (all rows, not just "add
+  one"), so publishing it was more exposed than intended. The new form
+  never exposes the Sheet URL to visitors at all.
 
 `data/experiments.ts` (the full "we ran it, here's what happened"
 write-up format with a verdict) still exists for when a real experiment

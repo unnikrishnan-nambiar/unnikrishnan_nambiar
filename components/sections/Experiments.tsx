@@ -3,16 +3,9 @@ import SectionLabel from '@/components/ui/SectionLabel';
 import Divider from '@/components/ui/Divider';
 import Button from '@/components/ui/Button';
 import Reveal from '@/components/ui/Reveal';
+import SignupForm from './SignupForm';
 import { experiments } from '@/data/experiments';
 import { currentTests } from '@/data/currentTests';
-
-// Manual, low-tech sign-up: opens the actual sheet the team tracks
-// sign-ups in. There's no backend wiring a form into it (that would need
-// credentials/Apps Script access this project doesn't have) — so this is
-// an honest "add yourself to the sheet" link rather than a form whose
-// submission would silently go nowhere.
-const SIGNUP_SHEET_URL =
-  'https://docs.google.com/spreadsheets/d/16e2dOXdyBo-prI2ZcbuSx50SGjpjv2i7DTQPB20cmXo/edit?usp=sharing';
 
 const questions = ['Did it save time?', 'Did it hold up under real use?', 'Would we actually recommend it?'];
 
@@ -140,10 +133,9 @@ export default function Experiments() {
           </p>
         </Reveal>
 
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Button href={SIGNUP_SHEET_URL} variant="accent" target="_blank" rel="noopener noreferrer">
-            Sign Up to Test With Us →
-          </Button>
+        <SignupForm />
+
+        <div className="mt-6 flex justify-center">
           <Button href="/experiments" variant="secondary">
             See Our Experiments
           </Button>

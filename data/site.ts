@@ -21,6 +21,13 @@ export const site = {
     // Drop the real photo in /public and point this at it, e.g. '/photo.jpg'.
     photoSrc: null as string | null,
   },
+  // Deployed Google Apps Script Web App URL that SignupForm.tsx posts to
+  // (writes a row into the "RYX AI Community Signups" Sheet). Empty until
+  // the one-time Apps Script deployment is done — see
+  // scripts/signup-apps-script.gs for the exact code + deploy steps.
+  // SignupForm renders a "temporarily closed" state while this is empty
+  // instead of silently posting to nowhere.
+  signupFormUrl: '',
 };
 
 // Kept minimal per the visual design system — Guides and Community are
