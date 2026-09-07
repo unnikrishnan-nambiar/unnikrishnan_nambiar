@@ -18,9 +18,6 @@ next-env.d.ts
 /build
 /out
 
-# local signup capture (placeholder storage until real backend is wired up)
-/data/signups.json
-
 # misc
 .DS_Store
 *.pem

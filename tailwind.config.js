@@ -73,11 +73,21 @@ module.exports = {
           from: { opacity: '0', transform: 'translateY(16px)' },
           to: { opacity: '1', transform: 'translateY(0)' },
         },
+        'backdrop-in': {
+          from: { opacity: '0' },
+          to: { opacity: '1' },
+        },
+        'modal-in': {
+          from: { opacity: '0', transform: 'translateY(12px) scale(0.97)' },
+          to: { opacity: '1', transform: 'translateY(0) scale(1)' },
+        },
       },
       animation: {
         blob: 'blob 14s ease-in-out infinite',
         dropdown: 'dropdown 250ms cubic-bezier(0.22,1,0.36,1)',
         'fade-up': 'fade-up 700ms cubic-bezier(0.22,1,0.36,1) both',
+        'backdrop-in': 'backdrop-in 200ms ease-out both',
+        'modal-in': 'modal-in 280ms cubic-bezier(0.22,1,0.36,1) both',
       },
     },
   },

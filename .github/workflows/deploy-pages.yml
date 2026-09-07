@@ -30,16 +30,9 @@ jobs:
 
       - run: npm ci
 
-      # GitHub Pages is static-only and can't run this route handler.
-      # The Join form detects NEXT_PUBLIC_STATIC_SITE and shows a fallback
-      # instead of trying to submit to it.
-      - name: Remove API routes (unsupported by static export)
-        run: rm -rf app/api
-
       - name: Build static export
         env:
           GITHUB_PAGES: 'true'
-          NEXT_PUBLIC_STATIC_SITE: 'true'
         run: npm run build
 
       - uses: actions/configure-pages@v5

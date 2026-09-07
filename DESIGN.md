@@ -44,15 +44,14 @@ points if you touch copy again:
   follow-up request replaced the whole section's premise — see "People
   section rebuilt as audience grid" below. `data/builds.ts` (the old
   initials/"Example" placeholder profiles) no longer exists.
-- **Not done, flagged rather than silently ignored**: the rewrite flagged
-  the newsletter's disabled-on-GitHub-Pages signup as something to "fix
-  before anything else." The static export already avoids overpromising
-  — `IS_STATIC_SITE` swaps the form for an honest "DM us on Instagram"
-  message instead of a broken submit — but there's still no real email
-  capture backend (Mailchimp/ConvertKit/Buttondown/etc.) wired up
-  anywhere. That's an infrastructure task needing a real service and
-  credentials, not a copy fix; raise it explicitly rather than assuming
-  it's handled.
+- **Resolved in a later pass**: the rewrite flagged the newsletter's
+  disabled-on-GitHub-Pages signup ("DM us on Instagram" fallback, backed
+  by a placeholder `/api/join` route that only wrote to a gitignored
+  local JSON file) as needing a real backend. It now has one — see
+  "Join popup — real embedded signup" below. `app/api/join` and the
+  `NEXT_PUBLIC_STATIC_SITE` env var are gone; the deploy workflow no
+  longer needs to strip `app/api` before the static build since there
+  isn't one anymore.
 - A first real blog post ("draft the actual first blog post under this
   new angle") was offered but not written — ask before drafting one, it's
   new content, not a copy fix to the existing placeholder.
@@ -391,6 +390,48 @@ actually wraps up — it's separate from `data/currentTests.ts` (lighter,
 no-verdict, "actively in progress" entries) on purpose. Don't merge
 these two data shapes; they represent different stages of an
 experiment's life (in progress vs. published).
+
+## Join popup — real embedded signup
+
+`Newsletter.tsx` (the `#join` "Skip the noise. Get what's real." band)
+used to POST to `/api/join`, a placeholder Next.js route handler that
+only appended to a gitignored local JSON file — it never sent mail
+anywhere, and it's dynamic (`fs` + `request.json()`), so it couldn't run
+at all on the GitHub Pages static export; that build stripped `app/api`
+before building and showed an `IS_STATIC_SITE` "Signups aren't live on
+this preview, DM us on Instagram" fallback instead. Per direct request
+("open a popup form and just ask name and email, fill the same google
+sheet"), that's replaced with a real popup form writing into the same
+"RYX AI Community Signups" Sheet the experiments sign-up uses:
+
+- `components/ui/Modal.tsx` — a small reusable accessible popup:
+  portals to `document.body`, locks body scroll while open, closes on
+  Escape or a backdrop click, focuses the first field on open and
+  returns focus to the trigger button on close. `animate-backdrop-in` /
+  `animate-modal-in` (`tailwind.config.js`) are the fade+scale-in
+  keyframes it uses — not shared with `animate-dropdown` (nav) since the
+  modal needs a backdrop fade alongside the panel motion.
+- `components/sections/JoinForm.tsx` — name + email only (no
+  "interest" field; this is the general join ask, not the experiments
+  one), same hidden-iframe-POST-to-Apps-Script mechanism as
+  `SignupForm.tsx`, same `site.signupFormUrl`. A fixed hidden
+  `interest="Newsletter signup"` field tags these rows so they're
+  distinguishable from experiments sign-ups in the Sheet, without
+  needing any change to the already-deployed Apps Script.
+  `SignupForm.tsx` and `JoinForm.tsx` are intentionally two separate
+  components rather than one parameterized form — they're each small,
+  and `SignupForm` is already a verified-working production path that
+  didn't need touching to add this.
+- `Newsletter.tsx` now just renders the heading/copy, a "Join RYX AI
+  Community" button that opens the `Modal`, and the `JoinForm` inside
+  it. Success/fallback/error states live inside `JoinForm` itself, same
+  pattern as `SignupForm`.
+- `app/api/join` is deleted (dead code once nothing calls it), along
+  with `NEXT_PUBLIC_STATIC_SITE` and the `data/signups.json` gitignore
+  entry. `.github/workflows/deploy-pages.yml` no longer needs its
+  "strip `app/api` before the static build" step since there's no
+  `app/api` left at all — the static-export build is now identical to
+  the normal one, just with `GITHUB_PAGES=true`.
 
 ## People section rebuilt as audience grid
 

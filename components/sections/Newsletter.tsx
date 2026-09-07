@@ -1,39 +1,14 @@
 'use client';
 
-import { useState, type FormEvent } from 'react';
+import { useId, useState } from 'react';
 import Button from '@/components/ui/Button';
+import Modal from '@/components/ui/Modal';
 import Reveal from '@/components/ui/Reveal';
-import { site } from '@/data/site';
-
-type Status = 'idle' | 'submitting' | 'success' | 'error';
-
-// Set by the GitHub Pages build only (see .github/workflows/deploy-pages.yml).
-// That build is fully static and has no /api/join route to submit to.
-const IS_STATIC_SITE = process.env.NEXT_PUBLIC_STATIC_SITE === 'true';
+import JoinForm from './JoinForm';
 
 export default function Newsletter() {
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<Status>('idle');
-
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setStatus('submitting');
-
-    try {
-      const res = await fetch('/api/join', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ contact: email }),
-      });
-
-      if (!res.ok) throw new Error('Request failed');
-
-      setStatus('success');
-      setEmail('');
-    } catch {
-      setStatus('error');
-    }
-  }
+  const [open, setOpen] = useState(false);
+  const titleId = useId();
 
   return (
     <section id="join" className="scroll-mt-20 bg-cyan-light py-14 text-center sm:py-20">
@@ -49,56 +24,26 @@ export default function Newsletter() {
           </p>
         </Reveal>
 
-        {IS_STATIC_SITE ? (
-          <p className="mx-auto mt-6 max-w-[480px] rounded-card border-2 border-ink bg-paper px-6 py-4 text-ink-secondary">
-            Signups aren&apos;t live on this preview. DM us on{' '}
-            <a
-              href={site.instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-bold text-violet hover:text-violet-dark"
-            >
-              Instagram
-            </a>{' '}
-            to join for now.
-          </p>
-        ) : status === 'success' ? (
-          <p className="mx-auto mt-6 max-w-[480px] rounded-card border-2 border-ink bg-paper px-6 py-4 text-ink">
-            You&apos;re in. Welcome to RYX AI Community.
-          </p>
-        ) : (
-          <form
-            onSubmit={handleSubmit}
-            className="mx-auto mt-6 flex max-w-[480px] flex-col gap-3 sm:flex-row"
-          >
-            <label htmlFor="newsletter-email" className="sr-only">
-              Your email
-            </label>
-            <input
-              id="newsletter-email"
-              name="email"
-              type="email"
-              autoComplete="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Your email"
-              className="w-full flex-1 rounded-2xl border-2 border-ink bg-paper px-4 py-2.5 text-ink placeholder:text-ink-muted focus:outline-none focus:ring-4 focus:ring-violet/25"
-            />
-            <Button type="submit" variant="primary" disabled={status === 'submitting'}>
-              {status === 'submitting' ? 'Joining…' : 'Join RYX AI Community'}
-            </Button>
-          </form>
-        )}
-
-        {status === 'error' && (
-          <p className="mt-4 text-sm text-red-600">
-            Something went wrong. Please try again.
-          </p>
-        )}
+        <div className="mt-6 flex justify-center">
+          <Button type="button" variant="primary" onClick={() => setOpen(true)}>
+            Join RYX AI Community
+          </Button>
+        </div>
 
         <p className="mt-4 text-sm text-ink-muted">No spam. Just useful AI.</p>
       </div>
+
+      <Modal open={open} onClose={() => setOpen(false)} titleId={titleId}>
+        <h3 id={titleId} className="font-display text-2xl font-bold">
+          Join RYX AI Community
+        </h3>
+        <p className="mt-2 text-ink-secondary">
+          Real tools, real workflows, real experiments. No hype, no spam.
+        </p>
+        <div className="mt-6">
+          <JoinForm />
+        </div>
+      </Modal>
     </section>
   );
 }
