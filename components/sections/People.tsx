@@ -1,20 +1,23 @@
 import SectionIntro from '@/components/ui/SectionIntro';
 import Button from '@/components/ui/Button';
 import Badge from '@/components/ui/Badge';
+import Reveal from '@/components/ui/Reveal';
 import { builds } from '@/data/builds';
 
 export default function People() {
   return (
     <section className="container-content py-14 sm:py-24">
-      <SectionIntro
-        label="06 / Connect"
-        heading="People building with AI."
-        description="AI is bigger than tools. It's people — founders, developers, product managers, creators, researchers, students, designers, operators. RYX will feature people experimenting with AI, building products and changing how they work."
-      />
+      <Reveal>
+        <SectionIntro
+          label="06 / Connect"
+          heading="People building with AI."
+          description="AI is bigger than tools. It's people — founders, developers, product managers, creators, researchers, students, designers, operators. RYX will feature people experimenting with AI, building products and changing how they work."
+        />
+      </Reveal>
 
       <div className="mx-auto mt-10 grid max-w-content gap-6 sm:grid-cols-3">
-        {builds.map((build) => (
-          <div key={build.initials} className="rounded-card border border-border p-6 text-left">
+        {builds.map((build, i) => (
+          <Reveal key={build.initials} delay={i * 0.06} className="rounded-card border border-border p-6 text-left">
             <div className="flex items-start justify-between">
               <span
                 aria-hidden
@@ -26,7 +29,7 @@ export default function People() {
             </div>
             <p className="mt-4 font-display font-semibold">{build.role}</p>
             <p className="mt-1 text-ink-secondary">{build.building}</p>
-          </div>
+          </Reveal>
         ))}
       </div>
 

@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import SectionIntro from '@/components/ui/SectionIntro';
 import Button from '@/components/ui/Button';
 import Badge from '@/components/ui/Badge';
+import Reveal from '@/components/ui/Reveal';
 import { tools, toolCategories } from '@/data/tools';
 import type { Tool } from '@/data/tools';
 
@@ -13,7 +14,7 @@ function ToolCard({ tool }: { tool: Tool }) {
       href={tool.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group rounded-card border border-border bg-paper p-6 text-left transition-colors hover:border-ink"
+      className="group block h-full rounded-card border border-border bg-paper p-6 text-left transition-colors hover:border-ink"
     >
       <div className="flex items-start justify-between gap-3">
         <span
@@ -55,17 +56,19 @@ export default function AiTools() {
   }, [query, category]);
 
   return (
-    <section id="tools" className="container-content py-14 sm:py-24">
-      <SectionIntro
-        label="04 / Tools"
-        heading="Find AI worth trying."
-        description={
-          <div className="space-y-1">
-            <p>There are thousands of AI tools.</p>
-            <p>You don&apos;t need thousands. You need the right ones.</p>
-          </div>
-        }
-      />
+    <section id="tools" className="container-content scroll-mt-20 py-14 sm:py-24">
+      <Reveal>
+        <SectionIntro
+          label="04 / Tools"
+          heading="Find AI worth trying."
+          description={
+            <div className="space-y-1">
+              <p>There are thousands of AI tools.</p>
+              <p>You don&apos;t need thousands. You need the right ones.</p>
+            </div>
+          }
+        />
+      </Reveal>
 
       <div className="mx-auto mt-10 max-w-content">
         <label htmlFor="tool-search" className="sr-only">
@@ -101,8 +104,10 @@ export default function AiTools() {
 
         {filtered.length > 0 ? (
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {filtered.map((tool) => (
-              <ToolCard key={tool.slug} tool={tool} />
+            {filtered.map((tool, i) => (
+              <Reveal key={tool.slug} delay={i * 0.05}>
+                <ToolCard tool={tool} />
+              </Reveal>
             ))}
           </div>
         ) : (

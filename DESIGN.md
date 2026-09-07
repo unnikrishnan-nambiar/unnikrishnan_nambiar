@@ -107,6 +107,16 @@ concrete choices worth preserving:
   screenshots), it's a plain bordered placeholder block, not a generated
   substitute.
 
+## Animation
+
+Ran `python3 .claude/skills/ui-ux-pro-max/scripts/search.py "scroll reveal fade stagger lightweight" --domain gsap` for reference rather than reaching for GSAP itself — this site keeps the "no heavy animation libraries" constraint from the original brief, so `components/ui/Reveal.tsx` reimplements the same subtle-tier motion tokens the search returned (12px rise, ~400ms, ease-out) with a plain `IntersectionObserver` and direct ref/style mutation — no React state, no dependency. Wraps section intros (single reveal) and grid/list items (staggered via the `delay` prop, ~0.05–0.06s per item). Renders fully visible by default (SSR/no-JS/crawler safe) and only hides-then-reveals once JS confirms `prefers-reduced-motion` isn't set — verified both that reduced-motion shows everything immediately and that a fresh scroll actually reveals it.
+
+Deliberately *not* animated: Hero (first paint, no scroll needed) and the Newsletter form's status states (success/error swap should never itself be gated behind a scroll-reveal). Per the "spend boldness in one place" instinct, Founder and Final CTA each get one single reveal for the whole block rather than staggering their internals.
+
+## Anchor scroll offset
+
+Every section with an `id` (`#top`, `#discover`, `#guides`, `#tools`, `#experiments`, `#community`, `#about`, `#join`) carries `scroll-mt-20` — without it, the sticky nav (`h-16`) covers the section label/heading on every anchor jump (nav links, hero CTAs, footer links, Community's "Join RYX"). Found this via the `ui-ux-pro-max` skill's focus/keyboard-nav guidance and confirmed it was actually happening before fixing it. If a new section gets an `id`, it needs `scroll-mt-20` too.
+
 ## If you touch this next
 
 - `data/site.ts` → `nav` array drives the header; `tags` drives the small

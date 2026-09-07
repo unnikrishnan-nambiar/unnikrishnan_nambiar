@@ -3,6 +3,10 @@
 # dependencies
 /node_modules
 
+# python (from bundled skill scripts, e.g. ui-ux-pro-max)
+__pycache__/
+*.pyc
+
 # testing
 /coverage
 

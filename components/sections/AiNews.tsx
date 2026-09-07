@@ -2,6 +2,7 @@ import SectionIntro from '@/components/ui/SectionIntro';
 import Divider from '@/components/ui/Divider';
 import Button from '@/components/ui/Button';
 import Badge from '@/components/ui/Badge';
+import Reveal from '@/components/ui/Reveal';
 import { news } from '@/data/news';
 import { site } from '@/data/site';
 
@@ -17,34 +18,38 @@ export default function AiNews() {
   const [featured, ...rest] = news;
 
   return (
-    <section id="discover" className="container-content py-14 sm:py-24">
-      <SectionIntro
-        label="02 / Discover"
-        heading="What's worth paying attention to?"
-        description="Not everything happening in AI deserves your attention. We follow what matters and break it down."
-      />
+    <section id="discover" className="container-content scroll-mt-20 py-14 sm:py-24">
+      <Reveal>
+        <SectionIntro
+          label="02 / Discover"
+          heading="What's worth paying attention to?"
+          description="Not everything happening in AI deserves your attention. We follow what matters and break it down."
+        />
+      </Reveal>
 
       <Divider className="mx-auto mt-10 max-w-content" />
 
       {featured && (
-        <article className="mx-auto mt-10 max-w-reading text-left">
-          <div className="flex flex-wrap items-center gap-3">
-            <Badge>{featured.category}</Badge>
-            <span className="text-sm text-ink-muted">{formatDate(featured.date)}</span>
-            <span className="text-sm text-ink-muted">·</span>
-            <span className="text-sm text-ink-muted">{featured.readingTime}</span>
-          </div>
-          <h3 className="mt-4 font-display text-2xl font-semibold sm:text-3xl">
-            {featured.headline}
-          </h3>
-          <p className="mt-2 text-lg text-ink-secondary">{featured.description}</p>
-        </article>
+        <Reveal delay={0.05}>
+          <article className="mx-auto mt-10 max-w-reading text-left">
+            <div className="flex flex-wrap items-center gap-3">
+              <Badge>{featured.category}</Badge>
+              <span className="text-sm text-ink-muted">{formatDate(featured.date)}</span>
+              <span className="text-sm text-ink-muted">·</span>
+              <span className="text-sm text-ink-muted">{featured.readingTime}</span>
+            </div>
+            <h3 className="mt-4 font-display text-2xl font-semibold sm:text-3xl">
+              {featured.headline}
+            </h3>
+            <p className="mt-2 text-lg text-ink-secondary">{featured.description}</p>
+          </article>
+        </Reveal>
       )}
 
       {rest.length > 0 && (
         <ul className="mx-auto mt-10 max-w-reading divide-y divide-border border-t border-border text-left">
           {rest.map((item, i) => (
-            <li key={item.slug} className="flex gap-5 py-5">
+            <Reveal key={item.slug} as="li" delay={i * 0.05} className="flex gap-5 py-5">
               <span className="font-display text-sm text-ink-muted">
                 {String(i + 2).padStart(2, '0')}
               </span>
@@ -55,7 +60,7 @@ export default function AiNews() {
                 </h4>
                 <p className="mt-1 text-ink-secondary">{item.description}</p>
               </div>
-            </li>
+            </Reveal>
           ))}
         </ul>
       )}

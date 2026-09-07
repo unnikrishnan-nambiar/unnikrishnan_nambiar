@@ -1,6 +1,7 @@
 import SectionIntro from '@/components/ui/SectionIntro';
 import Divider from '@/components/ui/Divider';
 import Button from '@/components/ui/Button';
+import Reveal from '@/components/ui/Reveal';
 import { experiments } from '@/data/experiments';
 
 const questions = ['What worked?', "What didn't?", "What's actually useful?", "What's just hype?"];
@@ -21,24 +22,26 @@ const storySteps = [
 
 export default function Experiments() {
   return (
-    <section id="experiments" className="container-content py-14 sm:py-24">
-      <SectionIntro
-        label="05 / Experiment"
-        heading="We tried it."
-        description="AI looks different when you actually use it. Every week, we experiment with AI — a new model, a new tool, a new workflow, a crazy idea — and show you what happened."
-      />
+    <section id="experiments" className="container-content scroll-mt-20 py-14 sm:py-24">
+      <Reveal>
+        <SectionIntro
+          label="05 / Experiment"
+          heading="We tried it."
+          description="AI looks different when you actually use it. Every week, we experiment with AI — a new model, a new tool, a new workflow, a crazy idea — and show you what happened."
+        />
+      </Reveal>
 
       <ul className="mx-auto mt-10 grid max-w-content gap-6 border-t border-border pt-8 text-left sm:grid-cols-2 lg:grid-cols-4">
-        {questions.map((question) => (
-          <li key={question} className="font-display text-xl font-semibold">
+        {questions.map((question, i) => (
+          <Reveal key={question} as="li" delay={i * 0.06} className="font-display text-xl font-semibold">
             {question}
-          </li>
+          </Reveal>
         ))}
       </ul>
 
       <div className="mx-auto mt-10 max-w-reading space-y-8 text-left">
         {experiments.map((experiment) => (
-          <article key={experiment.slug}>
+          <Reveal key={experiment.slug} as="article">
             <p className="text-sm text-ink-muted">{formatDate(experiment.date)}</p>
             <h3 className="mt-1 font-display text-2xl font-semibold">{experiment.title}</h3>
             <p className="mt-2 text-ink-secondary">{experiment.description}</p>
@@ -67,7 +70,7 @@ export default function Experiments() {
                 })}
               </div>
             )}
-          </article>
+          </Reveal>
         ))}
       </div>
 
