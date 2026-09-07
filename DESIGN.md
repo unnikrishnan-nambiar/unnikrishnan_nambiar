@@ -29,12 +29,18 @@ request (explicitly scoped to "bolder within current palette," not new
 hues or gradients — asked directly, don't reopen it without asking again)
 it's used a lot more than the original "sparingly": every "Follow"/social
 CTA is now `accent` variant (Nav, Hero, Founder, AiNews's external
-button, Community's Join), `SectionLabel`'s pill badge background is
-`indigo-dark` instead of `ink`, the "RYX AI Pick" badge is solid
+button, Community's Join), the "RYX AI Pick" badge is solid
 `indigo`/paper instead of the light tint, AiTools' active category filter
 and card-hover border are indigo, the AiNews numbered-list markers are
 indigo, and two "statement" lines (WhatIsRyx's "Learn. Experiment.
 Build." and FinalCta's "Welcome to RYX AI.") are set in `indigo-dark`.
+`SectionLabel`'s pill badge went indigo-dark for one round then got
+reverted to `ink` (black) on user feedback from a reference screenshot:
+it's a single `rounded-full` pill with one border and the dot texture
+inside it — not the earlier two-shape nested-outline version (an outer
+`rounded-2xl` chip wrapping an inner `rounded-full` pill), which read as
+a double outline. If you touch this component again, keep it to one
+shape/one border.
 Internal "Explore [section]" navigation buttons (Tools/Guides/Experiments,
 People's "Share Your Build") deliberately stay `secondary` (neutral
 border) — keeping some buttons plain is what makes the indigo ones read
