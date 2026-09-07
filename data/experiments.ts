@@ -1,7 +1,8 @@
-// Weekly experiments — real outputs go here as they're run. Seeded with one
-// honest placeholder rather than a fabricated result. whatWeTried/
-// whatHappened/verdict are optional because a "coming soon" entry hasn't
-// happened yet — don't fill them with invented findings.
+// Full published experiment write-ups (the "we ran it, here's what
+// happened" story format) go here once one actually wraps up. Empty for
+// now — the homepage's "What we're testing right now" block
+// (data/currentTests.ts) covers what's actively in progress; don't fill
+// this with invented findings just to have something to show.
 
 export type Experiment = {
   slug: string;
@@ -14,13 +15,4 @@ export type Experiment = {
   verdict?: string;
 };
 
-export const experiments: Experiment[] = [
-  {
-    slug: 'first-experiment',
-    title: 'Our first experiment is in progress',
-    description:
-      "We're running it now. Check back soon for what worked, what didn't, and what's actually useful.",
-    date: '2026-01-01',
-    status: 'coming-soon',
-  },
-];
+export const experiments: Experiment[] = [];

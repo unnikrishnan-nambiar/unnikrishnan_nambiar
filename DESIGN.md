@@ -170,7 +170,7 @@ almost everything sat on plain white.
 | AiNews (`#discover`) | `bg-violet-light` band | violet label, pink numbered markers |
 | PracticalAi (`#guides`, "Use Cases") | `bg-amber-light` band | amber label, per-card violet/pink/cyan/amber badges |
 | AiTools (`#tools`) | white | cyan label, pink "Actually worth it" badge |
-| Experiments (`#experiments`) | `bg-pink-light` band | no label (removed per earlier request), pink accents |
+| Experiments (`#experiments`) | `bg-pink-light` band | no label on the top intro (removed per earlier request); pink label + accents on the "What we're testing right now" block — see below |
 | People | white | no label (removed per earlier request); no icons/badges either — see "People section rebuilt as audience grid" |
 | Community (`#community`) | `bg-gradient-to-br from-violet via-fuchsia-600 to-pink`, white text | `light`-variant CTA |
 | Founder (`#about`) | white | amber label, pink→amber gradient statement line |
@@ -288,8 +288,14 @@ honest content rules.
   profiles, so no "Example" badge — see "People section rebuilt as
   audience grid" below. This replaced the old `data/builds.ts`
   (initials/"Example" placeholder profiles), which no longer exists.
-- `data/experiments.ts` / `data/news.ts` — seeded with one honest,
-  self-referential entry each rather than an invented headline or result.
+- `data/experiments.ts` is now empty (`experiments: []`) — it's for full
+  published "we ran it, here's what happened" write-ups (with a real
+  verdict), and there isn't one yet. Don't fill it with an invented
+  result just to have content; leave it empty until a real one exists.
+  `data/currentTests.ts` — see "'What we're testing right now' block"
+  below — covers what's actively in progress instead.
+- `data/news.ts` — seeded with one honest, self-referential entry
+  rather than an invented headline.
 - `data/tools.ts` — the tools themselves are real, public products;
   `pick: true` is RYX's own opinion, not a claim about anyone else's
   rating.
@@ -335,6 +341,36 @@ paragraphs plus a "Name, Founder, RYX AI Community" byline) — if you
 revise it, keep that voice (plain, first-person, "I don't have all the
 answers") rather than reverting to the earlier, shorter "I work in AI
 and product..." version or inventing new founder narrative.
+
+## "What we're testing right now" block
+
+`Experiments.tsx` replaced its single "coming soon" placeholder card
+(`data/experiments.ts`'s one seed entry, now removed) with a richer,
+still-honest block, per direct request: a pink `SectionLabel` reading
+"AI Experiments", heading "What we're testing right now", a
+description, then a `data/currentTests.ts`-driven 3-card grid (`01`/`02`/
+`03` + title + description, pink index number, same
+`border-2 border-ink` card style as the rest of the site), then a
+"Test → Break → Measure → Share" process line, then two buttons: an
+`accent`-variant "Sign Up to Test With Us →" and the pre-existing
+`secondary`-variant "See Our Experiments" (was `dark` before — softened
+since it's no longer the only/primary button in that row).
+
+The sign-up button links directly to a Google Sheet the team tracks
+sign-ups in (`SIGNUP_SHEET_URL` in `Experiments.tsx`), not a form that
+submits into it — there's no backend/Apps Script wiring available to
+actually write form submissions into that specific sheet, so this is an
+honest "add yourself to the sheet" link rather than a form that would
+silently fail. If real form-backed sign-up infrastructure gets built
+later (Apps Script Web App, a proper backend, etc.), swap the link for
+an actual `<form>` then — don't build a fake-looking form now.
+
+`data/experiments.ts` (the full "we ran it, here's what happened"
+write-up format with a verdict) still exists for when a real experiment
+actually wraps up — it's separate from `data/currentTests.ts` (lighter,
+no-verdict, "actively in progress" entries) on purpose. Don't merge
+these two data shapes; they represent different stages of an
+experiment's life (in progress vs. published).
 
 ## People section rebuilt as audience grid
 
