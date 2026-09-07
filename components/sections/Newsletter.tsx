@@ -36,20 +36,20 @@ export default function Newsletter() {
   }
 
   return (
-    <section id="join" className="container-content scroll-mt-20 py-14 text-center sm:py-24">
+    <section id="join" className="container-content scroll-mt-20 py-10 text-center sm:py-16">
       <Reveal>
         <h2 className="mx-auto max-w-[750px] font-display text-[34px] font-semibold leading-tight tracking-tight sm:text-[40px] lg:text-[48px]">
           Get the interesting stuff.
         </h2>
         <p className="mx-auto mt-4 max-w-[650px] text-lg leading-[1.6] text-ink-secondary">
           AI is moving too fast to follow everything. Get the useful stuff
-          without the noise — new tools, interesting developments, practical
+          without the noise: new tools, interesting developments, practical
           ideas, RYX AI experiments.
         </p>
       </Reveal>
 
       {IS_STATIC_SITE ? (
-        <p className="mx-auto mt-8 max-w-[480px] rounded-card border border-border bg-card px-6 py-4 text-ink-secondary">
+        <p className="mx-auto mt-6 max-w-[480px] rounded-card border border-border bg-card px-6 py-4 text-ink-secondary">
           Signups aren&apos;t live on this preview. DM us on{' '}
           <a
             href={site.instagramUrl}
@@ -62,13 +62,13 @@ export default function Newsletter() {
           to join for now.
         </p>
       ) : status === 'success' ? (
-        <p className="mx-auto mt-8 max-w-[480px] rounded-card border border-border bg-card px-6 py-4 text-ink">
+        <p className="mx-auto mt-6 max-w-[480px] rounded-card border border-border bg-card px-6 py-4 text-ink">
           You&apos;re in. Welcome to RYX AI.
         </p>
       ) : (
         <form
           onSubmit={handleSubmit}
-          className="mx-auto mt-8 flex max-w-[480px] flex-col gap-3 sm:flex-row"
+          className="mx-auto mt-6 flex max-w-[480px] flex-col gap-3 sm:flex-row"
         >
           <label htmlFor="newsletter-email" className="sr-only">
             Your email

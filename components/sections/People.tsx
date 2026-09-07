@@ -6,16 +6,15 @@ import { builds } from '@/data/builds';
 
 export default function People() {
   return (
-    <section className="container-content py-14 sm:py-24">
+    <section className="container-content py-10 sm:py-16">
       <Reveal>
         <SectionIntro
-          label="Connect"
           heading="People building with AI."
-          description="AI is bigger than tools. It's people — founders, developers, product managers, creators, researchers, students, designers, operators. RYX AI will feature people experimenting with AI, building products and changing how they work."
+          description="AI is bigger than tools. It's people: founders, developers, product managers, creators, researchers, students, designers, operators. RYX AI will feature people experimenting with AI, building products and changing how they work."
         />
       </Reveal>
 
-      <div className="mx-auto mt-10 grid max-w-content gap-6 sm:grid-cols-3">
+      <div className="mx-auto mt-6 grid max-w-content gap-6 sm:grid-cols-3">
         {builds.map((build, i) => (
           <Reveal key={build.initials} delay={i * 0.06} className="rounded-card border border-border p-6 text-left">
             <div className="flex items-start justify-between">
@@ -33,7 +32,7 @@ export default function People() {
         ))}
       </div>
 
-      <div className="mt-10 flex justify-center">
+      <div className="mt-6 flex justify-center">
         <Button
           href="mailto:hello@ryxai.in?subject=I%20want%20to%20share%20my%20build"
           variant="secondary"

@@ -19,11 +19,11 @@ const interTight = Inter_Tight({
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${site.domain}`),
-  title: "RYX AI — Explore What's Next in AI",
+  title: "RYX AI - Explore What's Next in AI",
   description:
     'RYX AI explores AI tools, news, workflows, experiments and ideas worth paying attention to.',
   openGraph: {
-    title: "RYX AI — Explore What's Next in AI",
+    title: "RYX AI - Explore What's Next in AI",
     description:
       'RYX AI explores AI tools, news, workflows, experiments and ideas worth paying attention to.',
     url: `https://${site.domain}`,

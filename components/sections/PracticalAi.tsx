@@ -12,7 +12,7 @@ const categories = [
 
 export default function PracticalAi() {
   return (
-    <section id="guides" className="container-content scroll-mt-20 py-14 sm:py-24">
+    <section id="guides" className="container-content scroll-mt-20 py-10 sm:py-16">
       <Reveal>
         <SectionIntro
           label="Use Cases"
@@ -26,7 +26,7 @@ export default function PracticalAi() {
         />
       </Reveal>
 
-      <div className="mx-auto mt-10 grid max-w-content gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto mt-6 grid max-w-content gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {categories.map((category, i) => (
           <Reveal key={category.name} delay={i * 0.06} className="rounded-card border border-border p-6 text-left">
             <Badge>{category.name}</Badge>
@@ -39,7 +39,7 @@ export default function PracticalAi() {
         ))}
       </div>
 
-      <div className="mt-10 flex justify-center">
+      <div className="mt-6 flex justify-center">
         <Button href="/guides" variant="secondary">
           Explore Guides
         </Button>

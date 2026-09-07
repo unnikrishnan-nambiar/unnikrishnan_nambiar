@@ -5,7 +5,7 @@ import AiTools from '@/components/sections/AiTools';
 import Newsletter from '@/components/sections/Newsletter';
 
 export const metadata: Metadata = {
-  title: 'AI Tools — RYX AI',
+  title: 'AI Tools - RYX AI',
   description: 'Find AI worth trying, picked and organized by RYX AI.',
 };
 

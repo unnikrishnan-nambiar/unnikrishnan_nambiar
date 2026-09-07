@@ -18,7 +18,7 @@ export default function AiNews() {
   const [featured, ...rest] = news;
 
   return (
-    <section id="discover" className="container-content scroll-mt-20 py-14 sm:py-24">
+    <section id="discover" className="container-content scroll-mt-20 py-10 sm:py-16">
       <Reveal>
         <SectionIntro
           label="Discover"
@@ -27,11 +27,11 @@ export default function AiNews() {
         />
       </Reveal>
 
-      <Divider className="mx-auto mt-10 max-w-content" />
+      <Divider className="mx-auto mt-6 max-w-content" />
 
       {featured && (
         <Reveal delay={0.05}>
-          <article className="mx-auto mt-10 max-w-reading text-left">
+          <article className="mx-auto mt-6 max-w-reading text-left">
             <div className="flex flex-wrap items-center gap-3">
               <Badge>{featured.category}</Badge>
               <span className="text-sm text-ink-muted">{formatDate(featured.date)}</span>
@@ -47,7 +47,7 @@ export default function AiNews() {
       )}
 
       {rest.length > 0 && (
-        <ul className="mx-auto mt-10 max-w-reading divide-y divide-border border-t border-border text-left">
+        <ul className="mx-auto mt-6 max-w-reading divide-y divide-border border-t border-border text-left">
           {rest.map((item, i) => (
             <Reveal key={item.slug} as="li" delay={i * 0.05} className="flex gap-5 py-5">
               <span className="font-display text-sm text-ink-muted">
@@ -68,7 +68,7 @@ export default function AiNews() {
       {/* No dedicated news archive route yet — points to where more RYX
           content actually lives today. Swap for an internal /news link once
           that archive exists. */}
-      <div className="mt-10 flex justify-center">
+      <div className="mt-6 flex justify-center">
         <Button href={site.instagramUrl} variant="secondary" target="_blank" rel="noopener noreferrer">
           Explore RYX AI
         </Button>

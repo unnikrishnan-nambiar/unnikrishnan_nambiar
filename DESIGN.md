@@ -40,11 +40,15 @@ dark pill badge — rounded-2xl outer chip with a subtle dot-grid texture
 rounded-full pill inside it, uppercase 13px text tracked 0.1em — built from
 a reference image the user provided, replacing the earlier plain-text
 "0X / Discover" kicker. No numbering prefix anymore — just the category
-word (Discover, Use Cases, Tools, Experiment, Connect, or a full phrase for
-Founder's "The person behind RYX AI"). Keep this to a single small badge
-per section; it's a controlled accent (dark-on-light, contained, not a
-page-wide dark theme), not license to reach for dark sections elsewhere —
-that's still explicitly against the brand.
+word (Discover, Use Cases, Tools, or a full phrase for Founder's "The
+person behind RYX AI"). Experiments and People deliberately have no
+badge at all (`SectionIntro`'s `label` prop just omitted) — user asked to
+drop "05 / Experiment" and "06 / Connect" outright rather than reskin
+them, so those two sections lead straight with their heading. Keep this to
+a single small badge per section where one exists; it's a controlled
+accent (dark-on-light, contained, not a page-wide dark theme), not license
+to reach for dark sections elsewhere — that's still explicitly against the
+brand.
 
 Brand name: always "RYX AI" in copy, never bare "RYX" — user correction,
 applied sitewide (buttons, headings, badges, meta title/description). Left
@@ -52,6 +56,13 @@ untouched: `data/builds.ts`'s code comment, `app/api/join/route.ts`'s
 server-side `console.log` labels, and JSX comments — none of those are
 copy a visitor reads. If you add new user-facing text, write "RYX AI", not
 "RYX".
+
+No em dashes in user-facing copy — another user correction, applied
+sitewide. Page titles use a plain hyphen ("About - RYX AI"); prose that
+used to lean on an em dash was rewritten with a colon, comma, or period
+split instead of just swapping the character. Left untouched: code
+comments and `DESIGN.md` itself, since neither is copy a visitor reads. If
+you add new user-facing text, don't reach for "—".
 
 Scale: hero 44–72px (mobile→desktop), section headings 34–48px, body
 16–20px depending on context, small labels 13px. Hero heading capped at
@@ -71,11 +82,14 @@ included one (nav's "Follow RYX →", Founder's "Follow me →", Final CTA's
 
 Max content width 1200px (`container-content`), reading column 680–760px
 (`container-reading` / `max-w-reading`). Section vertical padding is
-`py-9 sm:py-14` — this was `py-18 sm:py-28` in the previous pass and got
-cut in half after direct user feedback that stacked top+bottom padding
-between adjacent sections was creating ~220px of dead space. Don't
-casually push this back up without checking the resulting gap between two
-adjacent sections, not just one section's own padding value.
+`py-10 sm:py-16` — down from `py-14 sm:py-24` after a direct "compress the
+website" request; before that it was `py-18 sm:py-28`, cut in half once
+already for the same reason (stacked top+bottom padding between adjacent
+sections was creating dead space). The internal rhythm inside each section
+(intro → content → CTA) was tightened alongside it, from `mt-10`/`mt-8` to
+`mt-8`/`mt-6` throughout. Don't casually push either back up without
+checking the resulting gap between two adjacent sections, not just one
+section's own padding value.
 
 ## Structure
 

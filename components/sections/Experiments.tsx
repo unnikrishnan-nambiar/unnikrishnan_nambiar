@@ -22,16 +22,15 @@ const storySteps = [
 
 export default function Experiments() {
   return (
-    <section id="experiments" className="container-content scroll-mt-20 py-14 sm:py-24">
+    <section id="experiments" className="container-content scroll-mt-20 py-10 sm:py-16">
       <Reveal>
         <SectionIntro
-          label="Experiment"
           heading="We tried it."
-          description="AI looks different when you actually use it. Every week, we experiment with AI — a new model, a new tool, a new workflow, a crazy idea — and show you what happened."
+          description="AI looks different when you actually use it. Every week, we experiment with AI: a new model, a new tool, a new workflow, a crazy idea, and show you what happened."
         />
       </Reveal>
 
-      <ul className="mx-auto mt-10 grid max-w-content gap-6 border-t border-border pt-8 text-left sm:grid-cols-2 lg:grid-cols-4">
+      <ul className="mx-auto mt-6 grid max-w-content gap-6 border-t border-border pt-8 text-left sm:grid-cols-2 lg:grid-cols-4">
         {questions.map((question, i) => (
           <Reveal key={question} as="li" delay={i * 0.06} className="font-display text-xl font-semibold">
             {question}
@@ -39,7 +38,7 @@ export default function Experiments() {
         ))}
       </ul>
 
-      <div className="mx-auto mt-10 max-w-reading space-y-8 text-left">
+      <div className="mx-auto mt-6 max-w-reading space-y-8 text-left">
         {experiments.map((experiment) => (
           <Reveal key={experiment.slug} as="article">
             <p className="text-sm text-ink-muted">{formatDate(experiment.date)}</p>
@@ -74,7 +73,7 @@ export default function Experiments() {
         ))}
       </div>
 
-      <div className="mt-10 flex justify-center">
+      <div className="mt-6 flex justify-center">
         <Button href="/experiments" variant="secondary">
           See Our Experiments
         </Button>

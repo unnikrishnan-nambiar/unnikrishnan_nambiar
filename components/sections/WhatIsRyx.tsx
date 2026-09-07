@@ -3,7 +3,7 @@ import Reveal from '@/components/ui/Reveal';
 
 export default function WhatIsRyx() {
   return (
-    <section className="container-content py-14 sm:py-24">
+    <section className="container-content py-10 sm:py-16">
       <Reveal>
         <SectionIntro
           label="Discover"
@@ -14,7 +14,7 @@ export default function WhatIsRyx() {
               <p>We don&apos;t want to add more noise.</p>
               <p>
                 RYX AI is about figuring out what is actually worth knowing and
-                using — new tools, new ideas, what&apos;s changing and why.
+                using: new tools, new ideas, what&apos;s changing and why.
               </p>
             </div>
           }
@@ -22,7 +22,7 @@ export default function WhatIsRyx() {
       </Reveal>
 
       <Reveal delay={0.1}>
-        <p className="mx-auto mt-8 max-w-[750px] text-center font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+        <p className="mx-auto mt-6 max-w-[750px] text-center font-display text-2xl font-semibold tracking-tight sm:text-3xl">
           Learn. Experiment. Build.
           <br />
           That&apos;s RYX AI.

@@ -4,7 +4,7 @@ import Reveal from '@/components/ui/Reveal';
 export default function FinalCta() {
   return (
     <section className="border-t border-border">
-      <div className="container-content py-14 text-center sm:py-24">
+      <div className="container-content py-10 text-center sm:py-16">
         <Reveal>
           <div className="mx-auto max-w-[650px] space-y-1 text-lg leading-[1.6] text-ink-secondary">
             <p>You don&apos;t need to know everything about AI.</p>
@@ -17,11 +17,11 @@ export default function FinalCta() {
             <p>What to try next.</p>
           </div>
 
-          <p className="mx-auto mt-10 max-w-[750px] font-display text-4xl font-semibold tracking-tight sm:text-5xl">
+          <p className="mx-auto mt-6 max-w-[750px] font-display text-4xl font-semibold tracking-tight sm:text-5xl">
             Welcome to RYX AI.
           </p>
 
-          <div className="mt-8 flex justify-center">
+          <div className="mt-6 flex justify-center">
             <Button href="#discover" variant="primary">
               Explore RYX AI →
             </Button>

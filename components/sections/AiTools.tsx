@@ -56,7 +56,7 @@ export default function AiTools() {
   }, [query, category]);
 
   return (
-    <section id="tools" className="container-content scroll-mt-20 py-14 sm:py-24">
+    <section id="tools" className="container-content scroll-mt-20 py-10 sm:py-16">
       <Reveal>
         <SectionIntro
           label="Tools"
@@ -70,7 +70,7 @@ export default function AiTools() {
         />
       </Reveal>
 
-      <div className="mx-auto mt-10 max-w-content">
+      <div className="mx-auto mt-6 max-w-content">
         <label htmlFor="tool-search" className="sr-only">
           Search tools
         </label>
@@ -103,7 +103,7 @@ export default function AiTools() {
         </ul>
 
         {filtered.length > 0 ? (
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((tool, i) => (
               <Reveal key={tool.slug} delay={i * 0.05}>
                 <ToolCard tool={tool} />
@@ -111,11 +111,11 @@ export default function AiTools() {
             ))}
           </div>
         ) : (
-          <p className="mt-8 text-ink-muted">No tools match that search yet.</p>
+          <p className="mt-6 text-ink-muted">No tools match that search yet.</p>
         )}
       </div>
 
-      <div className="mt-10 flex justify-center">
+      <div className="mt-6 flex justify-center">
         <Button href="/tools" variant="secondary">
           Explore Tools
         </Button>
