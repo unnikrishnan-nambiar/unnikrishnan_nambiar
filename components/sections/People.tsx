@@ -1,42 +1,37 @@
 import SectionIntro from '@/components/ui/SectionIntro';
 import Button from '@/components/ui/Button';
-import Badge from '@/components/ui/Badge';
 import Reveal from '@/components/ui/Reveal';
-import { builds } from '@/data/builds';
-
-const rings = ['border-violet bg-violet-light', 'border-cyan bg-cyan-light', 'border-amber bg-amber-light'];
+import { audiences } from '@/data/audiences';
 
 export default function People() {
   return (
     <section className="container-content py-14 sm:py-20">
       <Reveal>
         <SectionIntro
-          heading="Real people. Real work. No sales pitch."
-          description="AI is bigger than tools. It's the people actually using it to get things done: founders, operators, product managers, developers and teams building with AI instead of just talking about it."
+          heading="Who is RYX AI Community for?"
+          description="Whether you're learning AI, using it at work, or building what's next, there's a place for you here."
         />
       </Reveal>
 
-      <div className="mx-auto mt-8 grid max-w-content gap-5 sm:grid-cols-3">
-        {builds.map((build, i) => (
+      <div className="mx-auto mt-8 grid max-w-content gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {audiences.map((audience, i) => (
           <Reveal
-            key={build.initials}
-            delay={i * 0.06}
+            key={audience.title}
+            delay={i * 0.05}
             className="rounded-card border-2 border-ink bg-paper p-6 text-left transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-lg"
           >
-            <div className="flex items-start justify-between">
-              <span
-                aria-hidden
-                className={`flex h-10 w-10 items-center justify-center rounded-full border-2 font-display text-sm font-bold ${rings[i % rings.length]}`}
-              >
-                {build.initials}
-              </span>
-              <Badge>Example</Badge>
-            </div>
-            <p className="mt-4 font-display font-bold">{build.role}</p>
-            <p className="mt-1 text-ink-secondary">{build.building}</p>
+            <p className="font-display text-lg font-bold">{audience.title}</p>
+            <p className="mt-1 text-ink-secondary">{audience.description}</p>
           </Reveal>
         ))}
       </div>
+
+      <Reveal delay={0.1}>
+        <p className="mx-auto mt-10 max-w-[650px] text-center font-display text-xl font-bold tracking-tight sm:text-2xl">
+          Different backgrounds. Different goals. One community exploring AI
+          together.
+        </p>
+      </Reveal>
 
       <div className="mt-8 flex justify-center">
         <Button

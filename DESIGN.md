@@ -38,13 +38,12 @@ points if you touch copy again:
 - `data/news.ts`'s seed headline is now "Why we're done with AI hype"
   (was "Welcome to RYX AI") — same honest, self-referential entry, just
   retitled to match the new voice.
-- **Not done, flagged rather than faked**: the rewrite's own notes asked
-  for real names on the People section's three cards (even just the
-  founder + collaborators) instead of the "PM / SD / ST" + "Example"
-  placeholders. No real names/roles were supplied, so `data/builds.ts`
-  is untouched — content-integrity rules mean this needs real
-  information from the user, not invented ones, before it changes.
-  Swap it in as soon as real profiles exist.
+- **Resolved in a later pass**: the rewrite's own notes asked for real
+  names on the People section's three cards instead of the "PM / SD /
+  ST" + "Example" placeholders. Rather than supplying real names, a
+  follow-up request replaced the whole section's premise — see "People
+  section rebuilt as audience grid" below. `data/builds.ts` (the old
+  initials/"Example" placeholder profiles) no longer exists.
 - **Not done, flagged rather than silently ignored**: the rewrite flagged
   the newsletter's disabled-on-GitHub-Pages signup as something to "fix
   before anything else." The static export already avoids overpromising
@@ -170,9 +169,9 @@ almost everything sat on plain white.
 | WhatIsRyx | white | violet label + gradient statement line |
 | AiNews (`#discover`) | `bg-violet-light` band | violet label, pink numbered markers |
 | PracticalAi (`#guides`, "Use Cases") | `bg-amber-light` band | amber label, per-card violet/pink/cyan/amber badges |
-| AiTools (`#tools`) | white | cyan label, pink "RYX AI Pick" badge |
+| AiTools (`#tools`) | white | cyan label, pink "Actually worth it" badge |
 | Experiments (`#experiments`) | `bg-pink-light` band | no label (removed per earlier request), pink accents |
-| People | white | no label (removed per earlier request), violet/cyan/amber initial rings |
+| People | white | no label (removed per earlier request); no icons/badges either — see "People section rebuilt as audience grid" |
 | Community (`#community`) | `bg-gradient-to-br from-violet via-fuchsia-600 to-pink`, white text | `light`-variant CTA |
 | Founder (`#about`) | white | amber label, pink→amber gradient statement line |
 | Newsletter (`#join`) | `bg-cyan-light` band | violet focus ring |
@@ -283,8 +282,12 @@ testimonials, or statistics, and don't make RYX look bigger than it is.
 Confirmed directly when this rebuild was scoped — bold visuals, same
 honest content rules.
 
-- `data/builds.ts` — the three community profiles are initials + role,
-  each carrying an "Example" badge. Don't swap in fake names/photos.
+- `data/audiences.ts` — six real, general audience categories (Students,
+  Business Owners, Product Managers, Software Developers, Sales &
+  Marketing Teams, Creators & Professionals), not example member
+  profiles, so no "Example" badge — see "People section rebuilt as
+  audience grid" below. This replaced the old `data/builds.ts`
+  (initials/"Example" placeholder profiles), which no longer exists.
 - `data/experiments.ts` / `data/news.ts` — seeded with one honest,
   self-referential entry each rather than an invented headline or result.
 - `data/tools.ts` — the tools themselves are real, public products;
@@ -332,6 +335,24 @@ paragraphs plus a "Name, Founder, RYX AI Community" byline) — if you
 revise it, keep that voice (plain, first-person, "I don't have all the
 answers") rather than reverting to the earlier, shorter "I work in AI
 and product..." version or inventing new founder narrative.
+
+## People section rebuilt as audience grid
+
+`People.tsx` no longer shows three example community-member profiles
+("Product manager" / "Software developer" / "Student" + "Example"
+badge, `data/builds.ts`). Per direct request it's now "Who is RYX AI
+Community for?" — six real audience categories (`data/audiences.ts`:
+Students, Business Owners, Product Managers, Software Developers,
+Sales & Marketing Teams, Creators & Professionals), each a plain
+bold-title + description card with **no icon, no colored ring, no
+badge** — deliberately simpler than every other card style on the site
+(which mostly use an icon/badge in the card header) because six cards
+read as noise with six different icons; bold title alone scales better.
+Grid is `sm:grid-cols-2 lg:grid-cols-3` (1 col mobile, 2 col tablet, 3×2
+desktop) — do not go back to a single-row 3-column grid, six items
+won't fit one row. Closing line ("Different backgrounds. Different
+goals. One community exploring AI together.") sits between the grid and
+the "Share Your Build" button, both kept from the original section.
 
 ## If you touch this next
 
