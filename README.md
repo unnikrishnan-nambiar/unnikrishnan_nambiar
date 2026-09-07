@@ -1,53 +1,33 @@
-# Netlify Developer Portfolio Starter (auto-annotated)
+# RYX AI
 
-![Developer Portfolio](https://assets.stackbit.com/docs/personal-nextjs-starter-thumb.png)
+Single-page site for RYX AI — a personal AI content brand and community.
+Built with Next.js (App Router) and Tailwind CSS.
 
-This is a full-fledged portfolio website built with Next.js, Tailwind CSS, [visual editor](https://docs.netlify.com/visual-editor/overview/) and the [Git Content Source](https://docs.netlify.com/create/content-sources/git/).
+## Getting started
 
-The codebase showcases **how to apply annotations at scale**, meaning: how to make much of your components [highlightable in the visual editor](https://docs.netlify.com/visual-editor/visual-editing/inline-editor/) through data attributes without manually adding code throughout the codebase.
-
-**This is achieved by:**
-
-1. Adding an annotation property to the content objects at they're loaded (see `src/utils/content.ts`)
-1. When rendering the page, each content sub-object is dynamically matched to the appropriate component. At this point, wrap each component with an annotation, based on the abovementioned content property. See `src/components/components-registry.tsx`.
-
-**⚡ Demo:** [auto-annotated-portfolio.netlify.app](https://auto-annotated-portfolio.netlify.app)
-
-## Deploying to Netlify
-
-If you click "Deploy to Netlify" button, it will create a new repo for you that looks exactly like this one, and sets that repo up immediately for deployment on Netlify.
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/auto-annotated-portfolio)
-
-## Getting Started
-
-The typical development process is to begin by working locally. Clone this repository, then run `npm install` in its root directory.
-
-Run the Next.js development server:
-
-```txt
-cd auto-annotated-portfolio
+```bash
+npm install
 npm run dev
 ```
 
-Install the [Netlify visual editor CLI](https://www.npmjs.com/package/@stackbit/cli). Then open a new terminal window in the same project directory and run the Netlify visual editor dev server:
+Open [http://localhost:3000](http://localhost:3000).
 
-```txt
-npm install -g @stackbit/cli
-stackbit dev
-```
+## Editing content
 
-This outputs your own Netlify visual editor URL. Open this, register or sign in, and you will be directed to Netlify's visual editor for your new project.
+- `data/site.ts` — site-wide config: Instagram link, side-project link, founder photo.
+- `data/posts.ts` — the "Latest" feed. Add new entries to the top of the array.
+- `components/` — one file per section (`Nav`, `Hero`, `WhatRyxIs`, `Latest`, `About`, `Join`, `Footer`).
+- `components/Logo.tsx` — recreated wordmark; swap in the real logo file once you drop it into `public/`.
 
-![Next.js Dev + Netlify visual editor dev](https://assets.stackbit.com/docs/next-dev-stackbit-dev.png)
+## Signup form
 
-## Next Steps
+The "Join RYX" form posts to `app/api/join/route.ts`, which logs each
+submission to the console and appends it to `data/signups.json` (gitignored
+placeholder storage). Replace this with a real email/WhatsApp provider when
+ready — the route is the only place that needs to change.
 
-Here are a few suggestions on what to do next if you're new to Netlify visual editor:
+## Stack
 
-- Learn [how Netlify visual editor works](https://docs.netlify.com/visual-editor/overview/)
-- Check [Netlify visual editor reference documentation](https://visual-editor-reference.netlify.com/)
-
-## Support
-
-If you get stuck along the way, get help in our [support forums](https://answers.netlify.com/).
+- Next.js 14 (App Router)
+- Tailwind CSS
+- No backend/database — static site with one lightweight API route

@@ -3,18 +3,18 @@
 # dependencies
 /node_modules
 
-# stackbit
-.stackbit/cache
-.cache
-
 # testing
 /coverage
 
 # next.js
 /.next/
+next-env.d.ts
 
 # production
 /build
+
+# local signup capture (placeholder storage until real backend is wired up)
+/data/signups.json
 
 # misc
 .DS_Store

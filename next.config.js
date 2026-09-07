@@ -1,11 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    env: {
-        stackbitPreview: process.env.STACKBIT_PREVIEW
-    },
-    trailingSlash: true,
-    reactStrictMode: true,
-    swcMinify: true
+  reactStrictMode: true,
+  // Don't auto-generate AGENTS.md/CLAUDE.md in the repo root.
+  agentRules: false,
 };
 
 module.exports = nextConfig;
