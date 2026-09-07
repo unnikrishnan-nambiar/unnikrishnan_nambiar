@@ -1,52 +1,81 @@
 # Design notes
 
 Working notes on the visual direction, for whoever (human or Claude) touches
-this next.
+this next. This supersedes the previous version of these notes — RYX
+rebuilt from a personal one-pager into an AI media/community site, with an
+almost fully specified design system handed down in the brief. Where a
+choice below cites "the brief," it's not my own judgment call — it's
+verbatim or near-verbatim from that spec, and shouldn't be casually
+redesigned away.
 
 ## Palette
 
-Pure white canvas (`paper` #FFFFFF) — this was an explicit ask, not a
-default. Text is near-black (`ink` #0A0A0A) with a warm secondary
-(`ink-soft` #4A4842) for body copy. One accent: a deep brass/clay gold
-(`gold` #9C6B2E, `gold-dark` #7E551F, `gold-wash` #FBF1DE) — deliberately
-duller than a shiny SaaS gold so it reads as pigment, not UI chrome.
-`hairline` (#E4E1D8) is the only structural line color, used sparingly (nav
-underline, footer rule, card borders).
+~85–90% neutral, on purpose: `paper` #FFFFFF, `ink` #111111 (primary text),
+`ink-secondary` #666666, `ink-muted` #8A8A8A, `border` #E8E8E8, `card`
+#F7F7F7. One accent — `indigo` #4F46E5 / `indigo-dark` #3730A3 /
+`indigo-light` #EEF2FF — used sparingly: links, the "RYX Pick" badge, and
+specifically the Community section's CTA (the brief calls this out by
+name). No gradients anywhere.
 
 ## Type
 
-Display: Bricolage Grotesque (bold/black weights only, headlines and CTA
-labels). Body: Hanken Grotesk. Loaded via `next/font/google` in
-`app/layout.tsx` as CSS vars, wired into Tailwind as `font-display` /
-`font-body`. Chosen over the obvious Space Grotesk+Inter pairing — wanted
-something with more personality that still reads clean, tying back to the
-wordmark's rounded, slightly wonky character.
+Inter (body/UI) + Inter Tight (display/headlines), both via
+`next/font/google`, wired into Tailwind as `font-sans` / `font-display`.
+Not Poppins/Montserrat/Roboto — the brief explicitly rules those out.
+
+## Buttons
+
+Three variants only (`components/ui/Button.tsx`): `primary` (black/white),
+`secondary` (white, 1px border), `accent` (indigo — Community CTA only).
+10px radius, compact padding, no pill shapes, no arrows appended to labels.
+One clear primary action per section.
 
 ## Layout
 
-The hero is the one bold gesture: big left-aligned headline (not centered),
-like a magazine masthead opening — breaks from the fully-centered "SaaS
-landing" template. Everything after it (What RYX is, Latest, About, Join)
-stays in a centered reading column, since those are prose blocks where
-centered reads as intentional rather than as the default.
+Max content width 1200px (`container-content`), reading column 680–760px
+(`container-reading` / `max-w-reading`). Generous vertical rhythm between
+sections (`py-18`/`py-28`).
 
-## Things deliberately avoided (see `frontend-design` skill)
+## Structure
 
-- No fake social-proof numbers/member counts — RYX's own copy rejects hype,
-  so a badge like "10,000+ members" would contradict the brand's voice.
-- No middle-dot-joined meta strings (`AI • Tools • Experiments • Ideas`) —
-  replaced with real tag chips (bordered pills, mixed case).
-- No ALL-CAPS tracked labels anywhere (was on the tagline and the post
-  date) — case and tracking don't do the hierarchy work; weight/color/size
-  do.
-- No SaaS card-shadow kit — the one card (Latest/PostCard) is a hairline
-  border, no shadow, no gradient wash.
-- Kept rounded corners everywhere (pills, cards, photo circle) rather than
-  going full broadsheet/zero-radius, even though hairline rules are in
-  play — avoids reading as a newspaper template.
+Homepage (`app/page.tsx`) runs the full 11-section arc from the brief:
+Hero → What is RYX → AI News → Practical AI → AI Tools → Experiments →
+People → Community → Founder → Newsletter → Final CTA. Every section lives
+in `components/sections/` as its own component, reused verbatim by the
+standalone routes (`/tools`, `/guides`, `/experiments`, `/community`,
+`/about`) so those pages are never empty shells — each renders its real
+section plus the newsletter block and footer. `Explore` in the nav points
+to `/#discover` (the AI News section) rather than a dedicated route, since
+the brief didn't spec a `/news` page for V1.
+
+## Content integrity — read before adding "placeholder" content
+
+The brief is explicit and repeated: do not fabricate member counts,
+subscriber numbers, events, partners, testimonials, or statistics, and
+don't make RYX look bigger than it is. In practice that shaped a few
+concrete choices worth preserving:
+
+- `data/builds.ts` — the three community profiles are initials + role, each
+  carrying an "Example" badge. Don't swap in fake names/photos to make them
+  look like real members; replace with real ones only when real ones exist.
+- `data/experiments.ts` / `data/news.ts` — seeded with one honest,
+  self-referential entry each ("our first experiment is running," "welcome
+  to RYX") rather than an invented AI-news headline or a fabricated
+  experiment result.
+- `data/tools.ts` — the tools themselves are real, public products with
+  honest descriptions; `pick: true` is RYX's own opinion, not a claim about
+  anyone else's rating.
+- No stock AI imagery anywhere (no robots, brains, circuit boards). Where a
+  real photo/screenshot doesn't exist yet (founder photo, experiment
+  screenshots), it's a plain bordered placeholder block, not a generated
+  substitute.
 
 ## If you touch this next
 
-- Swap `data/site.ts` `tags` array to change the hero/footer tag chips.
-- The gold is intentionally muted — resist the urge to brighten it back
-  toward a shiny SaaS gold; that was a specific decision, not an oversight.
+- `data/site.ts` → `nav` array drives the header; `tags` drives the small
+  "AI · Tools · Experiments · Ideas · Community" line in the hero and
+  footer (yes, literally that middle-dot format — it's what the brief
+  specified verbatim, not a leftover default).
+- Section copy is close to verbatim from the brief throughout; if you're
+  rewriting it, keep the "why should I care / what can I actually do with
+  this" register the brief asks for — plain, curious, no corporate jargon.

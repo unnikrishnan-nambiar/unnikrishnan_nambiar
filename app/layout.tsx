@@ -1,33 +1,31 @@
 import type { Metadata } from 'next';
-import { Bricolage_Grotesque, Hanken_Grotesk } from 'next/font/google';
+import { Inter, Inter_Tight } from 'next/font/google';
 import './globals.css';
 import { site } from '@/data/site';
 
-// Display face for headlines — a grotesque with wonky, humanist details that
-// reads as handmade rather than corporate, echoing the wordmark's character.
-const display = Bricolage_Grotesque({
+// UI/body face.
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-display',
-  weight: ['600', '700', '800'],
+  variable: '--font-sans',
+  weight: ['400', '500', '600'],
 });
 
-// Body/UI face — clean and warm at long line lengths, distinct enough from
-// the display face that the pairing reads deliberate.
-const body = Hanken_Grotesk({
+// Display/headline face.
+const interTight = Inter_Tight({
   subsets: ['latin'],
-  variable: '--font-body',
-  weight: ['400', '500', '600'],
+  variable: '--font-display',
+  weight: ['500', '600', '700'],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${site.domain}`),
-  title: 'RYX AI — AI, without the noise.',
+  title: 'RYX AI — AI, Without the Noise',
   description:
-    "New models. New tools. New ways to work. RYX is where we find it, try it, and share what's actually worth your time.",
+    'RYX explores AI tools, news, workflows, experiments and ideas worth paying attention to.',
   openGraph: {
-    title: 'RYX AI — AI, without the noise.',
+    title: 'RYX AI — AI, Without the Noise',
     description:
-      "New models. New tools. New ways to work. RYX is where we find it, try it, and share what's actually worth your time.",
+      'RYX explores AI tools, news, workflows, experiments and ideas worth paying attention to.',
     url: `https://${site.domain}`,
     siteName: site.name,
   },
@@ -39,8 +37,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable}`}>
-      <body className="font-body">{children}</body>
+    <html lang="en" className={`${inter.variable} ${interTight.variable}`}>
+      <body className="font-sans">{children}</body>
     </html>
   );
 }

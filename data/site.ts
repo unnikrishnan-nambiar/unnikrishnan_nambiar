@@ -4,8 +4,10 @@
 export const site = {
   name: 'RYX AI',
   domain: 'ryxai.in',
-  tags: ['AI', 'Tools', 'Experiments', 'Ideas'],
+  tags: ['AI', 'Tools', 'Experiments', 'Ideas', 'Community'],
   instagramUrl: 'https://instagram.com/ryx.ai',
+  youtubeUrl: 'https://youtube.com/@ryx.ai',
+  linkedinUrl: 'https://linkedin.com/company/ryxai',
   sideProject: {
     label: 'Ferry',
     description: 'AI agents for sales conversations.',
@@ -17,3 +19,11 @@ export const site = {
     photoSrc: null as string | null,
   },
 };
+
+export const nav = [
+  { label: 'Explore', href: '/#discover' },
+  { label: 'Tools', href: '/tools' },
+  { label: 'Guides', href: '/guides' },
+  { label: 'Experiments', href: '/experiments' },
+  { label: 'Community', href: '/community' },
+];

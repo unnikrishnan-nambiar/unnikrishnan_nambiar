@@ -1,35 +1,107 @@
 import Logo from './Logo';
 import { site } from '@/data/site';
 
+const columns = [
+  {
+    heading: 'Explore',
+    links: [
+      { label: 'AI News', href: '/#discover' },
+      { label: 'AI Tools', href: '/tools' },
+      { label: 'Guides', href: '/guides' },
+      { label: 'Experiments', href: '/experiments' },
+    ],
+  },
+  {
+    heading: 'Community',
+    links: [
+      { label: 'Join RYX', href: '/#join' },
+      { label: 'Share Your Build', href: 'mailto:hello@ryxai.in?subject=I%20want%20to%20share%20my%20build' },
+      { label: 'Events', href: undefined, comingSoon: true },
+    ],
+  },
+  {
+    heading: 'About',
+    links: [
+      { label: 'Our Story', href: '/about' },
+      { label: 'Contact', href: 'mailto:hello@ryxai.in' },
+    ],
+  },
+];
+
 export default function Footer() {
   return (
-    <footer className="border-t border-hairline">
-      <div className="section flex flex-col items-center gap-6 py-12 text-center">
-        <Logo className="h-6 w-auto" />
-        <p className="text-sm text-ink-soft">{site.tags.join(', ')}</p>
-        <a
-          href={site.instagramUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm font-semibold text-ink-soft hover:text-gold-dark"
-        >
-          Instagram
-        </a>
+    <footer className="border-t border-border">
+      <div className="container-content py-14">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+          <div>
+            <Logo className="h-5 w-auto" />
+            <p className="mt-3 text-sm text-ink-muted">{site.tags.join(' · ')}</p>
+          </div>
 
-        <p className="text-xs text-ink-soft/70">
-          Also building:{' '}
-          <a
-            href={site.sideProject.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline decoration-hairline underline-offset-2 hover:text-ink"
-          >
-            {site.sideProject.label}
-          </a>{' '}
-          — {site.sideProject.description}
-        </p>
+          {columns.map((column) => (
+            <div key={column.heading}>
+              <p className="text-sm font-semibold text-ink">{column.heading}</p>
+              <ul className="mt-3 space-y-2">
+                {column.links.map((link) => (
+                  <li key={link.label}>
+                    {link.comingSoon ? (
+                      <span className="text-sm text-ink-muted">
+                        {link.label} <span className="text-ink-muted">(soon)</span>
+                      </span>
+                    ) : (
+                      <a
+                        href={link.href}
+                        className="text-sm text-ink-secondary hover:text-ink"
+                      >
+                        {link.label}
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
-        <p className="text-xs text-ink-soft/50">{site.domain} © 2026</p>
+          <div>
+            <p className="text-sm font-semibold text-ink">Social</p>
+            <ul className="mt-3 space-y-2">
+              <li>
+                <a
+                  href={site.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-ink-secondary hover:text-ink"
+                >
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a
+                  href={site.youtubeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-ink-secondary hover:text-ink"
+                >
+                  YouTube
+                </a>
+              </li>
+              <li>
+                <a
+                  href={site.linkedinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-ink-secondary hover:text-ink"
+                >
+                  LinkedIn
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-12 border-t border-border pt-6">
+          <p className="text-sm text-ink-muted">{site.domain} © 2026</p>
+        </div>
       </div>
     </footer>
   );

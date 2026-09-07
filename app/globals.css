@@ -10,10 +10,28 @@
   body {
     @apply bg-paper text-ink antialiased;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
 @layer utilities {
-  .section {
-    @apply mx-auto w-full max-w-5xl px-6 sm:px-8;
+  .container-content {
+    @apply mx-auto w-full max-w-content px-6 sm:px-8 lg:px-10;
+  }
+
+  .container-reading {
+    @apply mx-auto w-full max-w-reading px-6 sm:px-0;
   }
 }

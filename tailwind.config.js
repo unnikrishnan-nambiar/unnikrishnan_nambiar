@@ -9,26 +9,31 @@ module.exports = {
     extend: {
       colors: {
         paper: '#FFFFFF',
-        ink: '#0A0A0A',
-        'ink-soft': '#4A4842',
-        gold: {
-          DEFAULT: '#9C6B2E',
-          dark: '#7E551F',
-          wash: '#FBF1DE',
+        ink: '#111111',
+        'ink-secondary': '#666666',
+        'ink-muted': '#8A8A8A',
+        border: '#E8E8E8',
+        card: '#F7F7F7',
+        indigo: {
+          DEFAULT: '#4F46E5',
+          dark: '#3730A3',
+          light: '#EEF2FF',
         },
-        hairline: '#E4E1D8',
       },
       fontFamily: {
-        display: ['var(--font-display)', 'sans-serif'],
-        body: ['var(--font-body)', 'sans-serif'],
+        sans: ['var(--font-sans)', 'sans-serif'],
+        display: ['var(--font-display)', 'var(--font-sans)', 'sans-serif'],
       },
       borderRadius: {
-        xl: '1rem',
-        '2xl': '1.5rem',
-        '3xl': '2rem',
+        DEFAULT: '10px',
+        card: '16px',
       },
       maxWidth: {
-        prose: '38rem',
+        content: '1200px',
+        reading: '720px',
+      },
+      spacing: {
+        18: '4.5rem',
       },
     },
   },
