@@ -20,10 +20,12 @@ export const site = {
   },
 };
 
+// Kept minimal per the visual design system — Guides and Community are
+// still real routes (see app/guides, app/community) and stay linked from
+// the footer; they're just not in the primary nav.
 export const nav = [
   { label: 'Explore', href: '/#discover' },
   { label: 'Tools', href: '/tools' },
-  { label: 'Guides', href: '/guides' },
   { label: 'Experiments', href: '/experiments' },
-  { label: 'Community', href: '/community' },
+  { label: 'About', href: '/about' },
 ];

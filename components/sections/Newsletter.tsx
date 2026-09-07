@@ -35,66 +35,65 @@ export default function Newsletter() {
   }
 
   return (
-    <section id="join" className="container-content py-9 sm:py-14">
-      <div className="max-w-reading">
-        <h2 className="font-display text-[32px] font-semibold tracking-tight sm:text-4xl lg:text-[44px]">
-          Get the interesting stuff.
-        </h2>
-        <p className="mt-3 text-lg text-ink-secondary">
-          AI is moving too fast to follow everything.
+    <section id="join" className="container-content py-14 text-center sm:py-24">
+      <h2 className="mx-auto max-w-[750px] font-display text-[34px] font-semibold leading-tight tracking-tight sm:text-[40px] lg:text-[48px]">
+        Get the interesting stuff.
+      </h2>
+      <p className="mx-auto mt-4 max-w-[650px] text-lg leading-[1.6] text-ink-secondary">
+        AI is moving too fast to follow everything. Get the useful stuff
+        without the noise — new tools, interesting developments, practical
+        ideas, RYX experiments.
+      </p>
+
+      {IS_STATIC_SITE ? (
+        <p className="mx-auto mt-8 max-w-[480px] rounded-card border border-border bg-card px-6 py-4 text-ink-secondary">
+          Signups aren&apos;t live on this preview. DM us on{' '}
+          <a
+            href={site.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-indigo hover:text-indigo-dark"
+          >
+            Instagram
+          </a>{' '}
+          to join for now.
         </p>
-        <p className="mt-4 text-lg text-ink-secondary">
-          Get the useful stuff without the noise. New tools. Interesting
-          developments. Practical ideas. RYX experiments.
+      ) : status === 'success' ? (
+        <p className="mx-auto mt-8 max-w-[480px] rounded-card border border-border bg-card px-6 py-4 text-ink">
+          You&apos;re in. Welcome to RYX.
         </p>
+      ) : (
+        <form
+          onSubmit={handleSubmit}
+          className="mx-auto mt-8 flex max-w-[480px] flex-col gap-3 sm:flex-row"
+        >
+          <label htmlFor="newsletter-email" className="sr-only">
+            Your email
+          </label>
+          <input
+            id="newsletter-email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Your email"
+            className="w-full flex-1 rounded border border-border bg-paper px-4 py-2.5 text-ink placeholder:text-ink-muted focus:border-indigo focus:outline-none focus:ring-2 focus:ring-indigo/20"
+          />
+          <Button type="submit" variant="primary" disabled={status === 'submitting'}>
+            {status === 'submitting' ? 'Joining…' : 'Join RYX'}
+          </Button>
+        </form>
+      )}
 
-        {IS_STATIC_SITE ? (
-          <p className="mt-8 rounded-card border border-border bg-card px-6 py-4 text-ink-secondary">
-            Signups aren&apos;t live on this preview. DM us on{' '}
-            <a
-              href={site.instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-indigo hover:text-indigo-dark"
-            >
-              Instagram
-            </a>{' '}
-            to join for now.
-          </p>
-        ) : status === 'success' ? (
-          <p className="mt-8 rounded-card border border-border bg-card px-6 py-4 text-ink">
-            You&apos;re in. Welcome to RYX.
-          </p>
-        ) : (
-          <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <label htmlFor="newsletter-email" className="sr-only">
-              Your email
-            </label>
-            <input
-              id="newsletter-email"
-              name="email"
-              type="email"
-              autoComplete="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Your email"
-              className="w-full flex-1 rounded border border-border bg-paper px-4 py-2.5 text-ink placeholder:text-ink-muted focus:border-indigo focus:outline-none focus:ring-2 focus:ring-indigo/20"
-            />
-            <Button type="submit" variant="primary" disabled={status === 'submitting'}>
-              {status === 'submitting' ? 'Joining…' : 'Join RYX'}
-            </Button>
-          </form>
-        )}
+      {status === 'error' && (
+        <p className="mt-4 text-sm text-red-600">
+          Something went wrong. Please try again.
+        </p>
+      )}
 
-        {status === 'error' && (
-          <p className="mt-4 text-sm text-red-600">
-            Something went wrong. Please try again.
-          </p>
-        )}
-
-        <p className="mt-4 text-sm text-ink-muted">No spam. Just useful AI.</p>
-      </div>
+      <p className="mt-4 text-sm text-ink-muted">No spam. Just useful AI.</p>
     </section>
   );
 }

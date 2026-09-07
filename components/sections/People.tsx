@@ -1,33 +1,20 @@
-import SectionLabel from '@/components/ui/SectionLabel';
+import SectionIntro from '@/components/ui/SectionIntro';
 import Button from '@/components/ui/Button';
 import Badge from '@/components/ui/Badge';
 import { builds } from '@/data/builds';
 
 export default function People() {
   return (
-    <section className="container-content py-9 sm:py-14">
-      <SectionLabel>06 / Connect</SectionLabel>
-      <h2 className="mt-3 font-display text-[32px] font-semibold tracking-tight sm:text-4xl lg:text-[44px]">
-        People building with AI.
-      </h2>
-      <p className="mt-3 max-w-reading text-lg text-ink-secondary">
-        AI is bigger than tools. It&apos;s people.
-      </p>
+    <section className="container-content py-14 sm:py-24">
+      <SectionIntro
+        label="06 / Connect"
+        heading="People building with AI."
+        description="AI is bigger than tools. It's people — founders, developers, product managers, creators, researchers, students, designers, operators. RYX will feature people experimenting with AI, building products and changing how they work."
+      />
 
-      <div className="mt-4 max-w-reading space-y-2 text-lg text-ink-secondary">
-        <p>
-          Founders. Developers. Product managers. Creators. Researchers.
-          Students. Designers. Operators.
-        </p>
-        <p>
-          RYX will feature people experimenting with AI, building products and
-          changing how they work.
-        </p>
-      </div>
-
-      <div className="mt-10 grid gap-6 sm:grid-cols-3">
+      <div className="mx-auto mt-10 grid max-w-content gap-6 sm:grid-cols-3">
         {builds.map((build) => (
-          <div key={build.initials} className="rounded-card border border-border p-6">
+          <div key={build.initials} className="rounded-card border border-border p-6 text-left">
             <div className="flex items-start justify-between">
               <span
                 aria-hidden
@@ -43,7 +30,7 @@ export default function People() {
         ))}
       </div>
 
-      <div className="mt-10">
+      <div className="mt-10 flex justify-center">
         <Button
           href="mailto:hello@ryxai.in?subject=I%20want%20to%20share%20my%20build"
           variant="secondary"

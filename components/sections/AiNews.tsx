@@ -1,4 +1,5 @@
-import SectionLabel from '@/components/ui/SectionLabel';
+import SectionIntro from '@/components/ui/SectionIntro';
+import Divider from '@/components/ui/Divider';
 import Button from '@/components/ui/Button';
 import Badge from '@/components/ui/Badge';
 import { news } from '@/data/news';
@@ -13,56 +14,58 @@ function formatDate(iso: string) {
 }
 
 export default function AiNews() {
+  const [featured, ...rest] = news;
+
   return (
-    <section id="discover" className="container-content py-9 sm:py-14">
-      <SectionLabel>02 / Discover</SectionLabel>
-      <h2 className="mt-3 font-display text-[32px] font-semibold tracking-tight sm:text-4xl lg:text-[44px]">
-        What&apos;s happening in AI?
-      </h2>
-      <p className="mt-3 max-w-reading text-lg text-ink-secondary">
-        Know what&apos;s changing. Understand why it matters.
-      </p>
+    <section id="discover" className="container-content py-14 sm:py-24">
+      <SectionIntro
+        label="02 / Discover"
+        heading="What's worth paying attention to?"
+        description="Not everything happening in AI deserves your attention. We follow what matters and break it down."
+      />
 
-      <div className="mt-6 max-w-reading space-y-4 text-lg text-ink-secondary">
-        <p>
-          New models. New products. Research. Startups. Agents. AI companies.
-          Big launches.
-        </p>
-        <p>
-          We follow what&apos;s happening across AI and break it down into
-          something you can actually understand.
-        </p>
-      </div>
+      <Divider className="mx-auto mt-10 max-w-content" />
 
-      <p className="mt-8 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
-        Not just what happened.
-        <br />
-        What does it mean for you?
-      </p>
+      {featured && (
+        <article className="mx-auto mt-10 max-w-reading text-left">
+          <div className="flex flex-wrap items-center gap-3">
+            <Badge>{featured.category}</Badge>
+            <span className="text-sm text-ink-muted">{formatDate(featured.date)}</span>
+            <span className="text-sm text-ink-muted">·</span>
+            <span className="text-sm text-ink-muted">{featured.readingTime}</span>
+          </div>
+          <h3 className="mt-4 font-display text-2xl font-semibold sm:text-3xl">
+            {featured.headline}
+          </h3>
+          <p className="mt-2 text-lg text-ink-secondary">{featured.description}</p>
+        </article>
+      )}
 
-      <ul className="mt-10 divide-y divide-border border-t border-border">
-        {news.map((item) => (
-          <li key={item.slug} className="py-6">
-            <div className="flex flex-wrap items-center gap-3">
-              <Badge>{item.category}</Badge>
-              <span className="text-sm text-ink-muted">{formatDate(item.date)}</span>
-              <span className="text-sm text-ink-muted">·</span>
-              <span className="text-sm text-ink-muted">{item.readingTime}</span>
-            </div>
-            <h3 className="mt-3 font-display text-xl font-semibold">
-              {item.headline}
-            </h3>
-            <p className="mt-1 max-w-reading text-ink-secondary">{item.description}</p>
-          </li>
-        ))}
-      </ul>
+      {rest.length > 0 && (
+        <ul className="mx-auto mt-10 max-w-reading divide-y divide-border border-t border-border text-left">
+          {rest.map((item, i) => (
+            <li key={item.slug} className="flex gap-5 py-5">
+              <span className="font-display text-sm text-ink-muted">
+                {String(i + 2).padStart(2, '0')}
+              </span>
+              <div>
+                <Badge>{item.category}</Badge>
+                <h4 className="mt-2 font-display text-lg font-semibold">
+                  {item.headline}
+                </h4>
+                <p className="mt-1 text-ink-secondary">{item.description}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
 
       {/* No dedicated news archive route yet — points to where more RYX
           content actually lives today. Swap for an internal /news link once
           that archive exists. */}
-      <div className="mt-8">
+      <div className="mt-10 flex justify-center">
         <Button href={site.instagramUrl} variant="secondary" target="_blank" rel="noopener noreferrer">
-          Explore AI
+          Explore RYX
         </Button>
       </div>
     </section>

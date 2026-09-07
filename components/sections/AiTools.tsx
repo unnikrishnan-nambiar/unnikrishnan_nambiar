@@ -1,4 +1,7 @@
-import SectionLabel from '@/components/ui/SectionLabel';
+'use client';
+
+import { useMemo, useState } from 'react';
+import SectionIntro from '@/components/ui/SectionIntro';
 import Button from '@/components/ui/Button';
 import Badge from '@/components/ui/Badge';
 import { tools, toolCategories } from '@/data/tools';
@@ -10,7 +13,7 @@ function ToolCard({ tool }: { tool: Tool }) {
       href={tool.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group rounded-card border border-border bg-paper p-6 transition-colors hover:border-ink"
+      className="group rounded-card border border-border bg-paper p-6 text-left transition-colors hover:border-ink"
     >
       <div className="flex items-start justify-between gap-3">
         <span
@@ -36,33 +39,78 @@ function ToolCard({ tool }: { tool: Tool }) {
 }
 
 export default function AiTools() {
+  const [query, setQuery] = useState('');
+  const [category, setCategory] = useState<string>('All');
+
+  const filtered = useMemo(() => {
+    return tools.filter((tool) => {
+      const matchesCategory = category === 'All' || tool.category === category;
+      const q = query.trim().toLowerCase();
+      const matchesQuery =
+        q === '' ||
+        tool.name.toLowerCase().includes(q) ||
+        tool.description.toLowerCase().includes(q);
+      return matchesCategory && matchesQuery;
+    });
+  }, [query, category]);
+
   return (
-    <section id="tools" className="container-content py-9 sm:py-14">
-      <SectionLabel>04 / Tools</SectionLabel>
-      <h2 className="mt-3 font-display text-[32px] font-semibold tracking-tight sm:text-4xl lg:text-[44px]">
-        Find AI worth trying.
-      </h2>
-      <div className="mt-3 max-w-reading space-y-2 text-lg text-ink-secondary">
-        <p>There are thousands of AI tools.</p>
-        <p>You don&apos;t need thousands.</p>
-        <p>You need the right ones.</p>
+    <section id="tools" className="container-content py-14 sm:py-24">
+      <SectionIntro
+        label="04 / Tools"
+        heading="Find AI worth trying."
+        description={
+          <div className="space-y-1">
+            <p>There are thousands of AI tools.</p>
+            <p>You don&apos;t need thousands. You need the right ones.</p>
+          </div>
+        }
+      />
+
+      <div className="mx-auto mt-10 max-w-content">
+        <label htmlFor="tool-search" className="sr-only">
+          Search tools
+        </label>
+        <input
+          id="tool-search"
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search tools…"
+          className="w-full rounded border border-border bg-paper px-4 py-2.5 text-ink placeholder:text-ink-muted focus:border-indigo focus:outline-none focus:ring-2 focus:ring-indigo/20 sm:max-w-sm"
+        />
+
+        <ul className="mt-4 flex flex-wrap gap-2">
+          {['All', ...toolCategories].map((c) => (
+            <li key={c}>
+              <button
+                type="button"
+                onClick={() => setCategory(c)}
+                aria-pressed={category === c}
+                className={`rounded border px-3 py-1 text-sm font-medium transition-colors ${
+                  category === c
+                    ? 'border-ink bg-ink text-paper'
+                    : 'border-border bg-paper text-ink-secondary hover:border-ink hover:text-ink'
+                }`}
+              >
+                {c}
+              </button>
+            </li>
+          ))}
+        </ul>
+
+        {filtered.length > 0 ? (
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {filtered.map((tool) => (
+              <ToolCard key={tool.slug} tool={tool} />
+            ))}
+          </div>
+        ) : (
+          <p className="mt-8 text-ink-muted">No tools match that search yet.</p>
+        )}
       </div>
 
-      <ul className="mt-8 flex flex-wrap gap-2">
-        {toolCategories.map((category) => (
-          <li key={category}>
-            <Badge>{category}</Badge>
-          </li>
-        ))}
-      </ul>
-
-      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {tools.map((tool) => (
-          <ToolCard key={tool.slug} tool={tool} />
-        ))}
-      </div>
-
-      <div className="mt-10">
+      <div className="mt-10 flex justify-center">
         <Button href="/tools" variant="secondary">
           Explore Tools
         </Button>

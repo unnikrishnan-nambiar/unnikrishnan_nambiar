@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Logo from './Logo';
 import Button from './ui/Button';
-import { nav } from '@/data/site';
+import { nav, site } from '@/data/site';
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
@@ -30,8 +30,8 @@ export default function Nav() {
         </nav>
 
         <div className="hidden md:block">
-          <Button href="#join" variant="primary">
-            Join RYX
+          <Button href={site.instagramUrl} variant="secondary" target="_blank" rel="noopener noreferrer">
+            Follow RYX →
           </Button>
         </div>
 
@@ -77,8 +77,15 @@ export default function Nav() {
               </a>
             ))}
             <div className="mt-2">
-              <Button href="#join" variant="primary" className="w-full" onClick={() => setOpen(false)}>
-                Join RYX
+              <Button
+                href={site.instagramUrl}
+                variant="secondary"
+                className="w-full"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+              >
+                Follow RYX →
               </Button>
             </div>
           </div>

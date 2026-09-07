@@ -3,35 +3,34 @@ import { site } from '@/data/site';
 
 export default function Hero() {
   return (
-    <section id="top" className="container-content py-9 sm:py-14">
+    <section id="top" className="container-content py-14 text-center sm:py-24">
       <p className="text-sm font-medium text-ink-secondary">RYX AI</p>
 
-      <h1 className="mt-4 max-w-3xl font-display text-[42px] font-semibold leading-[1.05] tracking-tight sm:text-[64px] lg:text-[72px]">
-        AI, without the noise.
+      <h1 className="mx-auto mt-5 max-w-[800px] font-display text-[44px] font-bold leading-[1] tracking-[-0.02em] sm:text-[64px] lg:text-[72px]">
+        AI,
+        <br />
+        without the noise.
       </h1>
 
-      <div className="mt-6 max-w-reading space-y-4 text-lg text-ink-secondary sm:text-xl">
-        <p>AI is moving faster than most of us can keep up with.</p>
+      <div className="mx-auto mt-6 max-w-[650px] space-y-4 text-lg leading-[1.5] text-ink-secondary sm:text-xl">
         <p>
-          New models. New tools. New ways to work. New things being built
-          every day.
-        </p>
-        <p>
-          RYX is a place to discover AI, understand what matters, try what
-          works, and connect with people exploring what&apos;s next.
+          We explore what&apos;s happening in AI, test what actually works,
+          and share what we learn.
         </p>
       </div>
 
-      <div className="mt-8 flex flex-wrap gap-3">
+      <p className="mt-6 text-xs font-medium uppercase tracking-[0.1em] text-ink-muted">
+        AI · Tools · Experiments · Ideas · Community
+      </p>
+
+      <div className="mt-8 flex flex-wrap justify-center gap-3">
         <Button href="#discover" variant="primary">
-          Explore AI
+          Explore RYX
         </Button>
-        <Button href="#join" variant="secondary">
-          Join RYX
+        <Button href={site.instagramUrl} variant="secondary" target="_blank" rel="noopener noreferrer">
+          Follow RYX
         </Button>
       </div>
-
-      <p className="mt-10 text-sm text-ink-muted">{site.tags.join(' · ')}</p>
     </section>
   );
 }

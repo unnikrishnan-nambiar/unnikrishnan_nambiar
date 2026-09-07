@@ -1,5 +1,7 @@
 // Weekly experiments — real outputs go here as they're run. Seeded with one
-// honest placeholder rather than a fabricated result.
+// honest placeholder rather than a fabricated result. whatWeTried/
+// whatHappened/verdict are optional because a "coming soon" entry hasn't
+// happened yet — don't fill them with invented findings.
 
 export type Experiment = {
   slug: string;
@@ -7,6 +9,9 @@ export type Experiment = {
   description: string;
   date: string;
   status: 'coming-soon' | 'published';
+  whatWeTried?: string;
+  whatHappened?: string;
+  verdict?: string;
 };
 
 export const experiments: Experiment[] = [

@@ -1,4 +1,4 @@
-import SectionLabel from '@/components/ui/SectionLabel';
+import SectionIntro from '@/components/ui/SectionIntro';
 import Button from '@/components/ui/Button';
 import Badge from '@/components/ui/Badge';
 
@@ -11,21 +11,21 @@ const categories = [
 
 export default function PracticalAi() {
   return (
-    <section id="guides" className="container-content py-9 sm:py-14">
-      <SectionLabel>03 / Learn</SectionLabel>
-      <h2 className="mt-3 font-display text-[32px] font-semibold tracking-tight sm:text-4xl lg:text-[44px]">
-        What can you actually do with AI?
-      </h2>
-      <p className="mt-3 max-w-reading text-lg text-ink-secondary">
-        Don&apos;t just learn about AI. Use it.
-      </p>
-      <p className="mt-4 max-w-reading text-lg text-ink-secondary">
-        Practical workflows, experiments and ideas you can try yourself.
-      </p>
+    <section id="guides" className="container-content py-14 sm:py-24">
+      <SectionIntro
+        label="03 / Learn"
+        heading="What can you actually do with AI?"
+        description={
+          <div className="space-y-1">
+            <p>Don&apos;t just learn about AI. Use it.</p>
+            <p>Practical workflows, experiments and ideas you can try yourself.</p>
+          </div>
+        }
+      />
 
-      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto mt-10 grid max-w-content gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {categories.map((category) => (
-          <div key={category.name} className="rounded-card border border-border p-6">
+          <div key={category.name} className="rounded-card border border-border p-6 text-left">
             <Badge>{category.name}</Badge>
             <ul className="mt-4 space-y-2 text-ink-secondary">
               {category.items.map((item) => (
@@ -36,7 +36,7 @@ export default function PracticalAi() {
         ))}
       </div>
 
-      <div className="mt-10">
+      <div className="mt-10 flex justify-center">
         <Button href="/guides" variant="secondary">
           Explore Guides
         </Button>
