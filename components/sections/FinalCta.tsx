@@ -17,7 +17,7 @@ export default function FinalCta() {
             <p>What to try next.</p>
           </div>
 
-          <p className="mx-auto mt-6 max-w-[750px] font-display text-4xl font-semibold tracking-tight sm:text-5xl">
+          <p className="mx-auto mt-6 max-w-[750px] font-display text-4xl font-semibold tracking-tight text-indigo-dark sm:text-5xl">
             Welcome to RYX AI.
           </p>
 

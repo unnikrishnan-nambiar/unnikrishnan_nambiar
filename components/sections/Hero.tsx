@@ -25,7 +25,7 @@ export default function Hero() {
         <Button href="#discover" variant="primary">
           Explore RYX AI
         </Button>
-        <Button href={site.instagramUrl} variant="secondary" target="_blank" rel="noopener noreferrer">
+        <Button href={site.instagramUrl} variant="accent" target="_blank" rel="noopener noreferrer">
           Follow RYX AI
         </Button>
       </div>

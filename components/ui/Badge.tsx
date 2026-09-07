@@ -6,7 +6,7 @@ type BadgeProps = {
 export default function Badge({ children, variant = 'neutral' }: BadgeProps) {
   const styles =
     variant === 'indigo'
-      ? 'border-indigo/20 bg-indigo-light text-indigo-dark'
+      ? 'border-indigo bg-indigo text-paper'
       : 'border-border bg-card text-ink-secondary';
 
   return (

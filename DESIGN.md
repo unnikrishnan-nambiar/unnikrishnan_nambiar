@@ -21,12 +21,25 @@ before hand-rolling another heading pattern.
 
 ## Palette
 
-~85–90% neutral, on purpose: `paper` #FFFFFF, `ink` #111111 (primary text),
+Still ~85–90% neutral: `paper` #FFFFFF, `ink` #111111 (primary text),
 `ink-secondary` #666666, `ink-muted` #8A8A8A, `border` #E8E8E8, `card`
 #F7F7F7. One accent — `indigo` #4F46E5 / `indigo-dark` #3730A3 /
-`indigo-light` #EEF2FF — used sparingly: links, the "RYX Pick" badge, and
-specifically the Community section's CTA (the brief calls this out by
-name). No gradients anywhere.
+`indigo-light` #EEF2FF — but after a "use maximalism, bolder color theme"
+request (explicitly scoped to "bolder within current palette," not new
+hues or gradients — asked directly, don't reopen it without asking again)
+it's used a lot more than the original "sparingly": every "Follow"/social
+CTA is now `accent` variant (Nav, Hero, Founder, AiNews's external
+button, Community's Join), `SectionLabel`'s pill badge background is
+`indigo-dark` instead of `ink`, the "RYX AI Pick" badge is solid
+`indigo`/paper instead of the light tint, AiTools' active category filter
+and card-hover border are indigo, the AiNews numbered-list markers are
+indigo, and two "statement" lines (WhatIsRyx's "Learn. Experiment.
+Build." and FinalCta's "Welcome to RYX AI.") are set in `indigo-dark`.
+Internal "Explore [section]" navigation buttons (Tools/Guides/Experiments,
+People's "Share Your Build") deliberately stay `secondary` (neutral
+border) — keeping some buttons plain is what makes the indigo ones read
+as emphasis rather than noise. Still no gradients anywhere; that rule
+held even through the maximalism ask.
 
 ## Type
 

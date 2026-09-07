@@ -14,7 +14,7 @@ function ToolCard({ tool }: { tool: Tool }) {
       href={tool.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block h-full rounded-card border border-border bg-paper p-6 text-left transition-colors hover:border-ink"
+      className="group block h-full rounded-card border border-border bg-paper p-6 text-left transition-colors hover:border-indigo"
     >
       <div className="flex items-start justify-between gap-3">
         <span
@@ -92,8 +92,8 @@ export default function AiTools() {
                 aria-pressed={category === c}
                 className={`rounded border px-3 py-1 text-sm font-medium transition-colors ${
                   category === c
-                    ? 'border-ink bg-ink text-paper'
-                    : 'border-border bg-paper text-ink-secondary hover:border-ink hover:text-ink'
+                    ? 'border-indigo bg-indigo text-paper'
+                    : 'border-border bg-paper text-ink-secondary hover:border-indigo hover:text-indigo'
                 }`}
               >
                 {c}

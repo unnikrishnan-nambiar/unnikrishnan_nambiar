@@ -22,7 +22,7 @@ export default function WhatIsRyx() {
       </Reveal>
 
       <Reveal delay={0.1}>
-        <p className="mx-auto mt-6 max-w-[750px] text-center font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+        <p className="mx-auto mt-6 max-w-[750px] text-center font-display text-2xl font-semibold tracking-tight text-indigo-dark sm:text-3xl">
           Learn. Experiment. Build.
           <br />
           That&apos;s RYX AI.

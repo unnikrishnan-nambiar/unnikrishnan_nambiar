@@ -50,7 +50,7 @@ export default function AiNews() {
         <ul className="mx-auto mt-6 max-w-reading divide-y divide-border border-t border-border text-left">
           {rest.map((item, i) => (
             <Reveal key={item.slug} as="li" delay={i * 0.05} className="flex gap-5 py-5">
-              <span className="font-display text-sm text-ink-muted">
+              <span className="font-display text-sm font-semibold text-indigo">
                 {String(i + 2).padStart(2, '0')}
               </span>
               <div>
@@ -69,7 +69,7 @@ export default function AiNews() {
           content actually lives today. Swap for an internal /news link once
           that archive exists. */}
       <div className="mt-6 flex justify-center">
-        <Button href={site.instagramUrl} variant="secondary" target="_blank" rel="noopener noreferrer">
+        <Button href={site.instagramUrl} variant="accent" target="_blank" rel="noopener noreferrer">
           Explore RYX AI
         </Button>
       </div>

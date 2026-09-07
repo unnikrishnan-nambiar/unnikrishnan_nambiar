@@ -43,7 +43,7 @@ export default function Founder() {
         </p>
 
         <div className="mt-6 flex justify-center">
-          <Button href={site.instagramUrl} variant="secondary" target="_blank" rel="noopener noreferrer">
+          <Button href={site.instagramUrl} variant="accent" target="_blank" rel="noopener noreferrer">
             Follow me →
           </Button>
         </div>

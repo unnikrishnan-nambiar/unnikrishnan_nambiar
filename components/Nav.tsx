@@ -30,7 +30,7 @@ export default function Nav() {
         </nav>
 
         <div className="hidden md:block">
-          <Button href={site.instagramUrl} variant="secondary" target="_blank" rel="noopener noreferrer">
+          <Button href={site.instagramUrl} variant="accent" target="_blank" rel="noopener noreferrer">
             Follow RYX AI →
           </Button>
         </div>
