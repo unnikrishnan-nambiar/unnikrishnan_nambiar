@@ -16,6 +16,7 @@ next-env.d.ts
 
 # production
 /build
+/out
 
 # local signup capture (placeholder storage until real backend is wired up)
 /data/signups.json
