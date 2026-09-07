@@ -34,10 +34,24 @@ Inter (body/UI) + Inter Tight (display/headlines), both via
 `next/font/google`, wired into Tailwind as `font-sans` / `font-display`.
 Not Poppins/Montserrat/Roboto — the brief explicitly rules those out.
 Weight discipline: 400 body, 500 nav/labels, 600 headings, 700 reserved for
-the hero only. Small labels (`SectionLabel`) are uppercase, 13px, tracked
-0.1em — yes, uppercase tracked labels, deliberately, per this brief; that
-reverses what an earlier pass of these notes said, and this is the one
-that's current.
+the hero only. `SectionLabel` (`components/ui/SectionLabel.tsx`) is a small
+dark pill badge — rounded-2xl outer chip with a subtle dot-grid texture
+(`radial-gradient`, white dots at 16% opacity, 14px grid), a bordered
+rounded-full pill inside it, uppercase 13px text tracked 0.1em — built from
+a reference image the user provided, replacing the earlier plain-text
+"0X / Discover" kicker. No numbering prefix anymore — just the category
+word (Discover, Use Cases, Tools, Experiment, Connect, or a full phrase for
+Founder's "The person behind RYX AI"). Keep this to a single small badge
+per section; it's a controlled accent (dark-on-light, contained, not a
+page-wide dark theme), not license to reach for dark sections elsewhere —
+that's still explicitly against the brand.
+
+Brand name: always "RYX AI" in copy, never bare "RYX" — user correction,
+applied sitewide (buttons, headings, badges, meta title/description). Left
+untouched: `data/builds.ts`'s code comment, `app/api/join/route.ts`'s
+server-side `console.log` labels, and JSX comments — none of those are
+copy a visitor reads. If you add new user-facing text, write "RYX AI", not
+"RYX".
 
 Scale: hero 44–72px (mobile→desktop), section headings 34–48px, body
 16–20px depending on context, small labels 13px. Hero heading capped at
@@ -109,7 +123,7 @@ concrete choices worth preserving:
 
 ## Animation
 
-Ran `python3 .claude/skills/ui-ux-pro-max/scripts/search.py "scroll reveal fade stagger lightweight" --domain gsap` for reference rather than reaching for GSAP itself — this site keeps the "no heavy animation libraries" constraint from the original brief, so `components/ui/Reveal.tsx` reimplements the same subtle-tier motion tokens the search returned (12px rise, ~400ms, ease-out) with a plain `IntersectionObserver` and direct ref/style mutation — no React state, no dependency. Wraps section intros (single reveal) and grid/list items (staggered via the `delay` prop, ~0.05–0.06s per item). Renders fully visible by default (SSR/no-JS/crawler safe) and only hides-then-reveals once JS confirms `prefers-reduced-motion` isn't set — verified both that reduced-motion shows everything immediately and that a fresh scroll actually reveals it.
+Ran `python3 .claude/skills/ui-ux-pro-max/scripts/search.py "scroll reveal fade stagger lightweight" --domain gsap` for reference rather than reaching for GSAP itself — this site keeps the "no heavy animation libraries" constraint from the original brief, so `components/ui/Reveal.tsx` reimplements the same motion tokens the search returned with a plain `IntersectionObserver` and direct ref/style mutation — no React state, no dependency. Currently 12px rise, 550ms, `cubic-bezier(0.22,1,0.36,1)` (a smooth expo-out — bumped from the initial 400ms/`ease-out` after user feedback that it felt abrupt; matches the search's "Standard" tier duration). Wraps section intros (single reveal) and grid/list items (staggered via the `delay` prop, ~0.05–0.06s per item). Renders fully visible by default (SSR/no-JS/crawler safe) and only hides-then-reveals once JS confirms `prefers-reduced-motion` isn't set — verified both that reduced-motion shows everything immediately and that a fresh scroll actually reveals it.
 
 Deliberately *not* animated: Hero (first paint, no scroll needed) and the Newsletter form's status states (success/error swap should never itself be gated behind a scroll-reveal). Per the "spend boldness in one place" instinct, Founder and Final CTA each get one single reveal for the whole block rather than staggering their internals.
 

@@ -10,13 +10,13 @@ type RevealProps = {
   as?: 'div' | 'li' | 'article';
 };
 
-// Lightweight scroll reveal — fade + small rise, matching the subtle-tier
-// motion tokens (12px, ~350ms, ease-out) rather than pulling in an
-// animation library. Renders visible by default (SSR/no-JS/crawler safe)
-// and only hides-then-reveals once JS confirms the browser allows motion.
-// Uses direct ref/style mutation instead of React state — this is a pure
-// DOM visual effect with no data to reconcile, so it skips render churn
-// entirely rather than round-tripping through setState.
+// Lightweight scroll reveal — fade + small rise, matching the standard-tier
+// motion tokens (12px, ~550ms) with a smooth expo-out curve rather than
+// pulling in an animation library. Renders visible by default (SSR/no-JS/
+// crawler safe) and only hides-then-reveals once JS confirms the browser
+// allows motion. Uses direct ref/style mutation instead of React state —
+// this is a pure DOM visual effect with no data to reconcile, so it skips
+// render churn entirely rather than round-tripping through setState.
 export default function Reveal({ children, delay = 0, className = '', as = 'div' }: RevealProps) {
   const ref = useRef<HTMLElement>(null);
 
@@ -47,7 +47,10 @@ export default function Reveal({ children, delay = 0, className = '', as = 'div'
   const Tag = as;
 
   return (
-    <Tag ref={ref as never} className={`transition-[opacity,transform] duration-[400ms] ease-out ${className}`}>
+    <Tag
+      ref={ref as never}
+      className={`transition-[opacity,transform] duration-[550ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${className}`}
+    >
       {children}
     </Tag>
   );

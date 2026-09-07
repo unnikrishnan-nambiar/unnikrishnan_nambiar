@@ -15,7 +15,7 @@ export default function PracticalAi() {
     <section id="guides" className="container-content scroll-mt-20 py-14 sm:py-24">
       <Reveal>
         <SectionIntro
-          label="03 / Learn"
+          label="Use Cases"
           heading="What can you actually do with AI?"
           description={
             <div className="space-y-1">

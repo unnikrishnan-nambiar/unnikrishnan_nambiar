@@ -31,7 +31,7 @@ export default function Nav() {
 
         <div className="hidden md:block">
           <Button href={site.instagramUrl} variant="secondary" target="_blank" rel="noopener noreferrer">
-            Follow RYX →
+            Follow RYX AI →
           </Button>
         </div>
 
@@ -85,7 +85,7 @@ export default function Nav() {
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
               >
-                Follow RYX →
+                Follow RYX AI →
               </Button>
             </div>
           </div>

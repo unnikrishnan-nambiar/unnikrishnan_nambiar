@@ -18,12 +18,12 @@ export default function FinalCta() {
           </div>
 
           <p className="mx-auto mt-10 max-w-[750px] font-display text-4xl font-semibold tracking-tight sm:text-5xl">
-            Welcome to RYX.
+            Welcome to RYX AI.
           </p>
 
           <div className="mt-8 flex justify-center">
             <Button href="#discover" variant="primary">
-              Explore RYX →
+              Explore RYX AI →
             </Button>
           </div>
         </Reveal>

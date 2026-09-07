@@ -23,7 +23,7 @@ function ToolCard({ tool }: { tool: Tool }) {
         >
           {tool.name.charAt(0)}
         </span>
-        {tool.pick && <Badge variant="indigo">RYX Pick</Badge>}
+        {tool.pick && <Badge variant="indigo">RYX AI Pick</Badge>}
       </div>
 
       <h3 className="mt-4 font-display text-lg font-semibold">{tool.name}</h3>
@@ -59,7 +59,7 @@ export default function AiTools() {
     <section id="tools" className="container-content scroll-mt-20 py-14 sm:py-24">
       <Reveal>
         <SectionIntro
-          label="04 / Tools"
+          label="Tools"
           heading="Find AI worth trying."
           description={
             <div className="space-y-1">

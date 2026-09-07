@@ -9,9 +9,9 @@ export default function People() {
     <section className="container-content py-14 sm:py-24">
       <Reveal>
         <SectionIntro
-          label="06 / Connect"
+          label="Connect"
           heading="People building with AI."
-          description="AI is bigger than tools. It's people — founders, developers, product managers, creators, researchers, students, designers, operators. RYX will feature people experimenting with AI, building products and changing how they work."
+          description="AI is bigger than tools. It's people — founders, developers, product managers, creators, researchers, students, designers, operators. RYX AI will feature people experimenting with AI, building products and changing how they work."
         />
       </Reveal>
 

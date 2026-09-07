@@ -17,7 +17,7 @@ function formatDate(iso: string) {
 const storySteps = [
   { key: 'whatWeTried', label: 'What we tried' },
   { key: 'whatHappened', label: 'What happened' },
-  { key: 'verdict', label: 'RYX verdict' },
+  { key: 'verdict', label: 'RYX AI verdict' },
 ] as const;
 
 export default function Experiments() {
@@ -25,7 +25,7 @@ export default function Experiments() {
     <section id="experiments" className="container-content scroll-mt-20 py-14 sm:py-24">
       <Reveal>
         <SectionIntro
-          label="05 / Experiment"
+          label="Experiment"
           heading="We tried it."
           description="AI looks different when you actually use it. Every week, we experiment with AI — a new model, a new tool, a new workflow, a crazy idea — and show you what happened."
         />

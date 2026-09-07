@@ -21,7 +21,7 @@ export default function AiNews() {
     <section id="discover" className="container-content scroll-mt-20 py-14 sm:py-24">
       <Reveal>
         <SectionIntro
-          label="02 / Discover"
+          label="Discover"
           heading="What's worth paying attention to?"
           description="Not everything happening in AI deserves your attention. We follow what matters and break it down."
         />
@@ -70,7 +70,7 @@ export default function AiNews() {
           that archive exists. */}
       <div className="mt-10 flex justify-center">
         <Button href={site.instagramUrl} variant="secondary" target="_blank" rel="noopener noreferrer">
-          Explore RYX
+          Explore RYX AI
         </Button>
       </div>
     </section>

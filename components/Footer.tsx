@@ -14,7 +14,7 @@ const columns = [
   {
     heading: 'Community',
     links: [
-      { label: 'Join RYX', href: '/#join' },
+      { label: 'Join RYX AI', href: '/#join' },
       { label: 'Share Your Build', href: 'mailto:hello@ryxai.in?subject=I%20want%20to%20share%20my%20build' },
       { label: 'Events', href: undefined, comingSoon: true },
     ],

@@ -13,7 +13,7 @@ export default function Community() {
           </h2>
 
           <p className="mx-auto mt-4 max-w-[650px] text-lg leading-[1.6] text-ink-secondary">
-            RYX is being built around people who are curious about AI and want
+            RYX AI is being built around people who are curious about AI and want
             to actually experiment with it — learn from others, share what
             you&apos;re building, ask questions, find collaborators.
           </p>
@@ -29,7 +29,7 @@ export default function Community() {
 
           <div className="mt-8 flex justify-center">
             <Button href="#join" variant="accent">
-              Join RYX
+              Join RYX AI
             </Button>
           </div>
         </Reveal>

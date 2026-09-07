@@ -44,7 +44,7 @@ export default function Newsletter() {
         <p className="mx-auto mt-4 max-w-[650px] text-lg leading-[1.6] text-ink-secondary">
           AI is moving too fast to follow everything. Get the useful stuff
           without the noise — new tools, interesting developments, practical
-          ideas, RYX experiments.
+          ideas, RYX AI experiments.
         </p>
       </Reveal>
 
@@ -63,7 +63,7 @@ export default function Newsletter() {
         </p>
       ) : status === 'success' ? (
         <p className="mx-auto mt-8 max-w-[480px] rounded-card border border-border bg-card px-6 py-4 text-ink">
-          You&apos;re in. Welcome to RYX.
+          You&apos;re in. Welcome to RYX AI.
         </p>
       ) : (
         <form
@@ -85,7 +85,7 @@ export default function Newsletter() {
             className="w-full flex-1 rounded border border-border bg-paper px-4 py-2.5 text-ink placeholder:text-ink-muted focus:border-indigo focus:outline-none focus:ring-2 focus:ring-indigo/20"
           />
           <Button type="submit" variant="primary" disabled={status === 'submitting'}>
-            {status === 'submitting' ? 'Joining…' : 'Join RYX'}
+            {status === 'submitting' ? 'Joining…' : 'Join RYX AI'}
           </Button>
         </form>
       )}

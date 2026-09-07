@@ -23,10 +23,10 @@ export default function Hero() {
 
       <div className="mt-8 flex flex-wrap justify-center gap-3">
         <Button href="#discover" variant="primary">
-          Explore RYX
+          Explore RYX AI
         </Button>
         <Button href={site.instagramUrl} variant="secondary" target="_blank" rel="noopener noreferrer">
-          Follow RYX
+          Follow RYX AI
         </Button>
       </div>
     </section>

@@ -15,8 +15,8 @@ export type NewsItem = {
 export const news: NewsItem[] = [
   {
     slug: 'welcome-to-ryx',
-    category: 'RYX',
-    headline: 'Welcome to RYX',
+    category: 'RYX AI',
+    headline: 'Welcome to RYX AI',
     description:
       "Why we're starting this, what we're building, and what to expect here going forward.",
     date: '2026-01-01',

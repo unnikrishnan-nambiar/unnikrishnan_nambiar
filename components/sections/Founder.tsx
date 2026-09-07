@@ -8,7 +8,7 @@ export default function Founder() {
   return (
     <section id="about" className="container-content scroll-mt-20 py-14 text-center sm:py-24">
       <Reveal>
-        <SectionLabel>The person behind RYX</SectionLabel>
+        <SectionLabel>The person behind RYX AI</SectionLabel>
 
         <div className="mx-auto mt-8 aspect-[4/5] w-full max-w-[440px] overflow-hidden rounded-card border border-border bg-card">
           {site.founder.photoSrc ? (
@@ -34,7 +34,7 @@ export default function Founder() {
           <p>I work in AI and product.</p>
           <p>
             I&apos;ve spent a lot of time building with AI. But I realised I
-            wasn&apos;t sharing much of what I was learning. So I started RYX.
+            wasn&apos;t sharing much of what I was learning. So I started RYX AI.
           </p>
           <p>
             Not to tell you that AI is going to change everything.
