@@ -17,7 +17,7 @@ Open [http://localhost:3000](http://localhost:3000).
 - `data/site.ts` — site-wide config: Instagram link, side-project link, founder photo.
 - `data/posts.ts` — the "Latest" feed. Add new entries to the top of the array.
 - `components/` — one file per section (`Nav`, `Hero`, `WhatRyxIs`, `Latest`, `About`, `Join`, `Footer`).
-- `components/Logo.tsx` — recreated wordmark; swap in the real logo file once you drop it into `public/`.
+- `components/Logo.tsx` — renders `public/logo.png`, the real wordmark (background removed). `app/icon.png` is a cropped favicon built from the same source.
 
 ## Signup form
 
@@ -28,6 +28,6 @@ ready — the route is the only place that needs to change.
 
 ## Stack
 
-- Next.js 14 (App Router)
+- Next.js 16 (App Router)
 - Tailwind CSS
 - No backend/database — static site with one lightweight API route
