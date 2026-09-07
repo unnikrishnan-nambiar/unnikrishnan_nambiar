@@ -51,12 +51,16 @@ export default function Nav() {
         />
       </div>
       <div className="container-content grid h-16 grid-cols-[1fr_auto_1fr] items-center gap-4">
-        <Link href="/" className="shrink-0 justify-self-start" onClick={() => setOpen(false)}>
+        <Link
+          href="/"
+          className="col-start-1 shrink-0 justify-self-start"
+          onClick={() => setOpen(false)}
+        >
           <Logo className="h-5 w-auto sm:h-6" />
           <span className="sr-only">RYX AI</span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="col-start-2 hidden items-center gap-8 md:flex">
           {nav.map((item) => (
             <a
               key={item.label}
@@ -72,7 +76,7 @@ export default function Nav() {
           ))}
         </nav>
 
-        <div className="flex items-center justify-self-end">
+        <div className="col-start-3 flex items-center justify-self-end">
           <div className="hidden md:block">
             <Button
               href={site.instagramUrl}

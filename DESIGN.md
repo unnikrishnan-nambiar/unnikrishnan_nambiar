@@ -252,6 +252,29 @@ now fixed, plus several deliberate additions:
   global `prefers-reduced-motion` override, so it freezes correctly
   without extra handling.
 
+## Nav layout — explicit grid columns, not implicit placement
+
+`Nav.tsx`'s header row is a 3-column grid (`grid-cols-[1fr_auto_1fr]`):
+logo left, nav links centered in the auto-sized middle track, follow
+button/hamburger right. This replaced an earlier `flex justify-between`
+that only split leftover space between unevenly-sized children and never
+actually centered the middle item (a user screenshot caught the nav links
+sitting visibly off-center).
+
+The grid version had its own bug: the three children (`Link`, `nav`,
+button/hamburger `div`) relied on implicit source-order placement into
+the three columns. Below `md`, the `<nav>` (middle child) is
+`display:none` — and a `display:none` element generates no box and isn't
+a grid item at all, so CSS Grid's auto-placement algorithm skipped it and
+shifted the *next* item (the hamburger) into the now-vacant middle
+column instead of the third one. Result: the hamburger rendered dead
+center on mobile instead of at the right edge (also caught via a user
+screenshot). Fixed by giving each child an explicit `col-start-1` /
+`col-start-2` / `col-start-3` instead of relying on auto-placement — now
+each item's column is fixed regardless of which siblings are present/
+hidden at a given breakpoint. If you add a fourth child to this grid row,
+give it an explicit `col-start-*` too rather than trusting source order.
+
 ## Content integrity — unchanged, read before adding "placeholder" content
 
 Still explicit and still non-negotiable, maximalism or not: do not
