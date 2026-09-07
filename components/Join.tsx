@@ -36,13 +36,13 @@ export default function Join() {
   return (
     <section id="join" className="section py-16 sm:py-20">
       <div className="mx-auto max-w-prose text-center">
-        <h2 className="text-2xl font-semibold sm:text-3xl">Join RYX</h2>
-        <p className="mt-4 text-ink/70">
+        <h2 className="font-display text-2xl font-bold sm:text-3xl">Join RYX</h2>
+        <p className="mt-4 text-ink-soft">
           Don&apos;t just watch AI evolve. Follow along as we figure it out.
         </p>
 
         {IS_STATIC_SITE ? (
-          <p className="mt-8 rounded-2xl bg-ink/5 px-6 py-4 text-ink/80">
+          <p className="mt-8 rounded-2xl border border-hairline px-6 py-4 text-ink-soft">
             Signups aren&apos;t live on this preview. DM us on{' '}
             <a
               href={site.instagramUrl}
@@ -55,7 +55,7 @@ export default function Join() {
             to join for now.
           </p>
         ) : status === 'success' ? (
-          <p className="mt-8 rounded-2xl bg-ink/5 px-6 py-4 text-ink">
+          <p className="mt-8 rounded-2xl border border-hairline px-6 py-4 text-ink">
             You&apos;re in. Welcome to RYX.
           </p>
         ) : (
@@ -76,12 +76,12 @@ export default function Join() {
               value={contact}
               onChange={(e) => setContact(e.target.value)}
               placeholder="Email or WhatsApp number"
-              className="w-full flex-1 rounded-full border border-ink/15 bg-white px-5 py-3 text-ink placeholder:text-ink/40 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30"
+              className="w-full flex-1 rounded-full border border-hairline bg-paper px-5 py-3 text-ink placeholder:text-ink-soft/60 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/25"
             />
             <button
               type="submit"
               disabled={status === 'submitting'}
-              className="rounded-full bg-gold px-7 py-3 text-sm font-semibold text-ink transition hover:bg-gold-dark disabled:opacity-60"
+              className="rounded-full bg-gold px-7 py-3 font-body text-sm font-semibold text-paper transition hover:bg-gold-dark disabled:opacity-60"
             >
               {status === 'submitting' ? 'Joining…' : 'Join RYX'}
             </button>
@@ -94,7 +94,7 @@ export default function Join() {
           </p>
         )}
 
-        <p className="mt-4 text-sm text-ink/50">No spam. Just useful AI.</p>
+        <p className="mt-4 text-sm text-ink-soft">No spam. Just useful AI.</p>
       </div>
     </section>
   );

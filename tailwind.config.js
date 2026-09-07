@@ -8,22 +8,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        offwhite: '#F8F6F1',
-        ink: '#17171A',
+        paper: '#FFFFFF',
+        ink: '#0A0A0A',
+        'ink-soft': '#4A4842',
         gold: {
-          DEFAULT: '#C6A253',
-          dark: '#A9873F',
-          light: '#DCC48A',
+          DEFAULT: '#9C6B2E',
+          dark: '#7E551F',
+          wash: '#FBF1DE',
         },
+        hairline: '#E4E1D8',
       },
       fontFamily: {
-        sans: [
-          '-apple-system',
-          'BlinkMacSystemFont',
-          '"Segoe UI"',
-          'Roboto',
-          'sans-serif',
-        ],
+        display: ['var(--font-display)', 'sans-serif'],
+        body: ['var(--font-body)', 'sans-serif'],
       },
       borderRadius: {
         xl: '1rem',

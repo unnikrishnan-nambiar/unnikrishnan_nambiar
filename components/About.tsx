@@ -5,11 +5,11 @@ export default function About() {
   return (
     <section className="section py-16 sm:py-20">
       <div className="mx-auto flex max-w-prose flex-col items-center text-center">
-        <h2 className="text-2xl font-semibold sm:text-3xl">
+        <h2 className="font-display text-2xl font-bold sm:text-3xl">
           Built by someone who works with AI
         </h2>
 
-        <div className="mt-8 h-28 w-28 shrink-0 overflow-hidden rounded-full bg-ink/10 sm:h-32 sm:w-32">
+        <div className="mt-8 h-28 w-28 shrink-0 overflow-hidden rounded-full border border-hairline bg-gold-wash sm:h-32 sm:w-32">
           {site.founder.photoSrc ? (
             <Image
               src={site.founder.photoSrc}
@@ -20,7 +20,7 @@ export default function About() {
             />
           ) : (
             <div
-              className="flex h-full w-full items-center justify-center text-sm text-ink/40"
+              className="flex h-full w-full items-center justify-center text-sm text-ink-soft"
               aria-hidden
             >
               Photo
@@ -28,7 +28,7 @@ export default function About() {
           )}
         </div>
 
-        <div className="mt-8 space-y-5 text-left text-ink/80 sm:text-lg">
+        <div className="mt-8 space-y-5 text-left text-ink-soft sm:text-lg">
           <p>Hi, I&apos;m {site.founder.name}.</p>
           <p>
             I&apos;ve spent years building AI agent systems — the kind that
@@ -55,7 +55,7 @@ export default function About() {
           href={site.instagramUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 rounded-full border border-ink px-6 py-2.5 text-sm font-semibold transition hover:border-gold hover:text-gold-dark"
+          className="mt-8 rounded-full border border-ink px-6 py-2.5 font-body text-sm font-semibold transition hover:border-gold hover:text-gold-dark"
         >
           Follow RYX on Instagram
         </a>
