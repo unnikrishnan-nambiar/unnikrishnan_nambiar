@@ -16,7 +16,7 @@ export default function Hero() {
         className="inline-flex animate-fade-up items-center rounded-full border-2 border-ink bg-paper px-4 py-1.5 text-sm font-bold uppercase tracking-[0.1em]"
         style={{ animationDelay: '0ms' }}
       >
-        RYX AI
+        RYX AI Community
       </span>
 
       <h1
