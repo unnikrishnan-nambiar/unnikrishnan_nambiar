@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-offwhite text-ink antialiased;
+  }
+}
+
+@layer utilities {
+  .section {
+    @apply mx-auto w-full max-w-5xl px-6 sm:px-8;
+  }
+}
