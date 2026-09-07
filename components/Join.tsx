@@ -1,8 +1,13 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
+import { site } from '@/data/site';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
+
+// Set by the GitHub Pages build only (see .github/workflows/deploy-pages.yml).
+// That build is fully static and has no /api/join route to submit to.
+const IS_STATIC_SITE = process.env.NEXT_PUBLIC_STATIC_SITE === 'true';
 
 export default function Join() {
   const [contact, setContact] = useState('');
@@ -36,7 +41,20 @@ export default function Join() {
           Don&apos;t just watch AI evolve. Follow along as we figure it out.
         </p>
 
-        {status === 'success' ? (
+        {IS_STATIC_SITE ? (
+          <p className="mt-8 rounded-2xl bg-ink/5 px-6 py-4 text-ink/80">
+            Signups aren&apos;t live on this preview. DM us on{' '}
+            <a
+              href={site.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-ink underline decoration-gold decoration-2 underline-offset-2"
+            >
+              Instagram
+            </a>{' '}
+            to join for now.
+          </p>
+        ) : status === 'success' ? (
           <p className="mt-8 rounded-2xl bg-ink/5 px-6 py-4 text-ink">
             You&apos;re in. Welcome to RYX.
           </p>

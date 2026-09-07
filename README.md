@@ -26,8 +26,21 @@ submission to the console and appends it to `data/signups.json` (gitignored
 placeholder storage). Replace this with a real email/WhatsApp provider when
 ready — the route is the only place that needs to change.
 
+## Hosting on GitHub Pages
+
+`.github/workflows/deploy-pages.yml` builds and deploys a static export on
+every push to `main`. One-time setup: in the repo's Settings → Pages, set
+**Source** to **GitHub Actions**. The site then publishes to
+`https://<owner>.github.io/unnikrishnan_nambiar/`.
+
+GitHub Pages can't run the `/api/join` route (it's static hosting only), so
+that build strips `app/api` before compiling and the Join form falls back to
+"DM us on Instagram" instead of trying to submit — controlled by the
+`NEXT_PUBLIC_STATIC_SITE` env var the workflow sets. Locally and on any
+server host (Vercel, etc.) the real form and API route work as normal.
+
 ## Stack
 
 - Next.js 16 (App Router)
 - Tailwind CSS
-- No backend/database — static site with one lightweight API route
+- No backend/database — static site with one lightweight API route (server hosts only; see above for GitHub Pages)
