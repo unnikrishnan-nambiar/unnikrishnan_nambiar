@@ -6,12 +6,12 @@ import { site } from '@/data/site';
 
 export default function Founder() {
   return (
-    <section id="about" className="container-content scroll-mt-20 py-10 text-center sm:py-16">
+    <section id="about" className="container-content scroll-mt-20 py-14 text-center sm:py-20">
       <Reveal>
-        <SectionLabel>The person behind RYX AI</SectionLabel>
+        <SectionLabel color="amber">The person behind RYX AI</SectionLabel>
 
         {site.founder.photoSrc && (
-          <div className="mx-auto mt-6 aspect-[4/5] w-full max-w-[440px] overflow-hidden rounded-card border border-border bg-card">
+          <div className="mx-auto mt-6 aspect-[4/5] w-full max-w-[440px] overflow-hidden rounded-card border-2 border-ink bg-card">
             <Image
               src={site.founder.photoSrc}
               alt={site.founder.name}
@@ -36,13 +36,13 @@ export default function Founder() {
           </p>
         </div>
 
-        <p className="mx-auto mt-6 max-w-[750px] font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+        <p className="mx-auto mt-6 max-w-[750px] font-display text-3xl font-bold tracking-tight sm:text-4xl">
           What can we actually do with AI?
           <br />
-          That&apos;s what I&apos;m here to find out.
+          <span className="text-gradient-pa">That&apos;s what I&apos;m here to find out.</span>
         </p>
 
-        <div className="mt-6 flex justify-center">
+        <div className="mt-8 flex justify-center">
           <Button href={site.instagramUrl} variant="accent" target="_blank" rel="noopener noreferrer">
             Follow me →
           </Button>

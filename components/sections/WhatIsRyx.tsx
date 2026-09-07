@@ -3,10 +3,11 @@ import Reveal from '@/components/ui/Reveal';
 
 export default function WhatIsRyx() {
   return (
-    <section className="container-content py-10 sm:py-16">
+    <section className="container-content py-14 sm:py-20">
       <Reveal>
         <SectionIntro
           label="Discover"
+          labelColor="violet"
           heading="What is RYX AI?"
           description={
             <div className="space-y-3">
@@ -22,8 +23,8 @@ export default function WhatIsRyx() {
       </Reveal>
 
       <Reveal delay={0.1}>
-        <p className="mx-auto mt-6 max-w-[750px] text-center font-display text-2xl font-semibold tracking-tight text-indigo-dark sm:text-3xl">
-          Learn. Experiment. Build.
+        <p className="mx-auto mt-8 max-w-[750px] text-center font-display text-3xl font-bold tracking-tight sm:text-5xl">
+          <span className="text-gradient-vp">Learn. Experiment. Build.</span>
           <br />
           That&apos;s RYX AI.
         </p>

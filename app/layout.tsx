@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Inter_Tight } from 'next/font/google';
+import { Inter, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import { site } from '@/data/site';
 
@@ -10,8 +10,8 @@ const inter = Inter({
   weight: ['400', '500', '600'],
 });
 
-// Display/headline face.
-const interTight = Inter_Tight({
+// Display/headline face — bold geometric grotesk for a maximalist, poster-scale look.
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-display',
   weight: ['500', '600', '700'],
@@ -37,8 +37,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${interTight.variable}`}>
-      <body className="font-sans">{children}</body>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+      <body className="bg-paper font-sans text-ink">{children}</body>
     </html>
   );
 }

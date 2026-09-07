@@ -30,28 +30,29 @@ const columns = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border">
+    <footer className="bg-ink text-white">
+      <div className="h-[3px] bg-gradient-to-r from-cyan via-violet to-pink" aria-hidden />
       <div className="container-content py-14">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
-            <Logo className="h-5 w-auto" />
-            <p className="mt-3 text-sm text-ink-muted">{site.tags.join(' · ')}</p>
+            <Logo className="h-5 w-auto brightness-0 invert" />
+            <p className="mt-3 text-sm text-white/50">{site.tags.join(' · ')}</p>
           </div>
 
           {columns.map((column) => (
             <div key={column.heading}>
-              <p className="text-sm font-semibold text-ink">{column.heading}</p>
+              <p className="text-sm font-bold text-white">{column.heading}</p>
               <ul className="mt-3 space-y-2">
                 {column.links.map((link) => (
                   <li key={link.label}>
                     {link.comingSoon ? (
-                      <span className="text-sm text-ink-muted">
-                        {link.label} <span className="text-ink-muted">(soon)</span>
+                      <span className="text-sm text-white/40">
+                        {link.label} <span className="text-white/40">(soon)</span>
                       </span>
                     ) : (
                       <a
                         href={link.href}
-                        className="text-sm text-ink-secondary hover:text-ink"
+                        className="text-sm text-white/60 transition-colors hover:text-cyan"
                       >
                         {link.label}
                       </a>
@@ -63,14 +64,14 @@ export default function Footer() {
           ))}
 
           <div>
-            <p className="text-sm font-semibold text-ink">Social</p>
+            <p className="text-sm font-bold text-white">Social</p>
             <ul className="mt-3 space-y-2">
               <li>
                 <a
                   href={site.instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-ink-secondary hover:text-ink"
+                  className="text-sm text-white/60 transition-colors hover:text-pink"
                 >
                   Instagram
                 </a>
@@ -80,7 +81,7 @@ export default function Footer() {
                   href={site.youtubeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-ink-secondary hover:text-ink"
+                  className="text-sm text-white/60 transition-colors hover:text-pink"
                 >
                   YouTube
                 </a>
@@ -90,7 +91,7 @@ export default function Footer() {
                   href={site.linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-ink-secondary hover:text-ink"
+                  className="text-sm text-white/60 transition-colors hover:text-pink"
                 >
                   LinkedIn
                 </a>
@@ -99,8 +100,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-border pt-6">
-          <p className="text-sm text-ink-muted">{site.domain} © 2026</p>
+        <div className="mt-12 border-t border-white/15 pt-6">
+          <p className="text-sm text-white/40">{site.domain} © 2026</p>
         </div>
       </div>
     </footer>

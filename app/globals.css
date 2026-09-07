@@ -34,4 +34,15 @@
   .container-reading {
     @apply mx-auto w-full max-w-reading px-6 sm:px-0;
   }
+
+  /* Gradient headline text — used sparingly for the biggest statement per section. */
+  .text-gradient-vp {
+    @apply bg-gradient-to-r from-violet via-fuchsia-500 to-pink bg-clip-text text-transparent;
+  }
+  .text-gradient-ca {
+    @apply bg-gradient-to-r from-cyan to-violet bg-clip-text text-transparent;
+  }
+  .text-gradient-pa {
+    @apply bg-gradient-to-r from-pink to-amber bg-clip-text text-transparent;
+  }
 }

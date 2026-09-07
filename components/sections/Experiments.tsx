@@ -22,61 +22,72 @@ const storySteps = [
 
 export default function Experiments() {
   return (
-    <section id="experiments" className="container-content scroll-mt-20 py-10 sm:py-16">
-      <Reveal>
-        <SectionIntro
-          heading="We tried it."
-          description="AI looks different when you actually use it. Every week, we experiment with AI: a new model, a new tool, a new workflow, a crazy idea, and show you what happened."
-        />
-      </Reveal>
+    <section id="experiments" className="scroll-mt-20 bg-pink-light py-14 sm:py-20">
+      <div className="container-content">
+        <Reveal>
+          <SectionIntro
+            heading="We tried it."
+            description="AI looks different when you actually use it. Every week, we experiment with AI: a new model, a new tool, a new workflow, a crazy idea, and show you what happened."
+          />
+        </Reveal>
 
-      <ul className="mx-auto mt-6 grid max-w-content gap-6 border-t border-border pt-8 text-left sm:grid-cols-2 lg:grid-cols-4">
-        {questions.map((question, i) => (
-          <Reveal key={question} as="li" delay={i * 0.06} className="font-display text-xl font-semibold">
-            {question}
-          </Reveal>
-        ))}
-      </ul>
+        <ul className="mx-auto mt-8 grid max-w-content gap-4 text-left sm:grid-cols-2 lg:grid-cols-4">
+          {questions.map((question, i) => (
+            <Reveal
+              key={question}
+              as="li"
+              delay={i * 0.06}
+              className="rounded-card border-2 border-ink bg-paper p-5 font-display text-xl font-bold"
+            >
+              {question}
+            </Reveal>
+          ))}
+        </ul>
 
-      <div className="mx-auto mt-6 max-w-reading space-y-6 text-left">
-        {experiments.map((experiment) => (
-          <Reveal key={experiment.slug} as="article">
-            <p className="text-sm text-ink-muted">{formatDate(experiment.date)}</p>
-            <h3 className="mt-1 font-display text-2xl font-semibold">{experiment.title}</h3>
-            <p className="mt-2 text-ink-secondary">{experiment.description}</p>
+        <div className="mx-auto mt-8 max-w-reading space-y-6 text-left">
+          {experiments.map((experiment) => (
+            <Reveal
+              key={experiment.slug}
+              as="article"
+              className="rounded-card border-2 border-ink bg-paper p-6 sm:p-8"
+            >
+              <p className="text-sm font-bold text-pink">{formatDate(experiment.date)}</p>
+              <h3 className="mt-1 font-display text-2xl font-bold">{experiment.title}</h3>
+              <p className="mt-2 text-ink-secondary">{experiment.description}</p>
 
-            {experiment.status === 'coming-soon' ? (
-              <div
-                aria-hidden
-                className="mt-6 flex h-56 items-center justify-center rounded border border-dashed border-border bg-card text-sm text-ink-muted"
-              >
-                Screenshot coming soon
-              </div>
-            ) : (
-              <div className="mt-6 space-y-6">
-                {storySteps.map(({ key, label }) => {
-                  const value = experiment[key];
-                  if (!value) return null;
-                  return (
-                    <div key={key}>
-                      <Divider className="mb-4" />
-                      <p className="text-sm font-medium uppercase tracking-[0.1em] text-ink-secondary">
-                        {label}
-                      </p>
-                      <p className="mt-2 text-ink-secondary">{value}</p>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </Reveal>
-        ))}
-      </div>
+              {experiment.status === 'coming-soon' ? (
+                <div
+                  aria-hidden
+                  className="mt-6 flex h-56 items-center justify-center rounded-card border-2 border-dashed border-ink/30 bg-pink-light text-sm text-ink-muted"
+                >
+                  Screenshot coming soon
+                </div>
+              ) : (
+                <div className="mt-6 space-y-6">
+                  {storySteps.map(({ key, label }) => {
+                    const value = experiment[key];
+                    if (!value) return null;
+                    return (
+                      <div key={key}>
+                        <Divider className="mb-4" />
+                        <p className="text-sm font-bold uppercase tracking-[0.1em] text-pink">
+                          {label}
+                        </p>
+                        <p className="mt-2 text-ink-secondary">{value}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </Reveal>
+          ))}
+        </div>
 
-      <div className="mt-6 flex justify-center">
-        <Button href="/experiments" variant="secondary">
-          See Our Experiments
-        </Button>
+        <div className="mt-8 flex justify-center">
+          <Button href="/experiments" variant="dark">
+            See Our Experiments
+          </Button>
+        </div>
       </div>
     </section>
   );

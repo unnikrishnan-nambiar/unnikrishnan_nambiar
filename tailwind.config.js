@@ -9,15 +9,32 @@ module.exports = {
     extend: {
       colors: {
         paper: '#FFFFFF',
-        ink: '#111111',
-        'ink-secondary': '#666666',
+        ink: '#0A0A0A',
+        'ink-secondary': '#525252',
         'ink-muted': '#8A8A8A',
-        border: '#E8E8E8',
+        border: '#E5E5E5',
         card: '#F7F7F7',
-        indigo: {
-          DEFAULT: '#4F46E5',
-          dark: '#3730A3',
-          light: '#EEF2FF',
+        // Maximalist multi-color accent system — four bold "standard" hues,
+        // each with a dark (text-on-tint) and light (tint background) step.
+        violet: {
+          DEFAULT: '#7C3AED',
+          dark: '#5B21B6',
+          light: '#F1E8FF',
+        },
+        pink: {
+          DEFAULT: '#EC4899',
+          dark: '#BE185D',
+          light: '#FFE7F3',
+        },
+        cyan: {
+          DEFAULT: '#06B6D4',
+          dark: '#0E7490',
+          light: '#DFF9FD',
+        },
+        amber: {
+          DEFAULT: '#F59E0B',
+          dark: '#B45309',
+          light: '#FFF3DC',
         },
       },
       fontFamily: {
@@ -26,14 +43,31 @@ module.exports = {
       },
       borderRadius: {
         DEFAULT: '10px',
-        card: '16px',
+        card: '20px',
       },
       maxWidth: {
-        content: '1200px',
+        content: '1240px',
         reading: '720px',
       },
       spacing: {
         18: '4.5rem',
+      },
+      boxShadow: {
+        'glow-violet': '0 12px 40px -8px rgba(124, 58, 237, 0.45)',
+        'glow-pink': '0 12px 40px -8px rgba(236, 72, 153, 0.45)',
+        'glow-cyan': '0 12px 40px -8px rgba(6, 182, 212, 0.4)',
+        'glow-amber': '0 12px 40px -8px rgba(245, 158, 11, 0.4)',
+        hard: '6px 6px 0 0 #0A0A0A',
+      },
+      keyframes: {
+        blob: {
+          '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
+          '33%': { transform: 'translate(3%, -4%) scale(1.06)' },
+          '66%': { transform: 'translate(-3%, 3%) scale(0.96)' },
+        },
+      },
+      animation: {
+        blob: 'blob 14s ease-in-out infinite',
       },
     },
   },

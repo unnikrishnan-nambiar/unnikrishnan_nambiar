@@ -1,14 +1,19 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
 
-type Variant = 'primary' | 'secondary' | 'accent';
+type Variant = 'primary' | 'secondary' | 'accent' | 'dark' | 'light';
 
 const base =
-  'inline-flex items-center justify-center gap-1.5 rounded px-5 py-2.5 text-[15px] font-medium transition-colors';
+  'inline-flex items-center justify-center gap-1.5 rounded-full px-6 py-3 text-[15px] font-semibold transition-all duration-200';
 
 const variants: Record<Variant, string> = {
-  primary: 'bg-ink text-paper hover:bg-ink/90',
-  secondary: 'border border-[#DADADA] bg-paper text-ink hover:border-ink',
-  accent: 'bg-indigo text-paper hover:bg-indigo-dark',
+  primary:
+    'bg-gradient-to-r from-violet to-pink text-paper shadow-glow-violet hover:-translate-y-0.5 hover:shadow-glow-pink',
+  accent:
+    'bg-gradient-to-r from-cyan to-violet text-paper shadow-glow-cyan hover:-translate-y-0.5 hover:shadow-glow-violet',
+  secondary:
+    'rounded-2xl border-[2.5px] border-ink bg-paper text-ink hover:bg-ink hover:text-paper',
+  dark: 'bg-ink text-paper hover:bg-ink/85',
+  light: 'bg-paper text-ink shadow-hard hover:-translate-y-0.5',
 };
 
 type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
