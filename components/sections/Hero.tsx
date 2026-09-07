@@ -7,9 +7,7 @@ export default function Hero() {
       <p className="text-sm font-medium text-ink-secondary">RYX AI</p>
 
       <h1 className="mx-auto mt-5 max-w-[800px] font-display text-[44px] font-bold leading-[1] tracking-[-0.02em] sm:text-[64px] lg:text-[72px]">
-        AI,
-        <br />
-        without the noise.
+        Explore what&apos;s next in AI.
       </h1>
 
       <div className="mx-auto mt-6 max-w-[650px] space-y-4 text-lg leading-[1.5] text-ink-secondary sm:text-xl">

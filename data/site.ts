@@ -5,7 +5,7 @@ export const site = {
   name: 'RYX AI',
   domain: 'ryxai.in',
   tags: ['AI', 'Tools', 'Experiments', 'Ideas', 'Community'],
-  instagramUrl: 'https://instagram.com/ryx.ai',
+  instagramUrl: 'https://www.instagram.com/ryxai.in/',
   youtubeUrl: 'https://youtube.com/@ryx.ai',
   linkedinUrl: 'https://linkedin.com/company/ryxai',
   sideProject: {
