@@ -16,7 +16,7 @@ export default function Community() {
           </h2>
 
           <p className="mx-auto mt-4 max-w-[650px] text-lg leading-[1.5] text-paper/85">
-            RYX AI isn&apos;t a broadcast. It&apos;s a place for people who are
+            RYX AI Community isn&apos;t a broadcast. It&apos;s a place for people who are
             actually building with AI to compare notes, share what worked, and
             skip the noise together.
           </p>
@@ -36,7 +36,7 @@ export default function Community() {
 
           <div className="mt-8 flex justify-center">
             <Button href="#join" variant="light">
-              Join RYX AI
+              Join RYX AI Community
             </Button>
           </div>
         </Reveal>

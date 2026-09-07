@@ -57,7 +57,7 @@ export default function Nav() {
           onClick={() => setOpen(false)}
         >
           <Logo className="h-5 w-auto sm:h-6" />
-          <span className="sr-only">RYX AI</span>
+          <span className="sr-only">RYX AI Community</span>
         </Link>
 
         <nav className="col-start-2 hidden items-center gap-8 md:flex">
@@ -85,7 +85,7 @@ export default function Nav() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Follow RYX AI →
+              Follow RYX AI Community →
             </Button>
           </div>
 
@@ -145,7 +145,7 @@ export default function Nav() {
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
               >
-                Follow RYX AI →
+                Follow RYX AI Community →
               </Button>
             </div>
           </div>

@@ -30,7 +30,7 @@ export default function Hero() {
         className="mx-auto mt-6 max-w-[750px] animate-fade-up font-display text-2xl font-bold tracking-tight sm:text-3xl"
         style={{ animationDelay: '180ms' }}
       >
-        <span className="text-gradient-vp">RYX AI cuts through it.</span>
+        <span className="text-gradient-vp">RYX AI Community cuts through it.</span>
       </p>
 
       <div
@@ -56,10 +56,10 @@ export default function Hero() {
         style={{ animationDelay: '380ms' }}
       >
         <Button href="#discover" variant="primary">
-          Explore RYX AI
+          Explore RYX AI Community
         </Button>
         <Button href={site.instagramUrl} variant="secondary" target="_blank" rel="noopener noreferrer">
-          Follow RYX AI
+          Follow RYX AI Community
         </Button>
       </div>
     </section>

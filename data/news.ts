@@ -15,7 +15,7 @@ export type NewsItem = {
 export const news: NewsItem[] = [
   {
     slug: 'welcome-to-ryx',
-    category: 'RYX AI',
+    category: 'RYX AI Community',
     headline: "Why we're done with AI hype",
     description:
       "Why we're starting this, what we're building, and what to expect here going forward.",

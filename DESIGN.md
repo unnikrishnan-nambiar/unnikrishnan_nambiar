@@ -304,18 +304,43 @@ without it the sticky nav (`h-16`, now with a 3px gradient underline)
 covers the section label/heading on every anchor jump. Still true after
 the rebuild; if a new section gets an `id`, it needs `scroll-mt-20` too.
 
-## Brand name & copy rules — unchanged
+## Brand name & copy rules
 
-Always "RYX AI" in copy, never bare "RYX". No em dashes anywhere in
-user-facing copy (page titles use a plain hyphen; prose uses a colon,
-comma, or period split instead). Both are user corrections from earlier
-in the project and apply regardless of the visual rebuild.
+The full, consistent brand name is **"RYX AI Community"** — always use
+the full three-word name in copy, never bare "RYX" or bare "RYX AI".
+This is a direct user correction ("don't mix 'RYX,' 'RYX AI,' and 'RYX
+AI Community' randomly — the name people should learn is RYX AI
+Community") and supersedes the earlier "always RYX AI" rule from before
+this pass. `site.name` in `data/site.ts` is the single source of truth
+("RYX AI Community") and feeds `openGraph.siteName` in `app/layout.tsx`
+automatically — if you add a new place that needs the brand name,
+reference `site.name` rather than hardcoding the string where practical.
+The one deliberate exception is the **visual logo wordmark**
+(`public/logo.png` / `components/Logo.tsx`), which stays "ryx ai" as
+designed — never redesign or relabel the actual logo asset to match the
+full name; only surrounding copy (page titles, buttons, headings, the
+logo link's `sr-only` text) says "RYX AI Community".
+
+No em dashes anywhere in user-facing copy (page titles use a plain
+hyphen; prose uses a colon, comma, or period split instead). This is a
+separate, still-standing user correction from earlier in the project.
+
+## Founder story
+
+`Founder.tsx`'s bio is close-to-verbatim user-supplied copy (four
+paragraphs plus a "Name, Founder, RYX AI Community" byline) — if you
+revise it, keep that voice (plain, first-person, "I don't have all the
+answers") rather than reverting to the earlier, shorter "I work in AI
+and product..." version or inventing new founder narrative.
 
 ## If you touch this next
 
 - `data/site.ts` → `nav` array drives the header; `tags` drives the
-  small "AI · Tools · Experiments · Ideas · Community" line in the hero
-  and footer.
+  small "AI · Business · Workflows · Signal, not sales." line in the
+  hero only — the footer has its *own* separate tagline ("Cutting
+  through AI noise, for people actually doing the work.") hardcoded in
+  `Footer.tsx`, not shared with `site.tags`. Don't re-couple them
+  without checking both copies still read correctly together.
 - Keep new user-facing copy in RYX's plain, curious, no-corporate-jargon
   register — the maximalism request was about visuals, not tone.
 - Don't let every button/badge default to the same accent color — the

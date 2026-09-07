@@ -75,7 +75,7 @@ export default function AiNews() {
             that archive exists. */}
         <div className="mt-8 flex justify-center">
           <Button href={site.instagramUrl} variant="dark" target="_blank" rel="noopener noreferrer">
-            Explore RYX AI
+            Explore RYX AI Community
           </Button>
         </div>
       </div>

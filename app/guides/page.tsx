@@ -5,7 +5,7 @@ import PracticalAi from '@/components/sections/PracticalAi';
 import Newsletter from '@/components/sections/Newsletter';
 
 export const metadata: Metadata = {
-  title: 'Guides - RYX AI',
+  title: 'Guides - RYX AI Community',
   description: 'Practical, business-first AI workflows, not toy demos.',
 };
 

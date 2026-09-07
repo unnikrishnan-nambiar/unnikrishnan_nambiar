@@ -64,7 +64,7 @@ export default function Newsletter() {
           </p>
         ) : status === 'success' ? (
           <p className="mx-auto mt-6 max-w-[480px] rounded-card border-2 border-ink bg-paper px-6 py-4 text-ink">
-            You&apos;re in. Welcome to RYX AI.
+            You&apos;re in. Welcome to RYX AI Community.
           </p>
         ) : (
           <form
@@ -86,7 +86,7 @@ export default function Newsletter() {
               className="w-full flex-1 rounded-2xl border-2 border-ink bg-paper px-4 py-2.5 text-ink placeholder:text-ink-muted focus:outline-none focus:ring-4 focus:ring-violet/25"
             />
             <Button type="submit" variant="primary" disabled={status === 'submitting'}>
-              {status === 'submitting' ? 'Joining…' : 'Join RYX AI'}
+              {status === 'submitting' ? 'Joining…' : 'Join RYX AI Community'}
             </Button>
           </form>
         )}

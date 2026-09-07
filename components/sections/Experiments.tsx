@@ -17,7 +17,7 @@ function formatDate(iso: string) {
 const storySteps = [
   { key: 'whatWeTried', label: 'What we tried' },
   { key: 'whatHappened', label: 'What happened' },
-  { key: 'verdict', label: 'RYX AI verdict' },
+  { key: 'verdict', label: 'RYX AI Community verdict' },
 ] as const;
 
 export default function Experiments() {

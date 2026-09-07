@@ -19,13 +19,13 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${site.domain}`),
-  title: 'RYX AI - Signal, Not Sales',
+  title: 'RYX AI Community - Signal, Not Sales',
   description:
-    "RYX AI cuts through AI hype with real tools, real workflows, and honest experiments for people running a business, not selling a course.",
+    "RYX AI Community cuts through AI hype with real tools, real workflows, and honest experiments for people running a business, not selling a course.",
   openGraph: {
-    title: 'RYX AI - Signal, Not Sales',
+    title: 'RYX AI Community - Signal, Not Sales',
     description:
-      "RYX AI cuts through AI hype with real tools, real workflows, and honest experiments for people running a business, not selling a course.",
+      "RYX AI Community cuts through AI hype with real tools, real workflows, and honest experiments for people running a business, not selling a course.",
     url: `https://${site.domain}`,
     siteName: site.name,
   },

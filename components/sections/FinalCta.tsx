@@ -12,7 +12,7 @@ export default function FinalCta() {
           </div>
 
           <p className="mx-auto mt-8 max-w-[750px] font-display text-5xl font-bold tracking-tight sm:text-7xl">
-            <span className="text-gradient-vp">Welcome to RYX AI.</span>
+            <span className="text-gradient-vp">Welcome to RYX AI Community.</span>
           </p>
           <p className="mx-auto mt-3 max-w-[650px] text-lg font-semibold text-white/70">
             Signal, not sales.
@@ -20,7 +20,7 @@ export default function FinalCta() {
 
           <div className="mt-8 flex justify-center">
             <Button href="#discover" variant="light">
-              Explore RYX AI →
+              Explore RYX AI Community →
             </Button>
           </div>
         </Reveal>

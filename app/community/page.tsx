@@ -6,7 +6,7 @@ import CommunitySection from '@/components/sections/Community';
 import Newsletter from '@/components/sections/Newsletter';
 
 export const metadata: Metadata = {
-  title: 'Community - RYX AI',
+  title: 'Join Us - RYX AI Community',
   description: 'Real people building with AI, and a community that filters the hype together.',
 };
 

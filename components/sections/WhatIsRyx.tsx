@@ -36,7 +36,7 @@ export default function WhatIsRyx() {
         <p className="mx-auto mt-8 max-w-[750px] text-center font-display text-3xl font-bold tracking-tight sm:text-5xl">
           <span className="text-gradient-vp">Learn what&apos;s real. Test it yourself.</span>
           <br />
-          Build with what works. That&apos;s RYX AI.
+          Build with what works. That&apos;s RYX AI Community.
         </p>
       </Reveal>
     </section>

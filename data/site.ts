@@ -2,7 +2,7 @@
 // real accounts and destinations go live.
 
 export const site = {
-  name: 'RYX AI',
+  name: 'RYX AI Community',
   domain: 'ryxai.in',
   tags: ['AI', 'Business', 'Workflows', 'Signal, not sales.'],
   instagramUrl: 'https://www.instagram.com/ryxai.in/',
