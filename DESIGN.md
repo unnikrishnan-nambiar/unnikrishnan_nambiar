@@ -113,6 +113,23 @@ story structure (`whatWeTried` / `whatHappened` / `verdict` on the
 "coming soon" entry deliberately skips those fields rather than faking
 them, and shows a plain placeholder block instead.
 
+Founder's photo block is now conditional: `site.founder.photoSrc` is
+still empty, so the whole placeholder frame (border, "Photo" text) is
+omitted rather than rendered empty — a direct "remove the space for my
+photo" request. The moment a real `photoSrc` is set, the frame comes back
+automatically; don't reintroduce an always-rendered placeholder without
+checking whether a photo actually exists yet. The bio itself was also
+condensed from four short paragraphs to three ("compress the story") —
+keep it tight if you touch it again, this isn't the place for a long bio.
+
+Line-height and paragraph rhythm were tightened sitewide after a "less
+space between wordings" request: body copy is `leading-[1.5]` (was
+`leading-[1.6]`) everywhere, `SectionIntro`'s heading-to-description gap
+is `mt-3` (was `mt-4`), and `WhatIsRyx`/`Experiments` paragraph stacks
+went from `space-y-4`/`space-y-8` to `space-y-3`/`space-y-6`. Match these
+values in any new paragraph block instead of reaching for the old looser
+defaults.
+
 ## Content integrity — read before adding "placeholder" content
 
 The brief is explicit and repeated: do not fabricate member counts,

@@ -38,7 +38,7 @@ export default function Experiments() {
         ))}
       </ul>
 
-      <div className="mx-auto mt-6 max-w-reading space-y-8 text-left">
+      <div className="mx-auto mt-6 max-w-reading space-y-6 text-left">
         {experiments.map((experiment) => (
           <Reveal key={experiment.slug} as="article">
             <p className="text-sm text-ink-muted">{formatDate(experiment.date)}</p>

@@ -41,7 +41,7 @@ export default function Newsletter() {
         <h2 className="mx-auto max-w-[750px] font-display text-[34px] font-semibold leading-tight tracking-tight sm:text-[40px] lg:text-[48px]">
           Get the interesting stuff.
         </h2>
-        <p className="mx-auto mt-4 max-w-[650px] text-lg leading-[1.6] text-ink-secondary">
+        <p className="mx-auto mt-3 max-w-[650px] text-lg leading-[1.5] text-ink-secondary">
           AI is moving too fast to follow everything. Get the useful stuff
           without the noise: new tools, interesting developments, practical
           ideas, RYX AI experiments.

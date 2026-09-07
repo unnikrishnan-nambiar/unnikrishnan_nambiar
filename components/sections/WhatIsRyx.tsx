@@ -9,7 +9,7 @@ export default function WhatIsRyx() {
           label="Discover"
           heading="What is RYX AI?"
           description={
-            <div className="space-y-4">
+            <div className="space-y-3">
               <p>There is a lot happening in AI. And a lot of content about it.</p>
               <p>We don&apos;t want to add more noise.</p>
               <p>

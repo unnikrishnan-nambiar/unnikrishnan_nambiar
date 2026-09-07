@@ -6,12 +6,12 @@ export default function FinalCta() {
     <section className="border-t border-border">
       <div className="container-content py-10 text-center sm:py-16">
         <Reveal>
-          <div className="mx-auto max-w-[650px] space-y-1 text-lg leading-[1.6] text-ink-secondary">
+          <div className="mx-auto max-w-[650px] space-y-1 text-lg leading-[1.5] text-ink-secondary">
             <p>You don&apos;t need to know everything about AI.</p>
             <p>You just need to know:</p>
           </div>
 
-          <div className="mx-auto mt-4 max-w-[650px] space-y-1 text-lg leading-[1.6] text-ink-secondary">
+          <div className="mx-auto mt-4 max-w-[650px] space-y-1 text-lg leading-[1.5] text-ink-secondary">
             <p>What&apos;s happening.</p>
             <p>What&apos;s useful.</p>
             <p>What to try next.</p>

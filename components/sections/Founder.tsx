@@ -10,8 +10,8 @@ export default function Founder() {
       <Reveal>
         <SectionLabel>The person behind RYX AI</SectionLabel>
 
-        <div className="mx-auto mt-6 aspect-[4/5] w-full max-w-[440px] overflow-hidden rounded-card border border-border bg-card">
-          {site.founder.photoSrc ? (
+        {site.founder.photoSrc && (
+          <div className="mx-auto mt-6 aspect-[4/5] w-full max-w-[440px] overflow-hidden rounded-card border border-border bg-card">
             <Image
               src={site.founder.photoSrc}
               alt={site.founder.name}
@@ -19,29 +19,20 @@ export default function Founder() {
               height={1100}
               className="h-full w-full object-cover"
             />
-          ) : (
-            <div
-              className="flex h-full w-full items-center justify-center text-sm text-ink-muted"
-              aria-hidden
-            >
-              Photo
-            </div>
-          )}
-        </div>
+          </div>
+        )}
 
-        <div className="mx-auto mt-6 max-w-reading space-y-4 text-lg leading-[1.6] text-ink-secondary">
-          <p>Hi, I&apos;m {site.founder.name}.</p>
-          <p>I work in AI and product.</p>
+        <div className="mx-auto mt-6 max-w-reading space-y-3 text-lg leading-[1.5] text-ink-secondary">
           <p>
-            I&apos;ve spent a lot of time building with AI. But I realised I
-            wasn&apos;t sharing much of what I was learning. So I started RYX AI.
+            Hi, I&apos;m {site.founder.name}. I work in AI and product.
           </p>
           <p>
-            Not to tell you that AI is going to change everything.
-            <br />
-            Not to sell you another AI product.
-            <br />
-            Just to explore it.
+            I&apos;ve spent a lot of time building with AI, but wasn&apos;t
+            sharing much of what I was learning. So I started RYX AI.
+          </p>
+          <p>
+            Not to tell you AI will change everything, or to sell you another
+            AI product. Just to explore it.
           </p>
         </div>
 

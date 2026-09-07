@@ -12,7 +12,7 @@ export default function Community() {
             We&apos;re building this together.
           </h2>
 
-          <p className="mx-auto mt-4 max-w-[650px] text-lg leading-[1.6] text-ink-secondary">
+          <p className="mx-auto mt-3 max-w-[650px] text-lg leading-[1.5] text-ink-secondary">
             RYX AI is being built around people who are curious about AI and want
             to actually experiment with it: learn from others, share what
             you&apos;re building, ask questions, find collaborators.

@@ -20,7 +20,7 @@ export default function SectionIntro({
         {heading}
       </h2>
       {description && (
-        <div className="mx-auto mt-4 max-w-[650px] text-lg leading-[1.6] text-ink-secondary">
+        <div className="mx-auto mt-3 max-w-[650px] text-lg leading-[1.5] text-ink-secondary">
           {description}
         </div>
       )}
