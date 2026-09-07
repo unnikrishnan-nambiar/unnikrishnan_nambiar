@@ -4,7 +4,7 @@ import { site } from '@/data/site';
 
 export default function Founder() {
   return (
-    <section id="about" className="container-content py-18 sm:py-28">
+    <section id="about" className="container-content py-9 sm:py-14">
       <div className="grid gap-10 lg:grid-cols-[380px_1fr] lg:items-start">
         <div className="aspect-[4/5] w-full overflow-hidden rounded-card border border-border bg-card">
           {site.founder.photoSrc ? (

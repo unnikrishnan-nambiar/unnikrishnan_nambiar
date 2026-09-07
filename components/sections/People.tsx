@@ -5,7 +5,7 @@ import { builds } from '@/data/builds';
 
 export default function People() {
   return (
-    <section className="container-content py-18 sm:py-28">
+    <section className="container-content py-9 sm:py-14">
       <SectionLabel>06 / Connect</SectionLabel>
       <h2 className="mt-3 font-display text-[32px] font-semibold tracking-tight sm:text-4xl lg:text-[44px]">
         People building with AI.

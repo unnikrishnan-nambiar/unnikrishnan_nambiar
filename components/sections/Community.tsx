@@ -3,7 +3,7 @@ import Button from '@/components/ui/Button';
 export default function Community() {
   return (
     <section id="community" className="border-y border-border bg-card">
-      <div className="container-content py-18 sm:py-28">
+      <div className="container-content py-9 sm:py-14">
         <div className="max-w-reading">
           <h2 className="font-display text-[32px] font-semibold tracking-tight sm:text-4xl lg:text-[44px]">
             Don&apos;t just follow AI.

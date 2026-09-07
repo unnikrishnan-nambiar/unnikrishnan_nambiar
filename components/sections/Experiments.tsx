@@ -14,7 +14,7 @@ function formatDate(iso: string) {
 
 export default function Experiments() {
   return (
-    <section id="experiments" className="container-content py-18 sm:py-28">
+    <section id="experiments" className="container-content py-9 sm:py-14">
       <SectionLabel>05 / Experiment</SectionLabel>
       <h2 className="mt-3 font-display text-[32px] font-semibold tracking-tight sm:text-4xl lg:text-[44px]">
         We tried it.

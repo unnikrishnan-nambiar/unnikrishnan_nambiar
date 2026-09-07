@@ -14,7 +14,7 @@ function formatDate(iso: string) {
 
 export default function AiNews() {
   return (
-    <section id="discover" className="container-content py-18 sm:py-28">
+    <section id="discover" className="container-content py-9 sm:py-14">
       <SectionLabel>02 / Discover</SectionLabel>
       <h2 className="mt-3 font-display text-[32px] font-semibold tracking-tight sm:text-4xl lg:text-[44px]">
         What&apos;s happening in AI?

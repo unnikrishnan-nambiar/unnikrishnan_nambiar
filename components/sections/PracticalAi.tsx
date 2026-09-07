@@ -11,7 +11,7 @@ const categories = [
 
 export default function PracticalAi() {
   return (
-    <section id="guides" className="container-content py-18 sm:py-28">
+    <section id="guides" className="container-content py-9 sm:py-14">
       <SectionLabel>03 / Learn</SectionLabel>
       <h2 className="mt-3 font-display text-[32px] font-semibold tracking-tight sm:text-4xl lg:text-[44px]">
         What can you actually do with AI?

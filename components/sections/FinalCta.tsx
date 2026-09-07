@@ -3,7 +3,7 @@ import Button from '@/components/ui/Button';
 export default function FinalCta() {
   return (
     <section className="border-t border-border">
-      <div className="container-content py-18 text-center sm:py-28">
+      <div className="container-content py-9 text-center sm:py-14">
         <h2 className="mx-auto max-w-2xl font-display text-[32px] font-semibold tracking-tight sm:text-4xl lg:text-[44px]">
           AI is changing fast.
         </h2>

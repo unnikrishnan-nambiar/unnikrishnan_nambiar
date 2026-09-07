@@ -3,7 +3,7 @@ import { site } from '@/data/site';
 
 export default function Hero() {
   return (
-    <section id="top" className="container-content py-18 sm:py-28">
+    <section id="top" className="container-content py-9 sm:py-14">
       <p className="text-sm font-medium text-ink-secondary">RYX AI</p>
 
       <h1 className="mt-4 max-w-3xl font-display text-[42px] font-semibold leading-[1.05] tracking-tight sm:text-[64px] lg:text-[72px]">
