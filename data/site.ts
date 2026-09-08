@@ -14,7 +14,7 @@ export const site = {
     url: 'https://ferry.example.com',
   },
   founder: {
-    name: 'Unnikrishnan',
+    name: 'Unnikrishnan Nambiar',
     // Personal account — distinct from site.instagramUrl (the brand
     // account). Founder.tsx's "Follow me" button links here.
     instagramUrl: 'https://www.instagram.com/unnikrishnan._nambiar/',
