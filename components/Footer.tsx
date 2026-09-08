@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Logo from './Logo';
 import { site } from '@/data/site';
 
@@ -48,9 +49,19 @@ export default function Footer() {
                 {column.links.map((link) => (
                   <li key={link.label}>
                     {link.comingSoon ? (
-                      <span className="text-sm text-white/40">
-                        {link.label} <span className="text-white/40">(soon)</span>
+                      <span className="text-sm text-white/50">
+                        {link.label} <span className="text-white/50">(soon)</span>
                       </span>
+                    ) : link.href!.startsWith('/') ? (
+                      // Internal path — next/link so GitHub Pages' basePath
+                      // is applied automatically (a plain <a href="/tools">
+                      // would ship un-prefixed and 404 under a repo subpath).
+                      <Link
+                        href={link.href!}
+                        className="text-sm text-white/60 transition-colors hover:text-cyan"
+                      >
+                        {link.label}
+                      </Link>
                     ) : (
                       <a
                         href={link.href}
@@ -103,7 +114,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 border-t border-white/15 pt-6">
-          <p className="text-sm text-white/40">{site.domain} © 2026</p>
+          <p className="text-sm text-white/50">{site.domain} © 2026</p>
         </div>
       </div>
     </footer>

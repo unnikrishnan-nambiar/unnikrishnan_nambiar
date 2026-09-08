@@ -1,4 +1,5 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
+import Link from 'next/link';
 
 type Variant = 'primary' | 'secondary' | 'accent' | 'dark' | 'light';
 
@@ -32,6 +33,21 @@ export default function Button(props: LinkProps | ButtonProps) {
 
   if ('href' in rest && rest.href) {
     const { href, ...anchorRest } = rest as LinkProps;
+
+    // Internal path (starts with "/", e.g. "/tools", "/#discover") — use
+    // next/link so GitHub Pages' basePath gets applied automatically.
+    // Plain <a href="/tools"> would ship that literal string with no
+    // prefix and 404 once deployed under a repo subpath. External URLs,
+    // mailto:, and same-page "#hash" links don't need that, so they stay
+    // plain <a> tags.
+    if (href.startsWith('/')) {
+      return (
+        <Link href={href} className={classes} {...anchorRest}>
+          {props.children}
+        </Link>
+      );
+    }
+
     return (
       <a href={href} className={classes} {...anchorRest}>
         {props.children}

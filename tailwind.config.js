@@ -11,7 +11,10 @@ module.exports = {
         paper: '#FFFFFF',
         ink: '#0A0A0A',
         'ink-secondary': '#525252',
-        'ink-muted': '#8A8A8A',
+        // Was #8A8A8A — only ~3.5:1 against white, below the 4.5:1 WCAG AA
+        // text-contrast floor. Darkened; still visibly "muted" against
+        // ink/ink-secondary but readable at caption/label sizes.
+        'ink-muted': '#6B6B6B',
         border: '#E5E5E5',
         card: '#F7F7F7',
         // Maximalist multi-color accent system — four bold "standard" hues,

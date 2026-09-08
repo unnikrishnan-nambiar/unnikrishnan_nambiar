@@ -55,7 +55,7 @@ export default function Experiments() {
                 as="article"
                 className="rounded-card border-2 border-ink bg-paper p-6 sm:p-8"
               >
-                <p className="text-sm font-bold text-pink">{formatDate(experiment.date)}</p>
+                <p className="text-sm font-bold text-pink-dark">{formatDate(experiment.date)}</p>
                 <h3 className="mt-1 font-display text-2xl font-bold">{experiment.title}</h3>
                 <p className="mt-2 text-ink-secondary">{experiment.description}</p>
 
@@ -74,7 +74,7 @@ export default function Experiments() {
                       return (
                         <div key={key}>
                           <Divider className="mb-4" />
-                          <p className="text-sm font-bold uppercase tracking-[0.1em] text-pink">
+                          <p className="text-sm font-bold uppercase tracking-[0.1em] text-pink-dark">
                             {label}
                           </p>
                           <p className="mt-2 text-ink-secondary">{value}</p>

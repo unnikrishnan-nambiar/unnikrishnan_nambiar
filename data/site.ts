@@ -8,11 +8,6 @@ export const site = {
   instagramUrl: 'https://www.instagram.com/ryxai.in/',
   youtubeUrl: 'https://youtube.com/@ryx.ai',
   linkedinUrl: 'https://linkedin.com/company/ryxai',
-  sideProject: {
-    label: 'Ferry',
-    description: 'AI agents for sales conversations.',
-    url: 'https://ferry.example.com',
-  },
   founder: {
     name: 'Unnikrishnan Nambiar',
     // Personal account — distinct from site.instagramUrl (the brand

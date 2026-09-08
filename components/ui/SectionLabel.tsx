@@ -1,10 +1,14 @@
 type LabelColor = 'ink' | 'violet' | 'pink' | 'cyan' | 'amber';
 
+// pink/cyan use the -dark step, not DEFAULT: white text on the DEFAULT
+// tone is only ~3.5:1 (pink) / ~2.4:1 (cyan) — both fail WCAG AA's 4.5:1
+// text-contrast floor at this label's small bold size. violet/amber's
+// DEFAULT already clears it.
 const fills: Record<LabelColor, string> = {
   ink: 'bg-ink text-paper',
   violet: 'bg-violet text-paper',
-  pink: 'bg-pink text-paper',
-  cyan: 'bg-cyan text-paper',
+  pink: 'bg-pink-dark text-paper',
+  cyan: 'bg-cyan-dark text-paper',
   amber: 'bg-amber text-ink',
 };
 

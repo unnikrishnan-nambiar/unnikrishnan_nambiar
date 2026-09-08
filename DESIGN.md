@@ -451,6 +451,98 @@ won't fit one row. Closing line ("Different backgrounds. Different
 goals. One community exploring AI together.") sits between the grid and
 the "Share Your Build" button, both kept from the original section.
 
+## Launch checklist audit (SEO / performance / a11y / conversion)
+
+Ran through a standard pre-launch checklist end to end. What changed:
+
+- **SEO**: every page already had its own `title`/`description`; added
+  `lib/metadata.ts` (`pageMetadata(path, title, description)`) so each
+  page also gets a canonical URL and matching per-page OpenGraph/Twitter
+  card data — Next does NOT deep-merge `openGraph`/`twitter` objects
+  between a page and the root layout, so a page that sets its own
+  `openGraph` silently loses the layout's image/siteName unless the
+  helper repeats them. Root layout (`app/layout.tsx`) also got
+  `keywords`, `robots`, and a `viewport.themeColor`.
+- **OG image**: `app/opengraph-image.png` (1200×630, on-brand gradient
+  blobs + "Skip the noise. Get what's real." + AI/Business/Workflows
+  tags) — built as an HTML mockup screenshotted at 2x then downscaled,
+  not `next/og`'s `ImageResponse`, to avoid any static-export risk.
+  Referenced from both the layout default and every page's `pageMetadata`.
+- **Favicon**: already existed (`app/icon.png`, from an earlier pass) —
+  nothing to do.
+- **sitemap.xml / robots.txt**: `app/sitemap.ts` / `app/robots.ts`
+  (Next's `MetadataRoute` file convention). Both need
+  `export const dynamic = 'force-static'` or the `output: 'export'`
+  build refuses to prerender them — easy to miss, the error only shows
+  up under `GITHUB_PAGES=true`, not the normal build.
+- **Alt text**: already fine — the only two `<Image>`s in the codebase
+  (`Logo`, `Founder`'s photo) already had real alt text.
+- **Image optimization**: `public/logo.png` was 896×380/53KB for a
+  logo that only ever renders at ≤24px tall — downscaled to 472×200/35KB
+  (still generous headroom for retina). `app/icon.png` was already small.
+- **Color contrast (real WCAG AA failures, not just "could be
+  darker")**: `ink-muted` (`#8A8A8A`, ~3.5:1 on white) darkened to
+  `#6B6B6B` (~5.3:1) in `tailwind.config.js` — it's used for caption/meta
+  text (Hero tagline, Founder byline, AiNews meta line, etc.) at sizes
+  too small to qualify for the "large text" 3:1 exception. Same failure,
+  same fix pattern, in three other places: `SectionLabel`'s and `Badge`'s
+  `pink`/`cyan` fills (white text on the DEFAULT tone was ~3.5:1 / ~2.4:1)
+  now use the `-dark` step instead (`pink-dark`/`cyan-dark`, ~6:1/~5.4:1)
+  — `violet`/`amber` DEFAULT already cleared 4.5:1, untouched;
+  `Experiments.tsx`'s small bold `text-pink` date/label lines swapped to
+  `text-pink-dark` for the same reason (its `text-2xl` pink numbers are
+  fine — bold ≥18.66px qualifies as "large text" at the 3:1 threshold);
+  Footer's `white/40` (copyright line, "(soon)" tag — ~3.8:1 on the
+  near-black footer) bumped to `white/50` (~5.4:1). `white/50` and
+  `white/60` elsewhere in the footer were already fine.
+- **404 page**: `app/not-found.tsx` — on-brand ("That page isn't
+  signal. It's just noise."), one CTA back home. Next auto-generates
+  `out/404.html` from this at build time; GitHub Pages serves it
+  natively for any unmatched path, no extra config needed.
+- **Broken links — a real, live bug, not hypothetical**: every
+  Button/Nav/Footer internal link (`href="/tools"`, `/about`, etc.) was
+  a plain `<a href>` string. `next/link` applies the GitHub Pages
+  `basePath` (`/unnikrishnan_nambiar`) automatically; a raw `<a>` tag
+  does not. Since the site's actual live URL IS the github.io subpath
+  (confirmed with the user — `ryxai.in` isn't wired up as a custom
+  domain yet, despite `data/site.ts`'s `domain` field and
+  `metadataBase` already assuming it), every nav click, footer link, and
+  internal `Button` was almost certainly 404ing on the real deployed
+  site this whole time — built HTML had `/unnikrishnan_nambiar/_next/…`
+  for assets but plain `/tools` (no prefix) for the nav link right next
+  to it. Fixed by making `Button.tsx` render `next/link` instead of
+  `<a>` whenever `href` starts with `/` (external URLs, `mailto:`, and
+  same-page `#hash` links stay plain `<a>` — they don't need basePath),
+  and converting `Nav.tsx`'s and `Footer.tsx`'s own raw internal anchors
+  the same way. Verified by grepping the actual `GITHUB_PAGES=true`
+  build output for `href="/unnikrishnan_nambiar/tools"` etc., not just by
+  reading the diff. **If `ryxai.in` custom domain does get configured
+  later** (repo Settings → Pages), `next.config.js`'s unconditional
+  `basePath`/`assetPrefix` will need revisiting — a custom domain
+  normally serves at root, and this basePath would then break asset
+  loading there. Flagged, not fixed, since it isn't live yet.
+- Removed `data/site.ts`'s unused `sideProject` field (dead code, and
+  its `url` was a fake `ferry.example.com` placeholder nothing
+  referenced).
+- **Analytics**: skipped per explicit request — needs a real account
+  (GA4 measurement ID / Plausible site-id) that only the user can create;
+  wiring up a script gated on a nonexistent env var would just be dead
+  weight. Ask again if/when there's a real ID to wire in.
+- **One CTA per page**: reviewed, not changed. Every section keeps its
+  own natural CTA (Tools → "Explore Tools", Experiments → sign-up +
+  "See Our Experiments", the Join popup available globally via nav/
+  footer, etc.) — this is the same maximalist, multi-section landing
+  page structure established earlier in this project by direct request,
+  not an oversight. Each page still has one dominant *primary* action;
+  secondary section-level CTAs are intentional, not noise. Didn't
+  unilaterally strip buttons a prior round of this same session added
+  on purpose.
+- **Mobile responsiveness / page load speed**: no changes — both were
+  already addressed in earlier passes (motion/responsiveness audit,
+  static export, `next/font` subsetting, `images.unoptimized` for the
+  tiny local image set). Spot-checked with fresh screenshots as part of
+  this pass; nothing regressed.
+
 ## If you touch this next
 
 - `data/site.ts` → `nav` array drives the header; `tags` drives the

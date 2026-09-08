@@ -62,7 +62,7 @@ export default function Nav() {
 
         <nav className="col-start-2 hidden items-center gap-8 md:flex">
           {nav.map((item) => (
-            <a
+            <Link
               key={item.label}
               href={item.href}
               className="group relative py-1 text-sm font-bold text-ink-secondary transition-colors duration-300 hover:text-violet"
@@ -72,7 +72,7 @@ export default function Nav() {
                 aria-hidden
                 className="absolute -bottom-0.5 left-0 h-0.5 w-full origin-left scale-x-0 bg-violet transition-transform duration-300 ease-out group-hover:scale-x-100"
               />
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -127,14 +127,14 @@ export default function Nav() {
         >
           <div className="container-content flex flex-col gap-1 py-3">
             {nav.map((item) => (
-              <a
+              <Link
                 key={item.label}
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className="rounded-xl px-2 py-2.5 text-base font-bold text-ink-secondary transition-colors duration-200 hover:bg-card hover:text-violet"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
             <div className="mt-2">
               <Button
