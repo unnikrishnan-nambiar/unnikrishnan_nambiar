@@ -24,23 +24,26 @@ export default function Founder() {
 
         <div className="mx-auto mt-6 max-w-reading space-y-4 text-lg leading-[1.5] text-ink-secondary">
           <p>
+            I&apos;m Unnikrishnan, a Product Manager working at the
+            intersection of AI, data, and technology, with a background in
+            engineering and hands-on experience building and testing AI
+            systems.
+          </p>
+          <p>
             I started RYX AI Community because AI kept moving faster than the
-            conversation around it. Most of what I saw stayed on the surface.
+            conversation around it, while much of what I saw stayed on the
+            surface. I wanted a place to share what I&apos;m learning, test
+            what actually works, and meet people doing the same.
           </p>
           <p>
-            I&apos;ve spent the last few years working across AI, product, and
-            data systems: testing tools, building things, breaking things, and
-            figuring out what actually works. I wanted a place to share that
-            openly and meet people doing the same.
+            RYX AI Community is where we discover what&apos;s happening in
+            AI, learn from each other, experiment, and build things that are
+            genuinely useful.
           </p>
           <p>
-            That&apos;s what RYX AI Community is. A place to discover
-            what&apos;s happening in AI, learn from each other, experiment,
-            and build things that are actually useful.
-          </p>
-          <p>
-            I don&apos;t have all the answers. I&apos;m here to explore, share
-            what I learn, and build alongside people curious enough to try.
+            I don&apos;t have all the answers, but I&apos;m curious enough to
+            keep exploring, sharing, and building alongside people who are
+            too.
           </p>
         </div>
 
