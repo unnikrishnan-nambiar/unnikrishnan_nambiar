@@ -8,7 +8,7 @@ export default function Founder() {
   return (
     <section id="about" className="container-content scroll-mt-20 py-14 text-center sm:py-20">
       <Reveal>
-        <SectionLabel color="amber">Why we started?</SectionLabel>
+        <SectionLabel color="amber">A bit about me</SectionLabel>
 
         {site.founder.photoSrc && (
           <div className="mx-auto mt-6 aspect-[4/5] w-full max-w-[440px] overflow-hidden rounded-card border-2 border-ink bg-card">
