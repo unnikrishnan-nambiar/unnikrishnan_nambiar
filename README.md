@@ -39,7 +39,7 @@ tools/make-images.py       regenerates placeholder images (optional)
    - Copy a `.prompt` section for each prompt. Give each prompt's text a
      unique `id` (`prompt-1`, `prompt-2`, …) and set that card's button
      `data-copy-target` to the same id.
-3. Set `og:url` to `https://unnikrishnan-nambiar.github.io/unnikrishnan_nambiar/g/<slug>/`.
+3. Set `og:url` to `https://unnikrishnan-nambiar.github.io/uk_speaks.ai/g/<slug>/`.
 4. Optional per-guide preview image:
    ```bash
    pip install pillow fonttools brotli
@@ -70,7 +70,7 @@ ones:
 They all use one string:
 
 ```
-https://unnikrishnan-nambiar.github.io/unnikrishnan_nambiar/
+https://unnikrishnan-nambiar.github.io/uk_speaks.ai/
 ```
 
 To move to a custom domain, find and replace that string across the repo,
