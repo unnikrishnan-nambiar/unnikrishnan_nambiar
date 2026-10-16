@@ -38,3 +38,6 @@ yarn-error.log*
 # IDE
 *.code-workspace
 .idea
+
+# static site deploy staging (built in CI)
+/_site

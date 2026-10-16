@@ -1,10 +1,13 @@
 name: Deploy to GitHub Pages
 
+# Plain static site: no install, no build. This job only copies the public
+# files into _site/ so docs, mockups, tools/ and the guide template never get
+# published.
+
 on:
   push:
     branches:
       - main
-      - claude/ryx-ai-website-ozme2m
   workflow_dispatch:
 
 permissions:
@@ -23,23 +26,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-
-      - run: npm ci
-
-      - name: Build static export
-        env:
-          GITHUB_PAGES: 'true'
-        run: npm run build
+      - name: Collect public files
+        run: |
+          mkdir _site
+          cp -R index.html 404.html .nojekyll favicon.svg favicon-32.png apple-touch-icon.png assets g _site/
+          rm -rf _site/g/_template
 
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: out
+          path: _site
 
   deploy:
     needs: build
