@@ -1,12 +1,11 @@
 import Image from 'next/image';
-import logo from '@/public/logo.png';
+import wordmark from '@/public/brand/ryxai-white.svg';
 
 type LogoProps = {
   className?: string;
 };
 
-// The real "ryx ai" wordmark (public/logo.png — extracted from the supplied
-// artwork, background removed).
+// The "ryx ai" wordmark from the official logo pack (white, for the dark site).
 export default function Logo({ className = '' }: LogoProps) {
-  return <Image src={logo} alt="ryx ai" className={className} priority />;
+  return <Image src={wordmark} alt="ryx ai" className={className} priority />;
 }

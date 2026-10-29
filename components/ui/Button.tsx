@@ -1,64 +1,74 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
 import Link from 'next/link';
 
-type Variant = 'primary' | 'secondary' | 'accent' | 'dark' | 'light';
+type Variant = 'primary' | 'secondary' | 'light' | 'ghost';
 
 const base =
-  'inline-flex items-center justify-center gap-1.5 rounded-full px-6 py-3 text-[15px] font-semibold transition-all duration-300 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-95 active:duration-100';
+  'group inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-[15px] font-medium transition-all duration-300 ease-out active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60';
 
 const variants: Record<Variant, string> = {
   primary:
-    'bg-gradient-to-r from-violet to-pink text-paper shadow-glow-violet hover:shadow-glow-pink',
-  accent:
-    'bg-gradient-to-r from-cyan to-violet text-paper shadow-glow-cyan hover:shadow-glow-violet',
-  secondary:
-    'rounded-2xl border-[2.5px] border-ink bg-paper text-ink hover:bg-ink hover:text-paper',
-  dark: 'bg-ink text-paper hover:bg-ink/85',
-  light: 'bg-paper text-ink shadow-hard hover:shadow-lg',
+    'bg-accent text-white shadow-[0_10px_40px_-12px_rgba(61,90,254,0.8)] hover:bg-accent-bright',
+  secondary: 'border border-line-strong bg-white/[0.03] text-fg hover:border-white/40 hover:bg-white/[0.07]',
+  light: 'bg-fg text-night hover:bg-white',
+  ghost: 'px-0 py-0 text-fg hover:text-accent-bright',
 };
 
 type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   variant?: Variant;
   href: string;
+  arrow?: boolean;
 };
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: Variant;
   href?: undefined;
+  arrow?: boolean;
 };
 
+function Arrow() {
+  return (
+    <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">
+      →
+    </span>
+  );
+}
+
 export default function Button(props: LinkProps | ButtonProps) {
-  const { variant = 'primary', className = '', ...rest } = props;
+  const { variant = 'primary', className = '', arrow = false, children, ...rest } = props;
   const classes = `${base} ${variants[variant]} ${className}`;
+  const content = (
+    <>
+      {children}
+      {arrow && <Arrow />}
+    </>
+  );
 
   if ('href' in rest && rest.href) {
     const { href, ...anchorRest } = rest as LinkProps;
 
-    // Internal path (starts with "/", e.g. "/tools", "/#discover") — use
-    // next/link so GitHub Pages' basePath gets applied automatically.
-    // Plain <a href="/tools"> would ship that literal string with no
-    // prefix and 404 once deployed under a repo subpath. External URLs,
-    // mailto:, and same-page "#hash" links don't need that, so they stay
-    // plain <a> tags.
+    // Internal path (starts with "/") — use next/link so GitHub Pages'
+    // basePath gets applied automatically. Plain <a href="/ferry"> would
+    // ship that literal string with no prefix and 404 once deployed under
+    // a repo subpath. External URLs, mailto: and tel: stay plain <a> tags.
     if (href.startsWith('/')) {
       return (
         <Link href={href} className={classes} {...anchorRest}>
-          {props.children}
+          {content}
         </Link>
       );
     }
 
     return (
       <a href={href} className={classes} {...anchorRest}>
-        {props.children}
+        {content}
       </a>
     );
   }
 
-  const buttonRest = rest as ButtonProps;
   return (
-    <button className={classes} {...buttonRest}>
-      {props.children}
+    <button className={classes} {...(rest as ButtonProps)}>
+      {content}
     </button>
   );
 }

@@ -8,65 +8,41 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        paper: '#FFFFFF',
-        ink: '#0A0A0A',
-        'ink-secondary': '#525252',
-        // Was #8A8A8A — only ~3.5:1 against white, below the 4.5:1 WCAG AA
-        // text-contrast floor. Darkened; still visibly "muted" against
-        // ink/ink-secondary but readable at caption/label sizes.
-        'ink-muted': '#6B6B6B',
-        border: '#E5E5E5',
-        card: '#F7F7F7',
-        // Maximalist multi-color accent system — four bold "standard" hues,
-        // each with a dark (text-on-tint) and light (tint background) step.
-        violet: {
-          DEFAULT: '#7C3AED',
-          dark: '#5B21B6',
-          light: '#F1E8FF',
+        // Dark, editorial base — near-black night with slightly lifted
+        // surfaces, hairline borders, and one electric-blue accent (the
+        // "Book a call" blue from the sales deck).
+        night: '#07080B',
+        surface: '#0E1015',
+        raised: '#151821',
+        line: 'rgba(255,255,255,0.09)',
+        'line-strong': 'rgba(255,255,255,0.16)',
+        fg: '#F4F5F7',
+        muted: '#A2A7B3',
+        subtle: '#71768A',
+        accent: {
+          DEFAULT: '#3D5AFE',
+          bright: '#6E85FF',
+          soft: 'rgba(61,90,254,0.14)',
         },
-        pink: {
-          DEFAULT: '#EC4899',
-          dark: '#BE185D',
-          light: '#FFE7F3',
-        },
-        cyan: {
-          DEFAULT: '#06B6D4',
-          dark: '#0E7490',
-          light: '#DFF9FD',
-        },
-        amber: {
-          DEFAULT: '#F59E0B',
-          dark: '#B45309',
-          light: '#FFF3DC',
-        },
+        mint: '#5EE6B0',
+        rose: '#FF7A8A',
       },
       fontFamily: {
-        sans: ['var(--font-sans)', 'sans-serif'],
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
         display: ['var(--font-display)', 'var(--font-sans)', 'sans-serif'],
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
       },
       borderRadius: {
-        DEFAULT: '10px',
-        card: '20px',
+        card: '22px',
       },
       maxWidth: {
         content: '1240px',
         reading: '720px',
       },
-      spacing: {
-        18: '4.5rem',
-      },
-      boxShadow: {
-        'glow-violet': '0 12px 40px -8px rgba(124, 58, 237, 0.45)',
-        'glow-pink': '0 12px 40px -8px rgba(236, 72, 153, 0.45)',
-        'glow-cyan': '0 12px 40px -8px rgba(6, 182, 212, 0.4)',
-        'glow-amber': '0 12px 40px -8px rgba(245, 158, 11, 0.4)',
-        hard: '6px 6px 0 0 #0A0A0A',
-      },
       keyframes: {
-        blob: {
-          '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
-          '33%': { transform: 'translate(3%, -4%) scale(1.06)' },
-          '66%': { transform: 'translate(-3%, 3%) scale(0.96)' },
+        marquee: {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-50%)' },
         },
         dropdown: {
           from: { opacity: '0', transform: 'translateY(-8px)' },
@@ -76,21 +52,21 @@ module.exports = {
           from: { opacity: '0', transform: 'translateY(16px)' },
           to: { opacity: '1', transform: 'translateY(0)' },
         },
-        'backdrop-in': {
-          from: { opacity: '0' },
-          to: { opacity: '1' },
+        glow: {
+          '0%, 100%': { opacity: '0.55', transform: 'scale(1)' },
+          '50%': { opacity: '0.8', transform: 'scale(1.06)' },
         },
-        'modal-in': {
-          from: { opacity: '0', transform: 'translateY(12px) scale(0.97)' },
-          to: { opacity: '1', transform: 'translateY(0) scale(1)' },
+        typing: {
+          '0%, 80%, 100%': { opacity: '0.25' },
+          '40%': { opacity: '1' },
         },
       },
       animation: {
-        blob: 'blob 14s ease-in-out infinite',
+        marquee: 'marquee 40s linear infinite',
         dropdown: 'dropdown 250ms cubic-bezier(0.22,1,0.36,1)',
-        'fade-up': 'fade-up 700ms cubic-bezier(0.22,1,0.36,1) both',
-        'backdrop-in': 'backdrop-in 200ms ease-out both',
-        'modal-in': 'modal-in 280ms cubic-bezier(0.22,1,0.36,1) both',
+        'fade-up': 'fade-up 800ms cubic-bezier(0.22,1,0.36,1) both',
+        glow: 'glow 9s ease-in-out infinite',
+        typing: 'typing 1.2s ease-in-out infinite',
       },
     },
   },
