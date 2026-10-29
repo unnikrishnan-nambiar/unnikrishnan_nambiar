@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Space_Grotesk } from 'next/font/google';
+import { Inter, Inter_Tight, Instrument_Serif } from 'next/font/google';
 import './globals.css';
 import { site } from '@/data/site';
 
@@ -10,22 +10,39 @@ const inter = Inter({
   weight: ['400', '500', '600'],
 });
 
-// Display/headline face — bold geometric grotesk for a maximalist, poster-scale look.
-const spaceGrotesk = Space_Grotesk({
+// Display/headline face — tight grotesk for big editorial headlines.
+const interTight = Inter_Tight({
   subsets: ['latin'],
   variable: '--font-display',
-  weight: ['500', '600', '700'],
+  weight: ['500', '600'],
 });
 
-const defaultTitle = 'RYX AI Community - Signal, Not Sales';
+// Serif italic for the one accent word per headline.
+const instrumentSerif = Instrument_Serif({
+  subsets: ['latin'],
+  variable: '--font-serif',
+  weight: '400',
+  style: ['normal', 'italic'],
+});
+
+const defaultTitle = 'RYX AI - AI that works for your business';
 const defaultDescription =
-  "RYX AI Community cuts through AI hype with real tools, real workflows, and honest experiments for people running a business, not selling a course.";
+  'RYX AI builds AI for sales, marketing and automation: chat and voice agents that answer every enquiry, follow up every lead and take repetitive work off your team. Makers of Ferry, the AI sales agent for your website.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${site.domain}`),
   title: defaultTitle,
   description: defaultDescription,
-  keywords: ['AI community', 'AI tools', 'AI workflows', 'AI experiments', 'practical AI'],
+  keywords: [
+    'AI solutions',
+    'AI agents',
+    'AI chatbot',
+    'WhatsApp AI',
+    'voice AI',
+    'website sales agent',
+    'Ferry',
+    'AI for business India',
+  ],
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
@@ -45,7 +62,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#FFFFFF',
+  themeColor: '#07080B',
 };
 
 export default function RootLayout({
@@ -54,8 +71,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body className="bg-paper font-sans text-ink">{children}</body>
+    <html
+      lang="en"
+      className={`${inter.variable} ${interTight.variable} ${instrumentSerif.variable}`}
+    >
+      <body className="bg-night font-sans text-fg">{children}</body>
     </html>
   );
 }

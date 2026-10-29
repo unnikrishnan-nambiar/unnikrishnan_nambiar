@@ -5,10 +5,15 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    color-scheme: dark;
   }
 
   body {
-    @apply bg-paper text-ink antialiased;
+    @apply bg-night text-fg antialiased;
+  }
+
+  ::selection {
+    @apply bg-accent text-white;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -29,21 +34,41 @@
 
 @layer utilities {
   .container-content {
-    @apply mx-auto w-full max-w-content px-6 sm:px-8 lg:px-10;
+    @apply mx-auto w-full max-w-content px-5 sm:px-8 lg:px-10;
   }
 
   .container-reading {
-    @apply mx-auto w-full max-w-reading px-6 sm:px-0;
+    @apply mx-auto w-full max-w-reading px-5 sm:px-0;
   }
 
-  /* Gradient headline text — used sparingly for the biggest statement per section. */
-  .text-gradient-vp {
-    @apply bg-gradient-to-r from-violet via-fuchsia-500 to-pink bg-clip-text text-transparent;
+  /* Big editorial headline: tight tracking, slightly condensed leading. */
+  .headline {
+    @apply font-display font-semibold tracking-[-0.035em] text-fg;
+    line-height: 1.02;
   }
-  .text-gradient-ca {
-    @apply bg-gradient-to-r from-cyan to-violet bg-clip-text text-transparent;
+
+  /* Serif italic accent word inside a headline, 360labs-style. */
+  .accent-serif {
+    @apply font-serif font-normal italic tracking-[-0.01em] text-accent-bright;
   }
-  .text-gradient-pa {
-    @apply bg-gradient-to-r from-pink to-amber bg-clip-text text-transparent;
+
+  .card {
+    @apply rounded-card border border-line bg-surface;
+  }
+
+  /* Faint grid texture for hero/CTA backdrops. */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, black 40%, transparent);
+  }
+
+  .mask-fade-x {
+    mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
   }
 }

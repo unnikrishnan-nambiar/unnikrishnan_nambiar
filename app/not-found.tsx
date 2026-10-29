@@ -4,8 +4,8 @@ import Footer from '@/components/Footer';
 import Button from '@/components/ui/Button';
 
 export const metadata: Metadata = {
-  title: 'Page Not Found - RYX AI Community',
-  description: "This page doesn't exist. Head back and find what's real.",
+  title: 'Page Not Found - RYX AI',
+  description: "This page doesn't exist.",
 };
 
 export default function NotFound() {
@@ -13,20 +13,20 @@ export default function NotFound() {
     <>
       <Nav />
       <main>
-        <section className="container-content py-24 text-center sm:py-32">
-          <p className="font-display text-[110px] font-bold leading-none tracking-tight sm:text-[160px]">
-            <span className="text-gradient-vp">404</span>
-          </p>
-          <h1 className="mt-4 font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            That page isn&apos;t signal. It&apos;s just noise.
+        <section className="container-content py-28 text-center sm:py-40">
+          <p className="headline text-[120px] text-white/10 sm:text-[200px]">404</p>
+          <h1 className="headline mt-2 text-3xl sm:text-5xl">
+            This page <span className="accent-serif">isn&apos;t here.</span>
           </h1>
-          <p className="mx-auto mt-4 max-w-[520px] text-lg text-ink-secondary">
-            The link&apos;s broken or the page moved. Either way, it&apos;s not
-            here anymore.
+          <p className="mx-auto mt-5 max-w-[460px] text-lg text-muted">
+            The link is broken or the page has moved.
           </p>
-          <div className="mt-8 flex justify-center">
-            <Button href="/" variant="primary">
-              Back to RYX AI Community →
+          <div className="mt-10 flex justify-center gap-3">
+            <Button href="/" arrow>
+              Back home
+            </Button>
+            <Button href="/contact" variant="secondary">
+              Contact us
             </Button>
           </div>
         </section>

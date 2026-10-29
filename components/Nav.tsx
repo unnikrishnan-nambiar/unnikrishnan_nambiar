@@ -1,91 +1,56 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import Logo from './Logo';
 import Button from './ui/Button';
-import { nav, site } from '@/data/site';
+import { nav } from '@/data/site';
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
-  const progressRef = useRef<HTMLDivElement>(null);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
-  // Scroll-progress bar: fills left-to-right as the reader moves down the
-  // page. Driven by direct style mutation (not React state) so it doesn't
-  // trigger a re-render on every scroll frame; rAF-throttled so it never
-  // does more than one write per paint.
   useEffect(() => {
-    let ticking = false;
-
-    function update() {
-      const node = progressRef.current;
-      if (!node) return;
-      const scrollTop = window.scrollY;
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = max > 0 ? Math.min(1, Math.max(0, scrollTop / max)) : 0;
-      node.style.transform = `scaleX(${progress})`;
-      ticking = false;
-    }
-
-    function onScroll() {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(update);
-    }
-
-    update();
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-    };
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  const isActive = (href: string) => pathname === href || pathname === `${href}/`;
+
   return (
-    <header className="sticky top-0 z-40 border-b-2 border-ink bg-paper">
-      <div className="h-[3px] bg-border" aria-hidden>
-        <div
-          ref={progressRef}
-          className="h-full origin-left scale-x-0 bg-gradient-to-r from-violet via-pink to-amber transition-transform duration-150 ease-out"
-        />
-      </div>
-      <div className="container-content grid h-16 grid-cols-[1fr_auto_1fr] items-center gap-4">
-        <Link
-          href="/"
-          className="col-start-1 shrink-0 justify-self-start"
-          onClick={() => setOpen(false)}
-        >
-          <Logo className="h-5 w-auto sm:h-6" />
-          <span className="sr-only">RYX AI Community</span>
+    <header
+      className={`sticky top-0 z-40 transition-colors duration-300 ${
+        scrolled || open ? 'border-b border-line bg-night/80 backdrop-blur-xl' : 'border-b border-transparent'
+      }`}
+    >
+      <div className="container-content flex h-16 items-center justify-between gap-4 sm:h-[72px]">
+        <Link href="/" className="shrink-0" onClick={() => setOpen(false)}>
+          <Logo className="h-6 w-auto sm:h-7" />
+          <span className="sr-only">RYX AI home</span>
         </Link>
 
-        <nav className="col-start-2 hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-1 rounded-full border border-line bg-white/[0.02] p-1 md:flex">
           {nav.map((item) => (
             <Link
               key={item.label}
               href={item.href}
-              className="group relative py-1 text-sm font-bold text-ink-secondary transition-colors duration-300 hover:text-violet"
+              className={`rounded-full px-4 py-1.5 text-sm transition-colors duration-200 ${
+                isActive(item.href) ? 'bg-white/10 text-fg' : 'text-muted hover:text-fg'
+              }`}
             >
               {item.label}
-              <span
-                aria-hidden
-                className="absolute -bottom-0.5 left-0 h-0.5 w-full origin-left scale-x-0 bg-violet transition-transform duration-300 ease-out group-hover:scale-x-100"
-              />
             </Link>
           ))}
         </nav>
 
-        <div className="col-start-3 flex items-center justify-self-end">
+        <div className="flex items-center gap-2">
           <div className="hidden md:block">
-            <Button
-              href={site.instagramUrl}
-              variant="accent"
-              className="px-5 py-2 text-sm"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Follow RYX AI Community →
+            <Button href="/contact" className="px-5 py-2 text-sm">
+              Book a call
             </Button>
           </div>
 
@@ -94,26 +59,14 @@ export default function Nav() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="mobile-nav"
-            className="flex h-9 w-9 items-center justify-center rounded-xl border-2 border-ink transition-transform duration-200 active:scale-90 md:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-line-strong md:hidden"
           >
             <span className="sr-only">{open ? 'Close menu' : 'Open menu'}</span>
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
               {open ? (
-                <path
-                  d="M3 3l12 12M15 3L3 15"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  className="transition-all duration-200"
-                />
+                <path d="M4 4l10 10M14 4L4 14" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
               ) : (
-                <path
-                  d="M2 5h14M2 9h14M2 13h14"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  className="transition-all duration-200"
-                />
+                <path d="M2 6h14M2 12h14" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
               )}
             </svg>
           </button>
@@ -121,33 +74,21 @@ export default function Nav() {
       </div>
 
       {open && (
-        <nav
-          id="mobile-nav"
-          className="animate-dropdown border-t-2 border-ink bg-paper md:hidden"
-        >
-          <div className="container-content flex flex-col gap-1 py-3">
+        <nav id="mobile-nav" className="animate-dropdown border-t border-line md:hidden">
+          <div className="container-content flex flex-col gap-1 py-4">
             {nav.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="rounded-xl px-2 py-2.5 text-base font-bold text-ink-secondary transition-colors duration-200 hover:bg-card hover:text-violet"
+                className="rounded-xl px-2 py-3 font-display text-2xl tracking-tight text-fg"
               >
                 {item.label}
               </Link>
             ))}
-            <div className="mt-2">
-              <Button
-                href={site.instagramUrl}
-                variant="accent"
-                className="w-full"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setOpen(false)}
-              >
-                Follow RYX AI Community →
-              </Button>
-            </div>
+            <Button href="/contact" className="mt-3 w-full" onClick={() => setOpen(false)}>
+              Book a call
+            </Button>
           </div>
         </nav>
       )}
