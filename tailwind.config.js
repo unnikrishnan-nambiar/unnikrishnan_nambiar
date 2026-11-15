@@ -8,53 +8,43 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Dark, editorial base — near-black night with slightly lifted
-        // surfaces, hairline borders, and one electric-blue accent (the
-        // "Book a call" blue from the sales deck).
-        night: '#07080B',
-        surface: '#0E1015',
-        raised: '#151821',
-        line: 'rgba(255,255,255,0.09)',
-        'line-strong': 'rgba(255,255,255,0.16)',
-        fg: '#F4F5F7',
-        muted: '#A2A7B3',
-        subtle: '#71768A',
-        accent: {
+        // Night-to-morning palette. Pages open in `night` (the hours the
+        // agents work unattended) and continue on `paper` (the morning the
+        // owner wakes up to). `signal` is the deck's blue; `dawn` is the
+        // single warm note, kept for times of day and highlights.
+        night: '#0B1030',
+        dusk: '#1A2158',
+        signal: {
           DEFAULT: '#3D5AFE',
-          bright: '#6E85FF',
-          soft: 'rgba(61,90,254,0.14)',
+          deep: '#2A41D6',
+          soft: '#E4E8FF',
+          glow: '#8C9CFF',
         },
-        mint: '#5EE6B0',
-        rose: '#FF7A8A',
+        dawn: '#FFB36B',
+        paper: '#F4F6FB',
+        card: '#FFFFFF',
+        ink: '#0C1024',
+        'ink-2': '#454B66',
+        'ink-3': '#676D8A',
+        rule: 'rgba(12,16,36,0.12)',
+        'rule-night': 'rgba(255,255,255,0.14)',
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
         display: ['var(--font-display)', 'var(--font-sans)', 'sans-serif'],
-        serif: ['var(--font-serif)', 'Georgia', 'serif'],
-      },
-      borderRadius: {
-        card: '22px',
       },
       maxWidth: {
-        content: '1240px',
-        reading: '720px',
+        content: '1200px',
       },
       keyframes: {
-        marquee: {
-          from: { transform: 'translateX(0)' },
-          to: { transform: 'translateX(-50%)' },
+        // The hero's one orchestrated moment: log entries arrive in order.
+        arrive: {
+          from: { opacity: '0', transform: 'translateY(10px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
         },
         dropdown: {
           from: { opacity: '0', transform: 'translateY(-8px)' },
           to: { opacity: '1', transform: 'translateY(0)' },
-        },
-        'fade-up': {
-          from: { opacity: '0', transform: 'translateY(16px)' },
-          to: { opacity: '1', transform: 'translateY(0)' },
-        },
-        glow: {
-          '0%, 100%': { opacity: '0.55', transform: 'scale(1)' },
-          '50%': { opacity: '0.8', transform: 'scale(1.06)' },
         },
         typing: {
           '0%, 80%, 100%': { opacity: '0.25' },
@@ -62,10 +52,8 @@ module.exports = {
         },
       },
       animation: {
-        marquee: 'marquee 40s linear infinite',
-        dropdown: 'dropdown 250ms cubic-bezier(0.22,1,0.36,1)',
-        'fade-up': 'fade-up 800ms cubic-bezier(0.22,1,0.36,1) both',
-        glow: 'glow 9s ease-in-out infinite',
+        arrive: 'arrive 600ms cubic-bezier(0.22,1,0.36,1) both',
+        dropdown: 'dropdown 220ms cubic-bezier(0.22,1,0.36,1)',
         typing: 'typing 1.2s ease-in-out infinite',
       },
     },

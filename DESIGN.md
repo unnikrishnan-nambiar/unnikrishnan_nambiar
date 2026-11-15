@@ -3,48 +3,74 @@
 Working notes on the visual direction, for whoever (human or Claude) touches
 this next.
 
-## The pivot (October 2026)
+## What the site is
 
-RYX AI stopped being a content/news community brand. It now sells **AI
-solutions to businesses** (sales, marketing, automation agents) and has one
-product, **Ferry**, an AI sales agent for websites. The old community
-routes (`/tools`, `/experiments`, `/guides`, `/community`), the news feed,
-the Google Apps Script signup and the maximalist multi-color system were
-removed in this pass. Git history has them if anything needs reviving.
+RYX AI sells **AI agents to businesses** (sales, marketing, automation) and
+has one product, **Ferry**, an AI sales agent for websites. The older
+community/news site is gone; git history has it.
 
 Content sources: the RYX sales deck (problems, three pillars, 12 use cases,
-process, integrations), the Ferry deck and Ferry Starter proposal (features,
-steps, analytics), and the master deck (approach, founders). Style
-reference: 360labs.ai, plus the dark slides of the sales deck.
+process, integrations), the Ferry deck and Ferry Starter proposal, and the
+master deck (approach, founders).
 
-## Visual system
+## The idea: night to morning
 
-- **Dark, editorial.** Near-black `night` background, `surface`/`raised`
-  cards, hairline `line` borders. One accent, electric blue `accent`
-  (#3D5AFE, the deck's "Book a call" blue). `mint`/`rose` appear only as
-  quiet tints on the use-case Problem/Solution boxes.
-- **Type.** Inter for UI, Inter Tight for big tight-tracked headlines
-  (`.headline`), and Instrument Serif italic for the one accent phrase per
-  headline (`.accent-serif`). Keep it to one serif phrase per heading.
-- **Texture.** `.bg-grid` with a blurred blue glow behind heroes and the
-  closing CTA. Numbered rows (`01`, `02`…) and hairline-divided grids do
-  the 360labs-style structure.
-- **Motion.** `Reveal` (fade + 12px rise on scroll), slow hero glow, the
-  integrations marquee. All disabled under `prefers-reduced-motion`.
+The brief was "don't make it generic". The site is built on one idea taken
+from the product itself: **the agents work the hours the business is
+closed**. So every page opens at night and continues in daylight.
+
+- **Hero** (`.sky`, deep indigo): the headline "You close at 7. Your
+  customers don't." beside `NightLog`, one illustrative night at a clinic,
+  entry by entry. This is the single orchestrated animation on the site
+  (entries arrive in order, once). It is labelled as an illustration.
+- **Daybreak** (`.daybreak`): a gradient band from night through dawn amber
+  to paper.
+- **Morning**: `MorningBrief`, the owner's 8 AM WhatsApp summary, on paper.
+  Everything after this is daylight.
+- The closing CTA and footer return to night.
+
+## Tokens
+
+- `night` #0B1030, `dusk` #1A2158: the hours the agents work.
+- `signal` #3D5AFE (the deck's blue): actions, links, the Ferry band.
+- `dawn` #FFB36B: times of day, focus rings, the calculator result. Keep it
+  rare; it is the one warm note.
+- `paper` #F4F6FB, `card` #FFFFFF, `ink` #0C1024, `ink-2`, `ink-3`.
+- Type: **Bricolage Grotesque** for display (heavy, tight, soft curves that
+  echo the rounded ryx wordmark), **Hanken Grotesk** for body.
+
+## Rules we chose on purpose
+
+- No uppercase eyebrow labels, no italic accent words, no arrows on
+  buttons, no per-section fade-in. Section headings say the thing.
+- Numbers mark only real sequences (the six-step process, Ferry's three
+  steps). Lists that aren't sequences use rules, not numbers or cards.
+- Rounded cards are reserved for things that are objects: the chat demo,
+  the morning brief, the calculator, pricing, the contact form.
+- Buttons say what happens: "Book a 30-minute call", "Get early access".
+- Every interactive target is at least 40px tall; focus is a dawn outline.
+
+## Interactive pieces
+
+- `FerryDemo`: a scripted Ferry conversation driven by suggested replies,
+  for three sample businesses (`data/demo.ts`). Invented businesses, real
+  flow. Ends by showing what the owner sees in the dashboard.
+- `LostRevenueCalculator`: enquiries × share missed × conversion × customer
+  value, all the visitor's own numbers. No industry averages.
+- `UseCaseExplorer`: industry filter over the 12 use cases, each linking to
+  its own page at `/solutions/<slug>`.
 
 ## Pricing and claims
 
 - Ferry pricing is set by the founders: **Starter from ₹2,000/month**,
   **Premium ₹5,000/month, coming soon**. Older documents show ₹1,000 pilot,
   999 Pro and $199 plans; those are superseded. Edit `data/ferry.ts`.
-- The CTA for Ferry is early access through the contact page.
-- No fabricated stats, testimonials or customer logos. The investor-deck
-  numbers (customer count, churn, funding) are deliberately not on the site
-  unless the founders ask for them. Use-case examples are the deck's
-  illustrative scenarios, not named customers.
+- No fabricated stats, testimonials or customer logos. Investor-deck
+  numbers (customer count, churn, funding) are deliberately left out.
+  Illustrations and examples are labelled as such.
 
 ## Static hosting constraints
 
-GitHub Pages static export with a `basePath`: internal links must go
-through `next/link` (see `Button.tsx`), and there are no API routes. The
-contact form hands off to mailto/WhatsApp instead of posting anywhere.
+GitHub Pages static export with a `basePath` and `trailingSlash: true`
+(`/solutions` is both a page and a folder). Internal links go through
+`next/link`. No API routes: the contact form hands off to mailto/WhatsApp.

@@ -5,15 +5,21 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    color-scheme: dark;
   }
 
   body {
-    @apply bg-night text-fg antialiased;
+    @apply bg-paper text-ink antialiased;
   }
 
   ::selection {
-    @apply bg-accent text-white;
+    @apply bg-signal text-white;
+  }
+
+  /* One visible focus style everywhere; dawn reads on both night and paper. */
+  :focus-visible {
+    outline: 2px solid theme('colors.dawn');
+    outline-offset: 3px;
+    border-radius: 6px;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -27,48 +33,49 @@
       animation-delay: 0s !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
     }
   }
 }
 
 @layer utilities {
   .container-content {
-    @apply mx-auto w-full max-w-content px-5 sm:px-8 lg:px-10;
+    @apply mx-auto w-full max-w-content px-5 sm:px-8;
   }
 
-  .container-reading {
-    @apply mx-auto w-full max-w-reading px-5 sm:px-0;
-  }
-
-  /* Big editorial headline: tight tracking, slightly condensed leading. */
+  /* Display headline: heavy, tight, and set close. */
   .headline {
-    @apply font-display font-semibold tracking-[-0.035em] text-fg;
-    line-height: 1.02;
+    @apply font-display font-bold tracking-[-0.035em];
+    line-height: 0.98;
+    text-wrap: balance;
   }
 
-  /* Serif italic accent word inside a headline, 360labs-style. */
-  .accent-serif {
-    @apply font-serif font-normal italic tracking-[-0.01em] text-accent-bright;
+  .lede {
+    @apply text-lg leading-relaxed sm:text-xl;
+    text-wrap: pretty;
   }
 
-  .card {
-    @apply rounded-card border border-line bg-surface;
+  /* Night sky behind page heroes: deep indigo with a low horizon glow. */
+  .sky {
+    background:
+      radial-gradient(120% 70% at 85% 110%, rgba(61, 90, 254, 0.55), transparent 60%),
+      radial-gradient(60% 40% at 10% -10%, rgba(140, 156, 255, 0.18), transparent 70%),
+      theme('colors.night');
   }
 
-  /* Faint grid texture for hero/CTA backdrops. */
-  .bg-grid {
-    background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
-    background-size: 64px 64px;
+  /* The band where night turns to morning. */
+  .daybreak {
+    background: linear-gradient(
+      to bottom,
+      theme('colors.night') 0%,
+      #2a2f7a 22%,
+      #8a6fb0 44%,
+      #ffb36b 62%,
+      #ffe2c2 78%,
+      theme('colors.paper') 100%
+    );
   }
 
-  .mask-fade-b {
-    mask-image: linear-gradient(to bottom, black 40%, transparent);
-  }
-
-  .mask-fade-x {
-    mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  .tnum {
+    font-variant-numeric: tabular-nums;
   }
 }

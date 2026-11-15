@@ -13,6 +13,10 @@ const nextConfig = {
   // Don't auto-generate AGENTS.md/CLAUDE.md in the repo root.
   agentRules: false,
   images: { unoptimized: true },
+  // Export every route as <route>/index.html. /solutions is both a page and
+  // a folder of use-case pages, and static hosts only resolve that reliably
+  // with index files.
+  trailingSlash: true,
   ...(isGithubPages && {
     output: 'export',
     basePath: `/${repoName}`,

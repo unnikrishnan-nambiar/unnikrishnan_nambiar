@@ -1,31 +1,24 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Inter_Tight, Instrument_Serif } from 'next/font/google';
+import { Bricolage_Grotesque, Hanken_Grotesk } from 'next/font/google';
 import './globals.css';
 import { site } from '@/data/site';
+import JsonLd from '@/components/JsonLd';
+import { organizationLd } from '@/lib/structuredData';
 
-// UI/body face.
-const inter = Inter({
+// Body face: plain and warm, stays out of the way.
+const hanken = Hanken_Grotesk({
   subsets: ['latin'],
   variable: '--font-sans',
-  weight: ['400', '500', '600'],
 });
 
-// Display/headline face — tight grotesk for big editorial headlines.
-const interTight = Inter_Tight({
+// Display face: heavy grotesque with soft, slightly odd curves that echo
+// the rounded ryx wordmark.
+const bricolage = Bricolage_Grotesque({
   subsets: ['latin'],
   variable: '--font-display',
-  weight: ['500', '600'],
 });
 
-// Serif italic for the one accent word per headline.
-const instrumentSerif = Instrument_Serif({
-  subsets: ['latin'],
-  variable: '--font-serif',
-  weight: '400',
-  style: ['normal', 'italic'],
-});
-
-const defaultTitle = 'RYX AI - AI that works for your business';
+const defaultTitle = 'RYX AI - AI agents that answer, call back and follow up for your business';
 const defaultDescription =
   'RYX AI builds AI for sales, marketing and automation: chat and voice agents that answer every enquiry, follow up every lead and take repetitive work off your team. Makers of Ferry, the AI sales agent for your website.';
 
@@ -62,7 +55,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#07080B',
+  themeColor: '#0B1030',
 };
 
 export default function RootLayout({
@@ -71,11 +64,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${interTight.variable} ${instrumentSerif.variable}`}
-    >
-      <body className="bg-night font-sans text-fg">{children}</body>
+    <html lang="en" className={`${hanken.variable} ${bricolage.variable}`}>
+      <body className="bg-paper font-sans text-ink">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-card focus:px-4 focus:py-2 focus:text-ink"
+        >
+          Skip to content
+        </a>
+        <JsonLd data={organizationLd} />
+        {children}
+      </body>
     </html>
   );
 }

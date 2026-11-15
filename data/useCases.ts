@@ -3,6 +3,18 @@
 
 export type Category = 'Sales' | 'Marketing' | 'Customer service' | 'Operations';
 
+export const sectors = [
+  'Real estate',
+  'Clinics',
+  'Education',
+  'Auto',
+  'Retail',
+  'Hospitality',
+  'Professional services',
+] as const;
+
+export type Sector = (typeof sectors)[number];
+
 export type UseCase = {
   slug: string;
   title: string;
@@ -10,6 +22,8 @@ export type UseCase = {
   category: Category;
   channels: string[];
   industries: string;
+  /** Sector filters this use case appears under. Empty means every sector. */
+  sectors: Sector[];
   problem: string;
   solution: string;
   benefit: string;
@@ -27,10 +41,11 @@ export const useCases: UseCase[] = [
     category: 'Sales',
     channels: ['WhatsApp', 'Website', 'Instagram'],
     industries: 'All industries',
+    sectors: [],
     problem:
       "Enquiries arrive on WhatsApp and web chat, get answered late, and never reach the CRM. Leads are lost inside salespeople's phones.",
     solution:
-      'An AI agent answers every enquiry in Arabic or English, qualifies budget, need and timeline, then creates the contact and deal in the CRM and assigns the right rep.',
+      'An AI agent answers every enquiry in the customer’s language, qualifies budget, need and timeline, then creates the contact and deal in the CRM and assigns the right rep.',
     benefit:
       'Every lead answered in seconds and captured in the CRM. Your sales team only talks to qualified buyers.',
     measure: 'Response time, % of leads logged in CRM, qualified leads per month, lead-to-meeting rate',
@@ -44,6 +59,7 @@ export const useCases: UseCase[] = [
     category: 'Sales',
     channels: ['Website'],
     industries: 'All industries',
+    sectors: [],
     problem:
       "Visitors land on the website, can't find answers quickly and leave without contacting the business.",
     solution:
@@ -60,6 +76,7 @@ export const useCases: UseCase[] = [
     category: 'Sales',
     channels: ['Voice'],
     industries: 'Real estate, Education, Clinics, Auto',
+    sectors: ['Real estate', 'Education', 'Clinics', 'Auto'],
     problem:
       "Leads from ads and portals are called back hours later, by then they've spoken to a competitor.",
     solution:
@@ -76,6 +93,7 @@ export const useCases: UseCase[] = [
     category: 'Sales',
     channels: ['Voice'],
     industries: 'All industries',
+    sectors: [],
     problem: 'Missed calls are missed customers, and most never call back.',
     solution:
       'AI calls back every missed call within minutes, finds out what they need, and books or logs it.',
@@ -91,6 +109,7 @@ export const useCases: UseCase[] = [
     category: 'Sales',
     channels: ['WhatsApp', 'Voice'],
     industries: 'Real estate, Auto, Education, Clinics',
+    sectors: ['Real estate', 'Auto', 'Education', 'Clinics'],
     problem:
       'Thousands of past enquiries sit untouched in the CRM. Money already paid for in marketing.',
     solution:
@@ -107,6 +126,7 @@ export const useCases: UseCase[] = [
     category: 'Sales',
     channels: ['WhatsApp'],
     industries: 'Retail, D2C, Trading, Coaching',
+    sectors: ['Retail', 'Education'],
     problem:
       'Staff answer the same product, price and availability questions on WhatsApp all day.',
     solution:
@@ -123,6 +143,7 @@ export const useCases: UseCase[] = [
     category: 'Sales',
     channels: ['WhatsApp', 'Website'],
     industries: 'Real estate',
+    sectors: ['Real estate'],
     problem:
       'Agents spend hours manually sending listings to buyers who describe what they want.',
     solution:
@@ -139,6 +160,7 @@ export const useCases: UseCase[] = [
     category: 'Customer service',
     channels: ['WhatsApp', 'Voice'],
     industries: 'Clinics, Salons, Car dealers, Gyms',
+    sectors: ['Clinics', 'Auto', 'Hospitality'],
     problem: 'Reception is overloaded with booking calls, and no-shows waste slots.',
     solution:
       'AI books appointments, test drives or visits by phone and chat, and sends reminders.',
@@ -154,6 +176,7 @@ export const useCases: UseCase[] = [
     category: 'Marketing',
     channels: ['WhatsApp', 'Google'],
     industries: 'Restaurants, Clinics, Car service, Hotels',
+    sectors: ['Hospitality', 'Clinics', 'Auto'],
     problem: 'Happy customers rarely leave reviews, unhappy ones do, and replies are slow.',
     solution:
       'AI asks happy customers for Google reviews, drafts on-brand replies to all reviews, and flags unhappy customers to the owner.',
@@ -169,6 +192,7 @@ export const useCases: UseCase[] = [
     category: 'Operations',
     channels: ['Email', 'Upload'],
     industries: 'Logistics, Accounting, PRO/Visa, HR',
+    sectors: ['Professional services'],
     problem:
       'Staff type data from invoices, POs, IDs, passports and trade licences. Slow and error-prone.',
     solution:
@@ -185,6 +209,7 @@ export const useCases: UseCase[] = [
     category: 'Operations',
     channels: ['WhatsApp'],
     industries: 'Accounting, Legal, PRO/Visa',
+    sectors: ['Professional services'],
     problem: 'Firms spend days chasing clients for missing documents.',
     solution: "AI chases clients on WhatsApp, checks what's received and files documents.",
     benefit: 'Files complete faster, and staff stop chasing.',
@@ -199,6 +224,7 @@ export const useCases: UseCase[] = [
     category: 'Operations',
     channels: ['WhatsApp'],
     industries: 'SMBs',
+    sectors: [],
     problem: "Owners chase staff for numbers and don't see problems until it's late.",
     solution:
       'AI sends a morning WhatsApp summary of leads, sales, bookings, cash and reviews from their CRM and sheets.',
@@ -208,3 +234,7 @@ export const useCases: UseCase[] = [
       'A clinic owner reads one message at 8am: bookings today, no-shows yesterday, new reviews and pending payments.',
   },
 ];
+
+export const findUseCase = (slug: string) => useCases.find((u) => u.slug === slug);
+
+export const inSector = (u: UseCase, sector: Sector) => u.sectors.length === 0 || u.sectors.includes(sector);

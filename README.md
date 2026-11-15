@@ -17,8 +17,9 @@ Open [http://localhost:3000](http://localhost:3000).
 
 | Route        | What it is                                                        |
 | ------------ | ----------------------------------------------------------------- |
-| `/`          | Home: problem, what we build, Ferry spotlight, use cases, process |
-| `/solutions` | All 12 use cases, filterable by category                          |
+| `/`          | Home: a night of the agent at work, Ferry demo, calculator        |
+| `/solutions` | All 12 use cases, filterable by industry                          |
+| `/solutions/<slug>` | One page per use case                                      |
 | `/ferry`     | Ferry product page with pricing and FAQ                           |
 | `/about`     | Approach and founders                                             |
 | `/contact`   | Contact channels and the Ferry early-access / enquiry form        |
@@ -28,6 +29,8 @@ Open [http://localhost:3000](http://localhost:3000).
 - `data/site.ts` — contact details (email, phone, WhatsApp), social links, nav.
 - `data/useCases.ts` — the 12 use cases (from the sales deck).
 - `data/ferry.ts` — Ferry features, steps, analytics, **pricing plans** and FAQ.
+- `data/demo.ts` — the scripted conversations in the interactive Ferry demo.
+- `components/NightLog.tsx`, `components/MorningBrief.tsx` — the hero story.
 - `public/brand/` — wordmarks from the official logo pack. `app/icon.png` /
   `app/apple-icon.png` are the "ryx" app icons from the same pack.
 

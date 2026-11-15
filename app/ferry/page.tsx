@@ -1,19 +1,19 @@
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
-import ChatMock from '@/components/ChatMock';
 import CtaBand from '@/components/CtaBand';
 import Faq from '@/components/Faq';
+import FerryDemo from '@/components/FerryDemo';
 import FerryPricing from '@/components/FerryPricing';
+import JsonLd from '@/components/JsonLd';
 import Button from '@/components/ui/Button';
-import Eyebrow from '@/components/ui/Eyebrow';
-import Reveal from '@/components/ui/Reveal';
 import { ferryAnalytics, ferryFaq, ferryFeatures, ferrySteps } from '@/data/ferry';
 import { pageMetadata } from '@/lib/metadata';
+import { ferryFaqLd, ferryLd } from '@/lib/structuredData';
 
 export const metadata = pageMetadata(
   '/ferry',
   'Ferry - AI Website Sales Agent by RYX AI',
-  'Ferry is an AI sales agent built from your own website. It answers visitors, qualifies leads and books meetings around the clock. Starter from ₹2,000/month. Early access open.'
+  'Ferry is an AI sales agent built from your own website. It answers visitors, qualifies leads and books meetings around the clock. Starter from ₹2,000 a month. Early access open.'
 );
 
 const problems = [
@@ -25,179 +25,140 @@ const problems = [
 export default function FerryPage() {
   return (
     <>
+      <JsonLd data={ferryLd} />
+      <JsonLd data={ferryFaqLd} />
       <Nav />
-      <main>
-        {/* Hero */}
-        <section className="relative overflow-hidden">
-          <div aria-hidden className="bg-grid mask-fade-b absolute inset-0" />
-          <div
-            aria-hidden
-            className="animate-glow absolute -top-40 left-1/3 h-[520px] w-[860px] -translate-x-1/2 rounded-full bg-accent/30 blur-[140px]"
-          />
-          <div className="container-content relative grid items-center gap-14 pb-24 pt-16 sm:pt-24 lg:grid-cols-[1.2fr_1fr]">
-            <div className="animate-fade-up">
-              <div className="flex flex-wrap items-center gap-3">
-                <span className="rounded-full bg-accent px-3 py-1 text-xs font-medium text-white">Launching soon</span>
-                <Eyebrow>AI website sales agent, by RYX AI</Eyebrow>
-              </div>
-              <h1 className="headline mt-7 text-[72px] sm:text-[112px] lg:text-[136px]">
-                Ferry<span className="text-accent-bright">.</span>
-              </h1>
-              <p className="mt-4 max-w-[560px] text-2xl leading-snug tracking-tight text-fg sm:text-3xl">
-                Built from your own website. It answers visitors, qualifies leads and books meetings,{' '}
-                <span className="accent-serif">around the clock.</span>
+      <main id="main">
+        {/* Hero: the product, working */}
+        <section className="sky -mt-[68px] pt-[68px] text-white">
+          <div className="container-content grid items-center gap-14 pb-20 pt-14 sm:pt-20 lg:grid-cols-[1.1fr_1fr] lg:pb-28">
+            <div>
+              <p className="text-lg font-semibold text-dawn">Launching soon. Early access is open.</p>
+              <h1 className="headline mt-3 text-[96px] sm:text-[150px] lg:text-[180px]">Ferry</h1>
+              <p className="mt-4 max-w-[560px] text-2xl font-semibold leading-snug tracking-tight sm:text-3xl">
+                The AI sales agent for your website, built from your own website.
               </p>
-              <div className="mt-10 flex flex-wrap items-center gap-3">
-                <Button href="/contact?interest=ferry#early-access" arrow>
+              <p className="lede mt-5 max-w-[540px] text-white/80">
+                It answers visitors, qualifies leads and books meetings, around the clock. Try the conversation on the
+                right.
+              </p>
+              <div className="mt-9 flex flex-wrap gap-3">
+                <Button href="/contact?interest=ferry#early-access" variant="light">
                   Get early access
                 </Button>
-                <Button href="#pricing" variant="secondary">
+                <Button href="#pricing" variant="outline-night">
                   See pricing
                 </Button>
               </div>
-              <p className="mt-5 text-sm text-subtle">Starter from ₹2,000/month · Live in a day</p>
+              <p className="mt-5 text-white/80">Starter from ₹2,000 a month. Live in a day.</p>
             </div>
-            <div className="animate-fade-up flex justify-center [animation-delay:150ms] lg:justify-end">
-              <ChatMock />
+            <div className="flex lg:justify-end">
+              <FerryDemo />
             </div>
           </div>
         </section>
 
         {/* Problem */}
-        <section className="container-content py-24 sm:py-28">
-          <div className="grid gap-12 lg:grid-cols-[1fr_1fr]">
-            <Reveal>
-              <Eyebrow>The problem</Eyebrow>
-              <h2 className="headline mt-5 text-[38px] sm:text-[54px]">
-                Small businesses lose website visitors they <span className="accent-serif">already paid</span> to
-                attract.
-              </h2>
-              <p className="mt-6 max-w-[460px] text-lg leading-relaxed text-muted">
-                Hiring a team to answer every visitor, in real time, isn&apos;t economical. So most questions go
-                unanswered.
-              </p>
-            </Reveal>
-            <div className="divide-y divide-line self-end border-y border-line">
-              {problems.map((p, i) => (
-                <Reveal key={p.title} delay={i * 0.06} className="flex gap-6 py-6">
-                  <span className="pt-1 text-sm tabular-nums text-subtle">{String(i + 1).padStart(2, '0')}</span>
-                  <div>
-                    <h3 className="font-display text-xl font-semibold tracking-tight">{p.title}</h3>
-                    <p className="mt-1 text-muted">{p.body}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
+        <section className="container-content grid gap-10 py-24 sm:py-28 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+          <div>
+            <h2 className="headline text-[40px] sm:text-[56px]">
+              You already paid to bring those visitors in.
+            </h2>
+            <p className="lede mt-6 max-w-[480px] text-ink-2">
+              Hiring a team to answer every visitor in real time isn’t economical for a small business. So most
+              questions go unanswered, and the visitor leaves.
+            </p>
           </div>
+          <dl className="divide-y divide-rule self-end border-y border-rule">
+            {problems.map((p) => (
+              <div key={p.title} className="py-6">
+                <dt className="font-display text-2xl font-bold tracking-tight">{p.title}</dt>
+                <dd className="mt-1 text-lg text-ink-2">{p.body}</dd>
+              </div>
+            ))}
+          </dl>
         </section>
 
-        {/* How it works */}
-        <section className="border-y border-line bg-surface/50 py-24 sm:py-28">
-          <div className="container-content">
-            <Reveal>
-              <Eyebrow>The agent</Eyebrow>
-              <h2 className="headline mt-5 max-w-[760px] text-[38px] sm:text-[54px]">
-                A sales agent that <span className="accent-serif">builds itself</span> from your website.
-              </h2>
-            </Reveal>
-            <div className="mt-14 grid gap-5 lg:grid-cols-3">
+        {/* How it works: a real sequence */}
+        <section className="bg-card">
+          <div className="container-content py-24 sm:py-28">
+            <h2 className="headline max-w-[760px] text-[40px] sm:text-[56px]">
+              A sales agent that builds itself from your website
+            </h2>
+            <ol className="mt-14 grid gap-10 lg:grid-cols-3">
               {ferrySteps.map((s, i) => (
-                <Reveal key={s.step} delay={i * 0.08} className="card p-8">
-                  <p className="font-display text-5xl font-semibold tracking-tight text-accent-bright/80">{s.step}</p>
-                  <h3 className="mt-8 font-display text-2xl font-semibold tracking-tight">{s.title}</h3>
-                  <p className="mt-3 leading-relaxed text-muted">{s.body}</p>
-                </Reveal>
+                <li key={s.title} className="border-t-2 border-ink pt-5">
+                  <p className="tnum font-display text-5xl font-bold tracking-tight text-signal">{i + 1}</p>
+                  <h3 className="mt-4 font-display text-2xl font-bold tracking-tight">{s.title}</h3>
+                  <p className="mt-2 text-lg leading-relaxed text-ink-2">{s.body}</p>
+                </li>
               ))}
-            </div>
-            <p className="mt-8 text-sm text-subtle">
-              Go live with one script tag or the WordPress plugin.
+            </ol>
+            <p className="mt-10 text-lg text-ink-2">
+              Go live with one script tag or the WordPress plugin. No developer needed.
             </p>
           </div>
         </section>
 
         {/* Features */}
         <section className="container-content py-24 sm:py-28">
-          <Reveal>
-            <Eyebrow>What&apos;s included</Eyebrow>
-            <h2 className="headline mt-5 max-w-[760px] text-[38px] sm:text-[54px]">
-              Seven core features, <span className="accent-serif">all live in a day.</span>
-            </h2>
-          </Reveal>
-          <div className="mt-14 grid gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
-            {ferryFeatures.map((f, i) => (
-              <Reveal key={f.title} delay={(i % 4) * 0.05} className="bg-night p-7">
-                <p className="text-sm tabular-nums text-subtle">{String(i + 1).padStart(2, '0')}</p>
-                <h3 className="mt-8 font-display text-xl font-semibold tracking-tight">{f.title}</h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-muted">{f.body}</p>
-              </Reveal>
+          <h2 className="headline max-w-[760px] text-[40px] sm:text-[56px]">Everything in the box</h2>
+          <dl className="mt-12 grid gap-x-12 border-t border-rule md:grid-cols-2">
+            {ferryFeatures.map((f) => (
+              <div key={f.title} className="border-b border-rule py-7">
+                <dt className="font-display text-2xl font-bold tracking-tight">{f.title}</dt>
+                <dd className="mt-2 text-lg leading-relaxed text-ink-2">{f.body}</dd>
+              </div>
             ))}
-            <div className="flex flex-col justify-between bg-accent p-7 text-white">
-              <p className="font-display text-xl font-semibold tracking-tight">Voice agents</p>
-              <p className="mt-8 text-sm text-white/80">Coming soon to Ferry.</p>
+            <div className="border-b border-rule py-7">
+              <dt className="font-display text-2xl font-bold tracking-tight text-signal-deep">Voice agents</dt>
+              <dd className="mt-2 text-lg leading-relaxed text-ink-2">Coming soon to Ferry.</dd>
             </div>
-          </div>
+          </dl>
         </section>
 
         {/* Analytics */}
-        <section className="container-content pb-24 sm:pb-28">
-          <Reveal>
-            <Eyebrow>Analytics</Eyebrow>
-            <h2 className="headline mt-5 max-w-[760px] text-[38px] sm:text-[54px]">
-              See how your agent and your website are doing, <span className="accent-serif">in one place.</span>
+        <section className="bg-signal text-white">
+          <div className="container-content py-24 sm:py-28">
+            <h2 className="headline max-w-[820px] text-[40px] sm:text-[56px]">
+              See how your agent and your website are doing, in one place
             </h2>
-          </Reveal>
-          <div className="mt-14 grid gap-5 lg:grid-cols-3">
-            {ferryAnalytics.map((a, i) => (
-              <Reveal key={a.title} delay={i * 0.08} className="card p-8">
-                <p className="text-sm text-subtle">{a.question}</p>
-                <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight">{a.title}</h3>
-                <p className="mt-3 leading-relaxed text-muted">{a.body}</p>
-              </Reveal>
-            ))}
+            <dl className="mt-14 grid gap-10 lg:grid-cols-3">
+              {ferryAnalytics.map((a) => (
+                <div key={a.title} className="border-t-2 border-white pt-5">
+                  <dt className="font-display text-3xl font-bold tracking-tight">{a.question}</dt>
+                  <dd className="mt-3 text-lg leading-relaxed">{a.body}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </section>
 
         {/* Pricing */}
-        <section id="pricing" className="scroll-mt-20 border-t border-line py-24 sm:py-28">
-          <div className="container-content">
-            <Reveal className="text-center">
-              <Eyebrow className="justify-center">Pricing</Eyebrow>
-              <h2 className="headline mx-auto mt-5 max-w-[760px] text-[38px] sm:text-[54px]">
-                Simple monthly pricing. <span className="accent-serif">No surprises.</span>
-              </h2>
-              <p className="mx-auto mt-5 max-w-[520px] text-muted">
-                Ferry is launching soon. Get early access now and we&apos;ll set you up first.
-              </p>
-            </Reveal>
-            <div className="mx-auto mt-14 max-w-[1000px]">
+        <section id="pricing" className="scroll-mt-20">
+          <div className="container-content py-24 sm:py-28">
+            <h2 className="headline max-w-[760px] text-[40px] sm:text-[56px]">Simple monthly pricing</h2>
+            <p className="lede mt-5 max-w-[560px] text-ink-2">
+              Ferry is launching soon. Ask for early access and we’ll set you up first.
+            </p>
+            <div className="mt-12">
               <FerryPricing />
-              <p className="mt-6 text-center text-xs text-subtle">Prices exclude applicable taxes.</p>
+              <p className="mt-5 text-ink-2">Prices exclude applicable taxes.</p>
             </div>
           </div>
         </section>
 
         {/* FAQ */}
-        <section className="container-content pb-8">
-          <div className="grid gap-12 lg:grid-cols-[1fr_1.6fr]">
-            <Reveal>
-              <Eyebrow>FAQ</Eyebrow>
-              <h2 className="headline mt-5 text-[38px] sm:text-[54px]">
-                Questions, <span className="accent-serif">answered.</span>
-              </h2>
-            </Reveal>
+        <section className="border-t border-rule">
+          <div className="container-content grid gap-10 py-24 sm:py-28 lg:grid-cols-[1fr_1.5fr] lg:gap-20">
+            <h2 className="headline text-[40px] sm:text-[56px]">Before you ask</h2>
             <Faq items={ferryFaq} />
           </div>
         </section>
 
         <CtaBand
-          title={
-            <>
-              Put Ferry on your website.
-              <br />
-              <span className="accent-serif">Be first in line.</span>
-            </>
-          }
-          body="Early access is open. Tell us about your business and website and we'll get your agent live."
+          title="Put Ferry on your website and be first in line."
+          body="Early access is open. Tell us about your business and your website, and we’ll get your agent live."
         />
       </main>
       <Footer />

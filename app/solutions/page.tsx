@@ -8,35 +8,24 @@ import { pageMetadata } from '@/lib/metadata';
 export const metadata = pageMetadata(
   '/solutions',
   'AI Solutions & Use Cases - RYX AI',
-  'Twelve ways RYX AI puts AI to work in sales, marketing, customer service and operations: lead agents, instant callbacks, WhatsApp assistants, bookings, reviews and document automation.'
+  'Twelve jobs RYX AI agents do in sales, marketing, customer service and operations: lead agents, instant callbacks, WhatsApp assistants, bookings, reviews and document automation.'
 );
 
 export default function SolutionsPage() {
   return (
     <>
       <Nav />
-      <main>
+      <main id="main">
         <PageHero
-          eyebrow="Solutions"
-          title={
-            <>
-              AI built around <span className="accent-serif">your problem.</span>
-            </>
-          }
-          intro="Every engagement starts with where you lose leads, time or money. Here are twelve problems we solve today, each with what we measure so you know it's working."
+          title="Start with the problem, not the technology."
+          intro="Every project begins with where you lose leads, time or money. These are twelve jobs our agents do today. Pick your industry to see the ones that fit."
         />
-        <section className="container-content pb-8">
+        <section className="container-content py-16 sm:py-24">
           <UseCaseExplorer />
         </section>
         <CtaBand
-          title={
-            <>
-              Don&apos;t see your use case?
-              <br />
-              <span className="accent-serif">Tell us about it.</span>
-            </>
-          }
-          body="Most of what we build starts as a problem nobody has a tool for yet. Bring yours and we'll show you how AI could handle it."
+          title="Don’t see your problem here? Tell us about it."
+          body="Most of what we build starts as a job nobody has a tool for yet. Bring yours and we’ll show you how an agent could do it."
         />
       </main>
       <Footer />

@@ -1,48 +1,34 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
 import Link from 'next/link';
 
-type Variant = 'primary' | 'secondary' | 'light' | 'ghost';
+type Variant = 'primary' | 'light' | 'outline' | 'outline-night';
 
 const base =
-  'group inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-[15px] font-medium transition-all duration-300 ease-out active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60';
+  'inline-flex min-h-[44px] cursor-pointer items-center justify-center rounded-full px-6 py-2.5 text-[15px] font-semibold transition-colors duration-200 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50';
 
+// `primary` works on both night and paper. `light` is for night and signal
+// backgrounds. The two outlines are paired to their background.
 const variants: Record<Variant, string> = {
-  primary:
-    'bg-accent text-white shadow-[0_10px_40px_-12px_rgba(61,90,254,0.8)] hover:bg-accent-bright',
-  secondary: 'border border-line-strong bg-white/[0.03] text-fg hover:border-white/40 hover:bg-white/[0.07]',
-  light: 'bg-fg text-night hover:bg-white',
-  ghost: 'px-0 py-0 text-fg hover:text-accent-bright',
+  primary: 'bg-signal text-white hover:bg-signal-deep',
+  light: 'bg-white text-ink hover:bg-signal-soft',
+  outline: 'border border-ink/25 text-ink hover:border-ink hover:bg-ink hover:text-white',
+  'outline-night': 'border border-white/30 text-white hover:border-white hover:bg-white hover:text-ink',
 };
 
 type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   variant?: Variant;
   href: string;
-  arrow?: boolean;
 };
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: Variant;
   href?: undefined;
-  arrow?: boolean;
 };
 
-function Arrow() {
-  return (
-    <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">
-      →
-    </span>
-  );
-}
-
 export default function Button(props: LinkProps | ButtonProps) {
-  const { variant = 'primary', className = '', arrow = false, children, ...rest } = props;
+  const { variant = 'primary', className = '', children, ...rest } = props;
   const classes = `${base} ${variants[variant]} ${className}`;
-  const content = (
-    <>
-      {children}
-      {arrow && <Arrow />}
-    </>
-  );
+  const content = children;
 
   if ('href' in rest && rest.href) {
     const { href, ...anchorRest } = rest as LinkProps;

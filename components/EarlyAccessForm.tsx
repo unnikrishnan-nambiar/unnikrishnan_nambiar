@@ -12,7 +12,9 @@ const interests = [
 ];
 
 const field =
-  'w-full rounded-xl border border-line-strong bg-night/60 px-4 py-3 text-[15px] text-fg placeholder:text-subtle outline-none transition-colors focus:border-accent-bright';
+  'min-h-[48px] w-full rounded-xl border border-ink/25 bg-card px-4 py-3 text-base text-ink placeholder:text-ink-3 transition-colors focus:border-signal';
+
+const label = 'grid gap-2 font-semibold text-ink';
 
 // The site is a static export (GitHub Pages), so there's no backend to post
 // to. Submitting composes the enquiry and hands it to the visitor's email
@@ -60,7 +62,7 @@ export default function EarlyAccessForm() {
 
   return (
     <form onSubmit={onSubmit} className="grid gap-4">
-      <label className="grid gap-2 text-sm text-muted">
+      <label className={label}>
         I&apos;m interested in
         <select ref={interestRef} name="interest" defaultValue="ferry" className={field}>
           {interests.map((i) => (
@@ -71,24 +73,24 @@ export default function EarlyAccessForm() {
         </select>
       </label>
       <div className="grid gap-4 sm:grid-cols-2">
-        <label className="grid gap-2 text-sm text-muted">
-          Your name
+        <label className={label}>
+          Your name (required)
           <input name="name" required autoComplete="name" className={field} placeholder="Full name" />
         </label>
-        <label className="grid gap-2 text-sm text-muted">
-          Business name
+        <label className={label}>
+          Business name (required)
           <input name="business" required autoComplete="organization" className={field} placeholder="Company" />
         </label>
-        <label className="grid gap-2 text-sm text-muted">
+        <label className={label}>
           Website
           <input name="website" type="url" autoComplete="url" className={field} placeholder="https://" />
         </label>
-        <label className="grid gap-2 text-sm text-muted">
-          Phone / WhatsApp
+        <label className={label}>
+          Phone or WhatsApp (required)
           <input name="phone" type="tel" required autoComplete="tel" className={field} placeholder="+91" />
         </label>
       </div>
-      <label className="grid gap-2 text-sm text-muted">
+      <label className={label}>
         What do you want AI to handle?
         <textarea
           name="message"
@@ -98,14 +100,14 @@ export default function EarlyAccessForm() {
         />
       </label>
       <div className="mt-2 flex flex-wrap gap-3">
-        <Button type="submit" arrow>
+        <Button type="submit">
           Send by email
         </Button>
-        <Button type="button" variant="secondary" onClick={onWhatsApp}>
+        <Button type="button" variant="outline" onClick={onWhatsApp}>
           Send on WhatsApp
         </Button>
       </div>
-      <p className="text-xs text-subtle">
+      <p className="text-sm text-ink-2">
         Opens your email app or WhatsApp with the details filled in, addressed to {site.email}.
       </p>
     </form>

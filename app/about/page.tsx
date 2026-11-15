@@ -2,8 +2,6 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import PageHero from '@/components/PageHero';
 import CtaBand from '@/components/CtaBand';
-import Eyebrow from '@/components/ui/Eyebrow';
-import Reveal from '@/components/ui/Reveal';
 import { pageMetadata } from '@/lib/metadata';
 
 export const metadata = pageMetadata(
@@ -34,17 +32,17 @@ const principles = [
 const team = [
   {
     name: 'Unnikrishnan Nambiar',
-    role: 'Product · Sales · Consulting',
+    role: 'Product, sales and consulting',
     points: ['Bridges AI capability and business reality', 'Owns product vision and go-to-market'],
   },
   {
     name: 'Shamil Muhammed',
-    role: 'AI · Engineering',
+    role: 'AI and engineering',
     points: ['Built the entire technical stack', 'LLMs, RAG, voice AI, eval frameworks'],
   },
   {
     name: 'Salmanul Faris',
-    role: 'Sales · Marketing · Growth',
+    role: 'Sales, marketing and growth',
     points: ['Owns sales and marketing systems', 'Industry relationships and expansion'],
   },
 ];
@@ -53,62 +51,40 @@ export default function AboutPage() {
   return (
     <>
       <Nav />
-      <main>
+      <main id="main">
         <PageHero
-          eyebrow="About RYX AI"
-          title={
-            <>
-              AI is ready. Deployment isn&apos;t. <span className="accent-serif">That&apos;s the gap we fill.</span>
-            </>
-          }
+          title="AI is ready. Putting it to work is the hard part."
           intro="We build AI agents for sales, marketing and operations, and we stay with them after launch. Tested before customers see them, measured while they run, and improved from every real conversation."
         />
 
-        <section className="container-content py-16 sm:py-24">
-          <Reveal>
-            <Eyebrow>How we think</Eyebrow>
-          </Reveal>
-          <div className="mt-10 grid gap-px overflow-hidden rounded-card border border-line bg-line md:grid-cols-2">
-            {principles.map((p, i) => (
-              <Reveal key={p.title} delay={(i % 2) * 0.06} className="bg-night p-8 sm:p-10">
-                <p className="text-sm tabular-nums text-subtle">{String(i + 1).padStart(2, '0')}</p>
-                <h2 className="mt-8 font-display text-2xl font-semibold tracking-tight sm:text-3xl">{p.title}</h2>
-                <p className="mt-3 max-w-[480px] leading-relaxed text-muted">{p.body}</p>
-              </Reveal>
+        <section className="container-content py-20 sm:py-28">
+          <h2 className="headline max-w-[720px] text-[40px] sm:text-[56px]">What we hold ourselves to</h2>
+          <dl className="mt-12 grid gap-x-12 border-t border-rule md:grid-cols-2">
+            {principles.map((p) => (
+              <div key={p.title} className="border-b border-rule py-8">
+                <dt className="font-display text-3xl font-bold tracking-tight">{p.title}</dt>
+                <dd className="mt-3 max-w-[500px] text-lg leading-relaxed text-ink-2">{p.body}</dd>
+              </div>
             ))}
-          </div>
+          </dl>
         </section>
 
-        <section className="border-y border-line bg-surface/50 py-24 sm:py-28">
-          <div className="container-content">
-            <Reveal>
-              <Eyebrow>The team</Eyebrow>
-              <h2 className="headline mt-5 max-w-[760px] text-[38px] sm:text-[54px]">
-                Three founders. Three functions. <span className="accent-serif">No gaps.</span>
-              </h2>
-            </Reveal>
-            <div className="mt-14 grid gap-5 lg:grid-cols-3">
-              {team.map((m, i) => (
-                <Reveal key={m.name} delay={i * 0.08} className="card p-8">
-                  <div
-                    aria-hidden
-                    className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-accent to-accent-bright font-display text-lg font-semibold text-white"
-                  >
-                    {m.name
-                      .split(' ')
-                      .map((w) => w[0])
-                      .join('')}
-                  </div>
-                  <h3 className="mt-8 font-display text-2xl font-semibold tracking-tight">{m.name}</h3>
-                  <p className="mt-1 text-sm text-accent-bright">{m.role}</p>
-                  <ul className="mt-6 space-y-2 border-t border-line pt-5 text-muted">
+        <section className="bg-card">
+          <div className="container-content py-20 sm:py-28">
+            <h2 className="headline max-w-[760px] text-[40px] sm:text-[56px]">Three founders, three jobs, no gaps</h2>
+            <ul className="mt-14 grid gap-10 lg:grid-cols-3">
+              {team.map((m) => (
+                <li key={m.name} className="border-t-2 border-ink pt-5">
+                  <h3 className="font-display text-3xl font-bold tracking-tight">{m.name}</h3>
+                  <p className="mt-1 font-semibold text-signal-deep">{m.role}</p>
+                  <ul className="mt-5 space-y-2 text-lg text-ink-2">
                     {m.points.map((p) => (
                       <li key={p}>{p}</li>
                     ))}
                   </ul>
-                </Reveal>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </section>
 

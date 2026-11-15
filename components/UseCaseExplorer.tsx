@@ -1,46 +1,57 @@
 'use client';
 
 import { useState } from 'react';
-import UseCaseCard from './UseCaseCard';
-import { categories, useCases, type Category } from '@/data/useCases';
+import Link from 'next/link';
+import { inSector, sectors, useCases, type Sector } from '@/data/useCases';
 
-type Filter = 'All' | Category;
+type Filter = 'All' | Sector;
 
 export default function UseCaseExplorer() {
   const [filter, setFilter] = useState<Filter>('All');
-  const filters: Filter[] = ['All', ...categories];
-  const shown = filter === 'All' ? useCases : useCases.filter((u) => u.category === filter);
+  const filters: Filter[] = ['All', ...sectors];
+  const shown = filter === 'All' ? useCases : useCases.filter((u) => inSector(u, filter));
 
   return (
     <div>
-      <div role="tablist" aria-label="Filter use cases" className="flex flex-wrap gap-2">
+      <div role="group" aria-label="Filter by industry" className="flex flex-wrap gap-2">
         {filters.map((f) => {
-          const count = f === 'All' ? useCases.length : useCases.filter((u) => u.category === f).length;
           const active = filter === f;
           return (
             <button
               key={f}
               type="button"
-              role="tab"
-              aria-selected={active}
+              aria-pressed={active}
               onClick={() => setFilter(f)}
-              className={`rounded-full border px-4 py-2 text-sm transition-colors duration-200 ${
-                active
-                  ? 'border-fg bg-fg text-night'
-                  : 'border-line-strong text-muted hover:border-white/40 hover:text-fg'
+              className={`min-h-[44px] cursor-pointer rounded-full border px-5 font-semibold transition-colors duration-200 ${
+                active ? 'border-ink bg-ink text-white' : 'border-ink/25 text-ink-2 hover:border-ink hover:text-ink'
               }`}
             >
-              {f} <span className={active ? 'text-night/50' : 'text-subtle'}>{count}</span>
+              {f === 'All' ? 'All industries' : f}
             </button>
           );
         })}
       </div>
 
-      <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      <p aria-live="polite" className="mt-8 text-ink-2">
+        {shown.length} {shown.length === 1 ? 'use case' : 'use cases'}
+        {filter === 'All' ? '' : ` for ${filter.toLowerCase()}`}
+      </p>
+
+      <ul className="mt-4 grid gap-x-10 border-t border-rule md:grid-cols-2">
         {shown.map((u) => (
-          <UseCaseCard key={u.slug} useCase={u} />
+          <li key={u.slug} className="border-b border-rule">
+            <Link href={`/solutions/${u.slug}`} className="group block py-7">
+              <p className="text-sm text-ink-3">
+                {u.category}, on {u.channels.join(' and ')}
+              </p>
+              <h2 className="mt-2 font-display text-3xl font-bold tracking-tight transition-colors group-hover:text-signal-deep">
+                {u.title}
+              </h2>
+              <p className="mt-2 text-lg leading-relaxed text-ink-2">{u.benefit}</p>
+            </Link>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }

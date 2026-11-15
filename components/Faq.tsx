@@ -1,22 +1,22 @@
-// Numbered accordion FAQ built on <details>, so it works without JS.
+// Accordion FAQ built on <details>, so it works without JS.
 export default function Faq({ items }: { items: { q: string; a: string }[] }) {
   return (
-    <div className="divide-y divide-line border-y border-line">
-      {items.map((item, i) => (
-        <details key={item.q} className="group py-6">
-          <summary className="flex cursor-pointer list-none items-start gap-6 [&::-webkit-details-marker]:hidden">
-            <span className="w-8 shrink-0 pt-1 text-sm tabular-nums text-subtle">
-              {String(i + 1).padStart(2, '0')}
-            </span>
-            <span className="flex-1 font-display text-xl tracking-tight text-fg sm:text-2xl">{item.q}</span>
-            <span
+    <div className="divide-y divide-rule border-y border-rule">
+      {items.map((item) => (
+        <details key={item.q} className="group">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 [&::-webkit-details-marker]:hidden">
+            <span className="font-display text-2xl font-bold tracking-tight">{item.q}</span>
+            <svg
               aria-hidden
-              className="pt-1 text-2xl leading-none text-muted transition-transform duration-300 group-open:rotate-45"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              className="shrink-0 text-signal-deep transition-transform duration-200 group-open:rotate-45"
             >
-              +
-            </span>
+              <path d="M10 3v14M3 10h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            </svg>
           </summary>
-          <p className="ml-14 mt-4 max-w-[640px] leading-relaxed text-muted">{item.a}</p>
+          <p className="max-w-[640px] pb-7 text-lg leading-relaxed text-ink-2">{item.a}</p>
         </details>
       ))}
     </div>
